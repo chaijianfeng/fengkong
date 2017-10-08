@@ -1,0 +1,1023 @@
+<!-- 任务管理 -->
+<div class="container-fluid">
+	<!-- 查询 -->
+	<div class="panel panel-info">
+		<div class="panel-heading" style="padding:7px 15px;">
+			<a href="#collapseOne_rw_zhangsan" data-toggle="collapse" class="center-block">查询<i class="pull-right glyphicon glyphicon-menu-down"></i></a>
+		</div>
+		<div id="collapseOne_rw_zhangsan" class="panel-collapse collapse in">
+			<div class="panel-body" style="padding:15px 0">
+				<form class="form-horizontal">
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">任务编号:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-sm" />
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">出口国别:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="美国">美国</option>
+								<option value="英国">英国</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">业务类型:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="一般贸易">一般贸易</option>
+								<option value="承包工程">承包工程</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">出口口岸:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="天津新港">天津新港</option>
+								<option value="北京机场">北京机场</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">运输方式:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="水路运输">水路运输</option>
+								<option value="航空运输">航空运输</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">当前环节:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option>创建任务</option>
+								<option>预关单审核</option>
+								<option>报关单审核</option>
+								<option>开票通知</option>
+								<option>收票确认</option>
+								<option>发票认证</option>
+								<option>申报</option>
+								<option>备案</option>
+							</select>
+						</div>
+					</div>
+					<!-- <div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">操作人:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-sm" />
+						</div>
+					</div> -->
+					<div class="form-group col-sm-6">
+						<label class="control-label col-sm-3 text-align:right">操作时间:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control input-sm" onclick="WdatePicker();" />
+						</div>
+						<i class="glyphicon glyphicon-minus pull-left" style="positon:relative; top:6px;color:#666;"></i>
+						<div class="col-sm-4">
+							<input type="text" class="form-control input-sm" onclick="WdatePicker();" />
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<p class="text-right"><button class="btn btn-info btn-sm" type="button">查询</button></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 数据 -->
+	<div class="col-sm-12 plr0 height100 gridBox" id="renwugridBox">
+		<table id="renwujqGrid"></table>
+		<div id="renwujqGridPager"></div>
+	</div>
+</div>
+
+<!-- 新增任务弹窗 -->
+<div id="renwujqGrid_formBox" class="layerFormBox">
+	<form class="form-horizontal layerForm">
+		<div class="form-group col-xs-4">
+			<label for="inputEmail3" class="col-xs-4 control-label">
+				<span class="necessary">*</span>任务编号:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" value="CK201709220001" name="id" class="form-control input-sm"  placeholder="任务编号">
+			</div>
+		</div>
+
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>出口国别:
+			</label>
+			<div class="col-xs-8">
+				<select  name="guobie" class="form-control input-sm">
+					<option value="美国">美国</option>
+					<option value="英国">英国</option>
+					<option value="委内瑞拉" selected="true">委内瑞拉</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				业务类型:
+			</label>
+			<div class="col-xs-8">
+				<select  name="type" class="form-control input-sm">
+					<option value="一般贸易" selected="true">一般贸易</option>
+					<option value="外综服" >外综服</option>
+					<option value="承包工程" >承包工程</option>
+					<option value="其他" >其他</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>出口口岸:
+			</label>
+			<div class="col-xs-8">
+				<select  name="kouan" class="form-control input-sm">
+					<option value="北京机场">北京机场</option>
+					<option value="天津新港" selected="true">天津新港</option>
+					
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				运输方式:
+			</label>
+			<div class="col-xs-8">
+				<select  name="yunshufangshi" class="form-control input-sm">
+					<option value="陆路运输">陆路运输</option>
+					<option value="航空运输">航空运输</option>
+					<option value="水路运输" selected="true">水路运输</option>
+					
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				当前环节:
+			</label>
+			<div class="col-xs-8">
+				<input type="text"  name="huanjie"  class="form-control input-sm" value="创建任务" readonly="readonly" placeholder="当前环节">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>操作人:
+			</label>
+			<div class="col-xs-8">
+				<input type="text"  name="createName"  class="form-control input-sm" readonly="readonly" value="张三" placeholder="操作人">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>操作时间:
+			</label>
+			<div class="col-xs-8">
+				<input type="text"  name="createTime" readonly="readonly" value="2017-09-27"  class="form-control input-sm"  placeholder="出口日期">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12">
+				<label class="col-xs-1 control-label">
+					说明:
+				</label>
+				<div class="col-xs-8">
+					<textarea class="form-control input-sm" rows="3"  placeholder="说明"></textarea>
+				</div>
+			</div>
+		</div>
+		<p class="text-left">
+			<!-- <button type="button" class="saveBtn btn btn-info btn-sm" id="renwusave_btn">
+				保存
+			</button>
+			<button type="reset" class="saveBtn btn btn-info btn-sm">
+				重置
+			</button>
+			<button type="button" class="saveBtn btn btn-info btn-sm qx" id="renwucacle_btn">
+				取消
+			</button> -->
+			<button type="button" class="saveBtn btn btn-info btn-sm"  id="changeGoods_btn">
+				选择出口商品
+			</button>
+			<button type="button" class="saveBtn btn btn-info btn-sm" id="changeGoods_clean_btn">
+				清空
+			</button>
+			<button type="button" class="saveBtn btn btn-info btn-sm" >
+				导出
+			</button>
+			
+		</p>
+		<div>
+			<table id="liucheng_changeGood_jqGrid"></table>
+			<div id="liucheng_changeGood_jqGridPager"></div>
+		</div>
+		
+		<input type="hidden" name="operation" value="未处理"/>
+		
+		<p class="text-center">
+			<button type="button" class="saveBtn btn btn-info btn-sm" id="renwusave_btn">
+				保存
+			</button>
+			<button type="button" class="saveBtn btn btn-info btn-sm qx" id="renwucacle_btn">
+				取消
+			</button>
+			
+		</p>
+	</form>
+	
+	
+</div>
+<script type="text/javascript">
+
+	
+$(function(){
+	
+	//-------------------------------//
+	var layerIndex = null; //弹窗id,关闭所用
+	var flag = ''; //添加修改标记
+	var dataUrl = 'data/liucheng_renwu_zhangsan.json';//数据源链接
+	var gridId = 'renwujqGrid'; //表格id
+	var gridPager = 'renwujqGridPager'; //表格分页id
+	var formBoxId = 'renwujqGrid_formBox'; //添加修改窗口元素id
+	var layerCloseClassName = 'qx';
+	var dataSaveBtn = 'renwusave_btn'; //弹窗保存id
+	var gridBoxId = 'renwugridBox';//表格尺寸
+	var layerCloseTime = 1200; //1200毫秒提示消息关闭延迟时间
+	var gridWidth = $('#'+gridBoxId).width();
+	var gridHeight = $('#'+gridBoxId).height()-118;
+	//var gridHeight = 370;
+
+	//任务编号、出口国别、业务类型、出口口岸、运输方式、当前环节、操作人、操作时间。
+	var colModel = [
+			
+			{label : '任务编号', name : 'id', align: 'center', width:120,formatter: formatRwId,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '出口国别', name : 'guobie', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				}  
+			},
+			{label : '业务类型', name : 'type', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '出口口岸', name : 'kouan', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '运输方式', name : 'yunshufangshi', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '当前环节', name : 'huanjie', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '操作人', name : 'createName', align: 'center', width:80,
+				searchoptions: {
+					sopt : ['cn']
+				} 
+			},
+			{label : '操作时间', name : 'createTime', align: 'center', width:100,
+				searchoptions : {
+					dataInit: function(e){
+						$(e).on('click',function(){
+							WdatePicker({
+								dateFmt : 'yyyy-MM',
+								readOnly : true
+							});
+						});
+					}
+				}
+			},
+			{label : '操作', name : 'operation', align: 'center', width:60, search:false, formatter: formatOpe}
+	];
+	
+	$('#'+gridId).jqGrid({
+		width: gridWidth,
+		height: gridHeight,
+		url: dataUrl,
+		datatype: "json",
+		loadonce: true, //加载到本地操作
+		rownumbers: true, //显示顺序编号
+		multiselect: true, //定义多选
+		viewrecords: true, //显示总记录数
+		sortname: 'name', //排序字段
+		sortorder: 'asc', //排序顺序，升序或者降序（asc or desc）
+		altRows : true, //设置表格隔行变色
+		rowNum: 15, //每页显示的记录数
+		rowList:[10,15,18,20,25], //
+		rownumWidth: 30, 
+		recordtext: "当前显示: <b>{0}</b>至<b>{1}</b> 总数: <b>{2}</b>",
+		//emptyrecords: "No records to view",
+		//loadtext: "Loading...",
+		pager: '#'+gridPager,
+		colModel: colModel
+		//jsonReader : jsonReader
+		
+	}).navGrid('#'+gridPager,{ // the buttons to appear on the toolbar of the grid
+		edit:false,add:false,del:false,search:false,refresh:false
+	}).navButtonAdd('#'+gridPager,{
+		//caption: '新增',
+		caption: '',
+		title : '添加',
+		buttonicon : 'glyphicon-plus',
+		onClickButton : function(){addLayer();}, //调用添加的函数
+		position : 'last'
+		
+	}).navButtonAdd('#'+gridPager,{
+		//caption: '修改',
+		caption: '',
+		title : '修改',
+		buttonicon : 'glyphicon-edit',
+		onClickButton : function(){updateLayer();}, //调用更新的函数
+		position : 'last'
+		
+	}).navButtonAdd('#'+gridPager,{
+		//caption: '删除',
+		caption: '',
+		title : '删除',
+		buttonicon : 'glyphicon-trash',
+		//onClickButton : deleteLayer(gridId), //调用删除的函数
+		onClickButton : function(){ deleteLayer(gridId); },
+		position : 'last'
+		
+	}).navSeparatorAdd('#'+gridPager,{
+		sepcontent: '',
+		sepclass : "ui-separator"
+	});
+	
+	//表格添加搜索框按钮
+	//$('#'+gridId).jqGrid('filterToolbar');
+	//修改工具条
+	changeSearch(); 
+	
+	//editGridRow新增记录；viewGridRow查看记录详情；delGridRow删除记录。
+	
+	//弹框保存按钮
+	$(document).on('click','#'+dataSaveBtn,function(){
+		if(flag == 'add'){
+			var data = getFormData(formBoxId);
+			var currentNumber = uuid.v4();
+			var result = jQuery('#'+gridId).addRowData(currentNumber,data,'first');
+			if(result){
+				layer.msg('添加成功',{time:layerCloseTime});
+				layer.close(layerIndex);
+				
+				jQuery('#'+gridId).setSelection(currentNumber,true);
+				
+			}else{
+				layer.msg('添加失败!',{time:layerCloseTime});
+			}
+		}else if(flag == 'update'){
+			
+			//删除
+			var rowIds = getSelectedRow(gridId);
+			jQuery('#'+gridId).delRowData(rowIds[0]);
+			//添加
+			var data = getFormData(formBoxId);
+			console.log(data);
+			var currentNumber = uuid.v4();
+			var result = jQuery('#'+gridId).addRowData(currentNumber,data,'first');
+			
+			if(result){
+				layer.msg('更新成功',{time:layerCloseTime});
+				layer.close(layerIndex);
+				jQuery('#'+gridId).setSelection(currentNumber,true);
+			}else{
+				layer.msg('更新失败!',{time:layerCloseTime});
+			}
+		}
+		
+	});
+	
+	//弹框取消按钮
+	$('.'+layerCloseClassName).on('click',function(){
+		layer.close(layerIndex);
+	});
+	
+	//左下角新增按钮
+	function addLayer(){
+		flag = 'add';
+		$('#'+formBoxId+' .form-control:not([readonly],select)').val('');
+		layerIndex = layer.open({
+			type: 1,
+			title : '添加任务',
+			area: ['90%', '90%'], //宽高
+			content: $('#'+formBoxId)
+		});
+		
+		//清空数据
+		clearGoods();
+	}
+	
+	//左下角编辑按钮
+	function updateLayer(){
+		flag = 'update';
+		var setting = {
+			gridId : gridId,
+			formBoxId : formBoxId,
+			title : '修改任务信息',
+			area : ['90%', '90%']
+		};
+		layerIndex = updateGridData(setting);
+	}
+	
+	//左下角删除按钮
+	function deleteLayer(gridId){
+		deleteGridData(gridId);
+	}
+	
+	
+	
+	//-------------------------------//
+	$('#changeGoods_btn').on('click',function(){
+		changeGoods();
+	});
+	
+	var changeGoodsIndex = null;
+	//物资清单
+	var wzFlag = false;
+	function changeGoods(){
+		
+		changeGoodsIndex = layer.open({
+			type : 1,
+			title : '选择商品',
+			area : ['70%','80%'],
+			content : $('#changeGoods')
+		});
+		
+		var caigouWidth =  $('#changeGoods').width()-2;
+		var caigouHeight =  $('#changeGoods').height()-148;
+		console.log(caigouHeight);
+		$("#liucheng_wz_jqGrid").jqGrid({
+			url: 'data/wuzi.json',
+			// we set the changes to be made at client side using predefined word clientArray
+			editurl: 'clientArray',
+			datatype: "json",
+			sortname: 'name',
+			sortorder: 'asc',
+			loadonce: true,
+			viewrecords: true,
+			multiselect: true,
+			rownumbers: true,
+			altRows : true,
+			width: caigouWidth,
+			height: caigouHeight,
+			rowNum: 8,
+			colModel: [
+				{label : '物资名称', name : 'name', align: 'center', width: 100,
+				
+				},
+				{label : '数量', name : 'number', align: 'center', width:80,search: false
+					
+				},
+				{label : '规格型号 ', name : 'guige', align: 'center', width:80,search: false},
+				{label : '计量单位', name : 'danwei', align: 'center', width:80,search: false},
+				{label : '单价', name : 'oneMoney', align: 'center', width:100,search: false},
+				{label : '总价', name : 'totalMoney', align: 'center',width:120,search: false},
+				{label : '供货方', name : 'company', align: 'center',width:150},
+				],
+			
+			pager: "#liucheng_wz_jqGridPager"
+		
+		});
+		
+		//$('#liucheng_wz_jqGrid').jqGrid('filterToolbar');
+		if(!wzFlag){
+			/*
+			$("#caigou_wz_jqGrid").navGrid('#caigou_wz_jqGridPager',{ // the buttons to appear on the toolbar of the grid
+				edit:false,add:false,del:false,search:false,refresh:false
+			}).navButtonAdd('#caigou_wz_jqGridPager',{
+				//caption: '新增',
+				caption: '',
+				title : '新增',
+				buttonicon : 'glyphicon-plus',
+				onClickButton : addLayer, //调用添加的函数
+				position : 'last'
+				
+			}).navButtonAdd('#caigou_wz_jqGridPager',{
+				//caption: '删除',
+				caption: '',
+				title : '删除',
+				buttonicon : 'glyphicon-trash',
+				onClickButton : deleteLayer, //调用删除的函数
+				position : 'last'
+				
+			}).navButtonAdd('#caigou_wz_jqGridPager',{
+				//caption: '导入合同',
+				caption: '',
+				title : '导入合同',
+				buttonicon : 'fa fa-share',
+				onClickButton : importLayer, //调用导入合同函数
+				position : 'last'
+				
+			}).navSeparatorAdd("#caigou_wz_jqGridPager",{
+				sepcontent: '',
+				sepclass : "ui-separator"
+			});
+			*/
+			changeSearch(); //修改工具条
+			
+			wzFlag = true;
+		}
+	}
+	
+	//选择完商品后
+	$('#changeGoodsNext').on('click',function(){
+		/* commIndex = layer.confirm('是否要生成报关单？', {
+		  btn: ['是','否'] 
+		}, function(){
+			layer.close(commIndex);
+			layer.close(changeGoodsIndex);
+			showChangeGoods();
+		}, function(){
+			layer.close(commIndex);
+			layer.close(changeGoodsIndex);
+			showChangeGoods();
+		}); */
+		
+		layer.close(commIndex);
+		layer.close(changeGoodsIndex);
+		showChangeGoods();
+		
+		
+	});
+	
+	$('#changeGoods_clean_btn').on('click',function(){
+		clearGoods();
+	});
+	//清空商品数据
+	function clearGoods(){
+		$('#liucheng_changeGood_jqGrid').clearGridData();
+	}
+	//显示商品数据
+	function showChangeGoods(){
+		/* $("#liucheng_changeGood_jqGrid").jqGrid({
+			//url: 'data/wuzi.json',
+			// we set the changes to be made at client side using predefined word clientArray
+			editurl: 'clientArray',
+			datatype: "json",
+			sortname: 'name',
+			sortorder: 'asc',
+			loadonce: true,
+			viewrecords: true,
+			multiselect: false,
+			rownumbers: true,
+			altRows : true,
+			//width: '100%',
+			width: $('#renwujqGrid_formBox').width()-15,
+			height: 300,
+			rowNum: 8,
+			colModel: [{label : '物资名称', name : 'name', align: 'center', width: 100,editable: true},
+				{label : '数量', name : 'number', align: 'center', width:80,search: false},
+				{label : '规格型号 ', name : 'guige', align: 'center', width:80,search: false},
+				{label : '计量单位', name : 'danwei', align: 'center', width:80,search: false},
+				{label : '单价', name : 'oneMoney', align: 'center', width:100,search: false},
+				{label : '总价', name : 'totalMoney', align: 'center',width:120,search: false},
+				{label : '供货方', name : 'company', align: 'center',width:150},
+				],
+			
+			pager: "#liucheng_changeGood_jqGridPager"
+		
+		}); */
+		var rowIds = getSelectedRow('liucheng_wz_jqGrid');
+		if(rowIds && rowIds.length>0){
+			for(var i=0; i<rowIds.length; i++){
+				var json = $('#liucheng_wz_jqGrid').getRowData(rowIds[i]);
+				$("#liucheng_changeGood_jqGrid").addRowData(uuid.v4(),json,'first');
+				//$("#liucheng_changeGood_jqGrid").addJSONData(json);
+			}
+		}
+		
+	}
+	
+	
+	$("#liucheng_changeGood_jqGrid").jqGrid({
+		//url: 'data/wuzi.json',
+		// we set the changes to be made at client side using predefined word clientArray
+		editurl: 'clientArray',
+		datatype: "json",
+		sortname: 'name',
+		sortorder: 'asc',
+		loadonce: true,
+		viewrecords: true,
+		multiselect: false,
+		rownumbers: true,
+		altRows : true,
+		//width: '100%',
+		width: $('#renwujqGrid_formBox').width()-15,
+		height: 300,
+		rowNum: 8,
+		colModel: [{label : '物资名称', name : 'name', align: 'center', width: 100,editable: true},
+			{label : '数量', name : 'number', align: 'center', width:80,search: false},
+			{label : '规格型号 ', name : 'guige', align: 'center', width:80,search: false},
+			{label : '计量单位', name : 'danwei', align: 'center', width:80,search: false},
+			{label : '单价', name : 'oneMoney', align: 'center', width:100,search: false},
+			{label : '总价', name : 'totalMoney', align: 'center',width:120,search: false},
+			{label : '供货方', name : 'company', align: 'center',width:150},
+			],
+		
+		pager: "#liucheng_changeGood_jqGridPager"
+	
+	});
+	
+	$(document).on('click','.rewu_look_info_btn',function(){
+		commIndex = layer.open({
+			type : 1,
+			title : '任务详情',
+			area : ["90%","90%"],
+			content : $('#renwu_detail_info_box'),
+		});
+	});
+	$(document).on('click','.rewu_ope_btn',function(){
+		commIndex = layer.open({
+			type : 1,
+			title : '处理任务',
+			area : ["90%","80%"],
+			content : $('#renwu_ope_box'),
+		});
+		
+		//console.log($('#renwu_ope_box').width());
+		$("#liucheng_info_jqGrid1").jqGrid({
+			url: 'data/wuzi.json',
+			// we set the changes to be made at client side using predefined word clientArray
+			editurl: 'clientArray',
+			datatype: "json",
+			sortname: 'name',
+			sortorder: 'asc',
+			loadonce: true,
+			viewrecords: true,
+			multiselect: false,
+			rownumbers: true,
+			altRows : true,
+			//width: '100%',
+			//width: 'auto',
+			//width: 800,
+			width: $('#renwu_ope_box').width()-15,
+			height: 300,
+			rowNum: 8,
+			colModel: [{label : '物资名称', name : 'name', align: 'center', width: 100,editable: true},
+				{label : '数量', name : 'number', align: 'center', width:80,search: false},
+				{label : '规格型号 ', name : 'guige', align: 'center', width:80,search: false},
+				{label : '计量单位', name : 'danwei', align: 'center', width:80,search: false},
+				{label : '单价', name : 'oneMoney', align: 'center', width:100,search: false},
+				{label : '总价', name : 'totalMoney', align: 'center',width:120,search: false},
+				{label : '供货方', name : 'company', align: 'center',width:150},
+				],
+			
+			pager: "#liucheng_info_jqGridPager1"
+		
+		});
+	});
+	
+	
+	$("#liucheng_info_jqGrid").jqGrid({
+		url: 'data/wuzi.json',
+		// we set the changes to be made at client side using predefined word clientArray
+		editurl: 'clientArray',
+		datatype: "json",
+		sortname: 'name',
+		sortorder: 'asc',
+		loadonce: true,
+		viewrecords: true,
+		multiselect: false,
+		rownumbers: true,
+		altRows : true,
+		//width: '100%',
+		width: $('#renwu_detail_info_box').width(),
+		height: 300,
+		rowNum: 8,
+		colModel: [{label : '物资名称', name : 'name', align: 'center', width: 100,editable: true},
+			{label : '数量', name : 'number', align: 'center', width:80,search: false},
+			{label : '规格型号 ', name : 'guige', align: 'center', width:80,search: false},
+			{label : '计量单位', name : 'danwei', align: 'center', width:80,search: false},
+			{label : '单价', name : 'oneMoney', align: 'center', width:100,search: false},
+			{label : '总价', name : 'totalMoney', align: 'center',width:120,search: false},
+			{label : '供货方', name : 'company', align: 'center',width:150},
+			],
+		
+		pager: "#liucheng_info_jqGridPager"
+	
+	});
+	
+	
+	
+	
+	
+	
+	//选择采购合同
+	$('#renwu_change_ch_select_btn').on('change',function(){
+		$('#liucheng_wz_jqGrid').sortGrid('totalMoney',false);
+	})
+	
+	//权限树		
+	var zTreeObj;
+	var setting = {
+		view : {
+			showIcon : false,
+		},
+		check: {
+			enable: true
+		}
+	};
+	//树数据
+	$.getJSON('data/users.json',function(data){
+		var zNodes = data;
+		zTreeObj = $.fn.zTree.init($("#renwu_user_Tree"), setting, zNodes);
+	});
+	
+	//选择用户处理流程
+	var chooseUserLayer = null;
+	$('#renwu_choose_user_btn').on('click',function(){
+		chooseUserLayer = layer.open({
+				type : 1,
+				title : '选择用户',
+				area : ['25%',"60%"],
+				content : $('#renwu_choosen_user_box')
+			});
+		
+	});
+	$('#renwu_liucheng_chuli').on('click',function(){
+		layer.close(chooseUserLayer);
+		layer.close(commIndex);
+		layer.msg('提交成功!',{time:layerCloseTime})
+	});
+	//选择用户处理流程
+	
+});
+
+function formatRwId(cellValue, options, rowObject){
+	return '<a href="javascript:;" class="rewu_look_info_btn">'+cellValue+'</a>';
+} 
+function formatOpe(cellValue, options, rowObject){
+	return cellValue ? '<a href="javascript:;" class="rewu_ope_btn">'+cellValue+'</a>' : '';
+}
+
+
+	
+</script>
+
+<!-- 点击选择商品 -->
+<div class="layerFormBox" id="changeGoods" style="padding:0; width:100%; height:100%;">
+	<form class="form-inline" action="" method="" style="padding:15px;">
+		<select  name="company" class="form-control input-sm" id="renwu_change_ch_select_btn">
+			<option value="小笨鸟总部">请选择采购合同</option>
+			<option value="财务一部">采购合同1</option>
+			<option value="运保一部" selected="true">采购合同2</option>
+		</select>
+		<input type="text"  name="name" class="form-control input-sm"  placeholder="商品名称">
+		<input type="button" value="查询" class="btn btn-info btn-sm"/>
+		<input type="button" value="下一步" class="btn btn-info btn-sm pull-right" id="changeGoodsNext"/>
+	</form>
+	<table id="liucheng_wz_jqGrid"></table>
+	<div id="liucheng_wz_jqGridPager"></div>
+	
+</div>
+
+<!-- 任务详情 -->
+<!-- 任务详情 -->
+<div id="renwu_detail_info_box" class="layerFormBox">
+	<p style="border-bottom:1px dotted #666; ">基本信息</p>
+	<div class="form-horizontal layerForm clearfix">
+		<div class="form-group col-xs-4">
+			<label for="inputEmail3" class="col-xs-4 control-label">
+				任务编号:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >CK201709220001</p>
+			</div>
+		</div>
+
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				出口国别:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >委内瑞拉</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				业务类型:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >一般贸易</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				出口口岸:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >天津新港</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				运输方式:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >水路运输</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				当前环节:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >创建任务</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				操作人:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >张三</p>
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				操作时间:
+			</label>
+			<div class="col-xs-8">
+				<p  class="form-control input-sm"  >2017-09-27</p>
+			</div>
+		</div>
+		<!-- <div class="row">
+			<div class="form-group col-xs-12">
+				<label class="col-xs-1 control-label">
+					说明:
+				</label>
+				<div class="col-xs-8">
+					<div class="form-control input-sm" rows="3"  ></div>
+				</div>
+			</div>
+		</div> -->
+		
+		
+	</div>
+	
+	<div class="row" style="margin-left:0px; padding:0">
+		<p style="border-bottom:1px dotted #666; ">货物清单</p>
+		<table id="liucheng_info_jqGrid"></table>
+		<div id="liucheng_info_jqGridPager"></div>
+	</div>
+	
+	<!-- 操作历史 -->
+		<p style="border-bottom:1px dotted #666; margin-top:30px;">历史记录</p>
+		<div class="panel panel-info" style="margin-top: 15px;">
+			<!-- <div class="panel-heading">历史操作记录</div> -->
+			<div class="panel-body"
+				style="padding: 0; height: 180px; overflow-y: auto;">
+				<table class="table table-striped  table-condensed"
+					style="margin-bottom: 0;">
+					<thead style="background: #e5e6e6;">
+						<tr>
+							<th>操作人</th>
+							<th>历史操作</th>
+							<th>操作时间</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>张三</td>
+							<th>创建任务</th>
+							<td>2017-09-27</td>
+							<td></td>
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 操作历史 -->
+	
+</div>
+
+<!-- 任务处理界面 -->
+<div id="renwu_ope_box" class="layerFormBox">
+	<div class="container-fluid" style="padding:0">
+		<!-- 任务基本信息 -->
+		<div class="row rewwu_base_info" style="margin:0 0 15px 0; padding-top:15px;background:#f4f4f4; ">
+			<div class="col-xs-3">
+				<p><span>任务编号 :</span>CK201709220001</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>出口国别 :</span>委内瑞拉</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>业务类型 :</span>一般贸易</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>出口口岸 :</span>天津新港</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>运输方式 :</span>水路运输</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>操作人 :</span>张三</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>操作时间 :</span>2017-09-27</p>
+			</div>
+		</div>
+		<!-- 任务基本信息 -->
+		<!-- 商品 -->
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="liucheng_info_jqGrid1"></table>
+				<div id="liucheng_info_jqGridPager1"></div>
+			</div>
+		</div>
+		<!-- 商品 -->
+		<!-- 当前流程 -->
+		<div class="row" style="margin-top:15px; ">
+			<div class="col-xs-12 text-center" id="danqian">
+				<button class="btn  btn-sm btn-warning">1.创建任务</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn btn-sm ">2.预关单审核</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">3.报关单审核</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">4.开票通知</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">5.收票确认</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">6.发票认证</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">7.申报</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">8.备案</button>
+			</div>
+		</div>
+		<!-- 当前流程 -->
+		<p class="text-center"><button class="btn btn-info btn-sm" id="renwu_choose_user_btn">提交</button></p>
+	</div>
+</div>
+<!-- 任务处理界面 -->
+
+<!-- 选择用户处理流程 -->
+<div id="renwu_choosen_user_box" class="layerFormBox" >
+	<p>请选择要提交的用户：</p>
+	<select class="form-control input-sm">
+		<option>创建任务组</option>
+		<option selected="selected">预关单审核组</option>
+		<option>报关单审核组</option>
+		<option>开票通知组</option>
+		<option>收票确认组</option>
+		<option>发票认证组</option>
+		<option>申报组</option>
+		<option>备案组</option>
+	</select>
+	<div class="row" style="background:#f4f4f4; margin-left:0; margin-right:0; margin-top:15px;">
+		<div class="col-xs-4">
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" value="">李四
+			  </label>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" value="">李小四
+			  </label>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row" style="margin-top:15px;">
+		<div class="col-xs-12">
+			<textarea class="form-control input-sm" cols="3" placeholder="意见..."></textarea>
+		</div>
+	</div>
+	
+	<!-- <ul id="renwu_user_Tree" class="ztree" style="background:#f4f4f4; "></ul>-->
+	<p class="text-center"><button class="btn btn-info btn-sm" style="margin-top:35px;" id="renwu_liucheng_chuli">确认</button></p> 
+</div>
+<!-- 选择用户处理流程 -->
+
+<style>
+	#renwu_detail_info_box .form-control { border:none; box-shadow:none; padding-top:7px; }
+	#renwu_ope_box #danqian p { margin-bottom:0; }
+	.layerForm .form-group {margin-bottom:0; }
+	/* .layerForm .topSeven { padding-top:7px; } */
+	#renwu_choose_user_btn {margin-top:35px;}
+	.rewwu_base_info p {}
+	.rewwu_base_info p span{ padding:0 10px; font-weight:bold; }
+</style>

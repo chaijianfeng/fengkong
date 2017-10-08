@@ -1,0 +1,343 @@
+<!--工期预警  -->
+<div class="container-fluid" id="gongqi">
+	<div class="col-sm-12 plr0 height100 gridBox" id="gongqi_gridBox">
+		<table id="gongqi_jqGrid"></table>
+		<div id="gongqi_jqGridPager"></div>
+	</div>
+</div>
+<!-- 预警 -->
+<div class="layerFormBox" id="gongqi_formBox"> 
+	<div class="form-group col-sm-12">
+		<div class="col-sm-3">是否解除预警</div>
+		<label class="col-sm-3">
+			<div>
+				<input type="radio" class="input-sm">
+			</div>是
+		</label> 
+		
+		<label class="col-sm-3">
+			<div>
+				<input type="radio" class="input-sm">
+			</div>否
+		</label>
+		
+	</div>
+	<div class="form-group col-sm-12">
+		<label  class="col-sm-3 control-label">解除说明:</label>
+		<div class="col-sm-6">
+			<textarea class="form-control input-sm"></textarea>
+		</div>
+	</div>
+	<p class="text-center saveOrCacelBtn">
+		<button type="button" class="saveBtn btn btn-info btn-sm qx" id="renwu_save_btn">
+			保存
+		</button>
+		<button type="reset" class="saveBtn btn btn-info btn-sm">
+			重置
+		</button>
+		<button type="button" class="saveBtn btn btn-info btn-sm qx" id="renwu_cacle_btn">
+			取消
+		</button>
+	</p>
+</div>
+<!-- 任务详情 -->
+<div id="gonghuo_formBox" class="layerFormBox">
+	<form class="form-horizontal layerForm">
+		<div class="form-group col-xs-4">
+			<label for="inputEmail3" class="col-xs-4 control-label">
+				<span class="necessary">*</span>供货商名称:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="创立信电子厂">
+			</div>
+		</div>
+
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>纳税人识别号:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="2017923099">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				企业类型:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="生产">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				<span class="necessary">*</span>纳税信用等级:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="黑">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				税局信用等级:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="黑">
+			</div>
+		</div>
+		<div class="form-group col-xs-4">
+			<label class="col-xs-4 control-label">
+				内部评估等级:
+			</label>
+			<div class="col-xs-8">
+				<input type="text" readonly="readonly" class="form-control input-sm" value="黑">
+			</div>
+		</div>
+		<!-- 操作历史 -->
+	<div class="panel panel-info col-xs-12" style="margin-top:15px;">
+		<div class="panel-heading">历史操作记录</div>
+		<div class="panel-body" style="padding:0; height:180px;overflow-y:auto;">
+			<table class="table table-striped  table-condensed" style="margin-bottom:0;">
+				<thead style="background:#e5e6e6;">
+					<tr>
+						<th >供货商名称</th>
+						<th >纳税人识别号</th>
+						<th >企业类型</th>
+						<th >纳税信用等级</th>
+						<th >内部评估等级</th>
+						<th >税局信用等级</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td >创立信电子厂</td>
+						<td >201738237823</td>
+						<td >生产</td>
+						<td >黑</td>
+						<td >黑</td>
+						<td >黑</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 操作历史 -->
+		<p class="text-center saveOrCacelBtn">      
+	        <button type="button" class="btn btn-info btn-sm qx">取消</button>        
+	    </p>
+	</form>
+	</div>
+<script type="text/javascript">
+
+	
+$(function(){
+	var dataUrl = 'data/gongqi.json';
+	var index = null;
+	var flag = '';
+	var rowNumber = 1000000;
+
+	//表格数据
+	var gridWidth = $('#gongqi_gridBox').width();
+	var gridHeight = $('#gongqi_gridBox').height()-118;
+	$("#gongqi_jqGrid").jqGrid({
+		
+		hidegrid : false, 
+		altRows : true, 
+		colModel: [{label : '供货商名称', name : 'hetongnumber', align: 'center', width: 120 ,formatter: formatName},
+			{label : '纳税人识别号', name : 'hetongname', align: 'center', width:120},
+			{label : '企业类型', name : 'time', align: 'center', width:120},
+			{label : '纳税信用等级', name : 'startTime', align: 'center', width:120},
+			{label : '税局信用等级', name : 'endTime', align: 'center', width:120},
+			{label : '内部评估等级', name : 'dataTime', align: 'center', width:120}],
+		viewrecords: true,
+		loadonce:true,
+		width: gridWidth,
+		//width: 'auto',
+		//width : '100%',
+		height: gridHeight,
+		//height : 'auto',
+		rowNum: 11,
+		rowList:[10,15,20,25],
+		datatype: 'local',
+		pager: "#gongqi_jqGridPager",
+		rownumbers: true,
+		rownumWidth: 30,
+		multiselect: true,
+		recordtext: "当前显示: <b>{0}</b>至<b>{1}</b> 总数: <b>{2}</b>",
+	    //emptyrecords: "No records to view",
+		//loadtext: "Loading...",
+		
+	}).navGrid("#gongqi_jqGridPager",{ // the buttons to appear on the toolbar of the grid
+		edit:false,add:false,del:false,search:false,refresh:false
+	}).navSeparatorAdd('#gongqi_jqGridPager',{
+		sepcontent: '',
+		sepclass : "ui-separator"
+	});
+	//搜索框按钮,开启搜索框需要重新调整高度
+	$('#gongqi_jqGrid').jqGrid('filterToolbar');
+	
+	fetchGridData();
+	
+	//editGridRow新增记录；viewGridRow查看记录详情；delGridRow删除记录。
+				//格式化标题
+		function formatName(cellValue, options, rowObject) {
+			var len = cellValue.length;
+			if(len>50){
+				cellValue = cellValue.substring(0, 50) + "...";
+			}
+			return '<a href="javascript:;" onclick="lookInfo(\''+options.gid+'\',\''+options.rowId+'\')">'+cellValue+'</a>';
+		};
+	
+	
+	//弹框取消按钮
+	$('#gongqi_cacle_btn').on('click',function(){
+		layer.close(index);
+	});
+	$('.qx').on('click',function(){
+		layer.close(index);
+	});
+	// 供货预警解除
+	function gonghuo_remove(){
+		flag == 'update';
+		var rowIds = getSelectedRow();
+		
+		if(rowIds && $.isArray(rowIds) && rowIds.length >= 1 ){
+			
+			var rowData = $("#gonghuo_jqGrid").getRowData(rowIds[0]);
+			
+			//console.log(rowData);
+			
+			$('#gonghuo_tasknumber').val(rowData.tasknumber),
+		    $('#gonghuo_county').val(rowData.county),
+		    $('#gonghuo_type').val(rowData.type),
+		    $('#gonghuo_kouan').val(rowData.kouan),
+		    $('#gonghuo_bus').val(rowData.bus),
+		    $('#gonghuo_level').val(rowData.level),
+		    $('#gonghuo_createPeople').val(rowData.createPeople),
+		    $('#gonghuo_overTime').val(rowData.overTime),
+		    $('#gonghuo_createTime').val(rowData.createTime),
+		    $('#gonghuo_lastTime').val(rowData.lastTime),
+		    $('#gonghuo_sign').val(rowData.sign);
+			title = '修改模块';
+			index = layer.open({
+				type: 1,
+				title : title,
+				area: ['60%', '80%'], //宽高
+				content: $('#gongqi_formBox')
+			});
+		}else{
+			layer.msg('同时只能选择一条记录!');
+		}
+	}
+	//表头编辑按钮
+	$(document).on('click','#gongqi_update_btn',function(){
+		flag = 'update';
+		var rowIds = getSelectedRow();
+		
+		if(rowIds && $.isArray(rowIds) && rowIds.length == 1 ){
+			
+			var rowData = $("#gongqi_jqGrid").getRowData(rowIds[0]);
+			
+			//console.log(rowData);
+			
+			$('#gongqi_name').val(rowData.name),
+		    $('#gongqi_relName').val(rowData.relName),
+		    $('#gongqi_company').val(rowData.company),
+		    $('#gongqi_createTime').val(rowData.createTime)
+			title = '修改模块';
+			index = layer.open({
+				type: 1,
+				title : title,
+				area: ['60%', '70%'], //宽高
+				content: $('#gongqi_formBox')
+			});
+		}else{
+			layer.msg('同时只能选择一条记录!');
+		}
+	});
+	
+	//获取json数据
+	function fetchGridData() {
+
+		var gridArrayData = [];
+		// show loading message
+		$("#gongqi_jqGrid")[0].grid.beginReq();
+		$.ajax({
+			url: dataUrl,
+			success: function(result) {
+				for (var i = 0; i < result.items.length; i++) {
+					var item = result.items[i];
+					
+					gridArrayData.push({
+						hetongnumber: item.hetongnumber,
+						hetongname: item.hetongname,
+						time: item.time,
+						startTime: item.startTime,
+						endTime: item.endTime,
+						dataTime: item.dataTime,
+						active: item.active
+					});
+
+				}
+				// set the new data
+				$("#gongqi_jqGrid").jqGrid('setGridParam', {
+					data: gridArrayData
+				});
+				// hide the show message
+				$("#gongqi_jqGrid")[0].grid.endReq();
+				// refresh the grid
+				$("#gongqi_jqGrid").trigger('reloadGrid');
+			}
+		});
+	}
+	//格式化标题
+	function formatTitle(cellValue, options, rowObject) {
+		return cellValue.substring(0, 50) + "...";
+	};
+	//格式化链接
+	function formatLink(cellValue, options, rowObject) {
+		return "<a href='" + cellValue + "'>" + cellValue.substring(0, 25) + "..." + "</a>";
+	};
+	//获取选择的行
+	function getSelectedRow() {
+	    var grid = $("#gongqi_jqGrid");
+	    var rowKeys = grid.jqGrid('getGridParam',"selarrrow");
+
+	   return rowKeys;
+	}
+	
+	
+	changeSearch(); //修改工具条
+	
+});
+function lookInfo(gid,rowId){
+	$('#shenhecaigou_save_btn').show();
+	var data = $('#'+gid).getRowData(rowId);
+	data.name = $(data.name).text();
+	data.relName = $(data.relName).text();
+	setFormData(gid+'_formBox',data);
+	title = '供货商查看信息';
+	commIndex = layer.open({
+		type: 1,
+		title : title,
+		area: ['98%', '98%'], //宽高
+		content: $('#gonghuo_formBox')
+	});
+}
+//格式化状态
+function formatStatus(cellValue, options, rowObject) {
+	var title = '';
+	var className = '';
+	if(cellValue==0){
+		title = '未审核';
+		className = 'fa-times-circle text-danger';
+	}else if(cellValue==1){
+		title = '已审核';
+		className = 'fa-check-circle-o text-success';
+	}else{
+		title = '正在审核...';
+		className = 'fa-question-circle-o text-warning';	
+	}
+	return '<i title="'+title+'" class="fa '+className+'"></i>';
+};
+	
+</script>
