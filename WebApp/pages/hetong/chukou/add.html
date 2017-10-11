@@ -34,8 +34,10 @@
 				<div class="col-sm-9">
 					<ul class="nav nav-tabs" role="tablist">
 						<li  class="active"><a href="#info"  data-toggle="tab">基本信息</a></li>
-						<li ><a href="#link"  data-toggle="tab">签订双方信息</a></li>
+						<li ><a href="#link"  data-toggle="tab">联系方式</a></li>
 						<li ><a href="#fujian"  data-toggle="tab">附件</a></li>
+						<li ><a href="#beizhu"  data-toggle="tab">备注</a></li>
+						<li ><a href="#tuishui"  data-toggle="tab">是否退税</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-3 text-right">
@@ -53,12 +55,12 @@
 					</div>
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
-						<div class="col-xs-10"><input type="text" name="seanumber" class="form-control input-sm" placeholder="合同编号"></div>
+						<div class="col-xs-10"><input type="text" name="id" class="form-control input-sm" placeholder="合同编号"></div>
 					</div>
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
 						<div class="col-xs-10">
-							<select name="type" class="form-control input-sm">
+							<select name="myType" class="form-control input-sm">
 								<option>业务类型</option>
 								<option value="一般贸易">一般贸易</option>
 								<option value="承包工程">承包工程</option>
@@ -67,7 +69,7 @@
 					</div>
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
-						<div class="col-xs-10"><input type="text" class="form-control input-sm" placeholder="签约日期" onclick="WdatePicker();"></div>
+						<div class="col-xs-10"><input type="text" name="qdDate" class="form-control input-sm" placeholder="签约日期" onclick="WdatePicker();"></div>
 					</div>
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
@@ -101,7 +103,7 @@
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
 						<div class="col-xs-10">
-							<select name="type" class="form-control input-sm">
+							<select name="cjfs" class="form-control input-sm">
 								<option>成交方式</option>
 								<option value="FOB">FOB</option>
 								<option value="CIF">CIF</option>
@@ -111,7 +113,7 @@
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
 						<div class="col-xs-10">
-							<select name="type" class="form-control input-sm">
+							<select name="ysfs" class="form-control input-sm">
 								<option>运输方式</option>
 								<option value="水路运输">水路运输</option>
 								<option value="航空运输">航空运输</option>
@@ -121,17 +123,18 @@
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
 						<div class="col-xs-10">
-							<select name="type" class="form-control input-sm">
+							<select name="guobie" class="form-control input-sm">
 								<option>出口国别</option>
 								<option value="美国">美国</option>
 								<option value="韩国">韩国</option>
+								<option value="德国">德国</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group col-sm-4">
 						<label class="col-xs-2 control-label"><span class="text-danger">*</span></label>
 						<div class="col-xs-10">
-							<select name="type" class="form-control input-sm">
+							<select name="ckka" class="form-control input-sm">
 								<option>出口口岸</option>
 								<option value="天津新港">天津新港</option>
 								<option value="北京机场">北京机场</option>
@@ -208,32 +211,32 @@
 				<!-- 基本信息 -->
 
 				<!-- 联系人信息-->
-				<div  class="tab-pane" id="link">
+				<div  class="tab-pane clearfix" id="link">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-horizontal ours">
 								<div class="form-group">
-									<label class="col-sm-6 text-right">买方名称:</label>
-									<div class="col-sm-6">
-										<p>美国Kri公司</p>
+									<label class="col-sm-5 control-label">买方名称:</label>
+									<div class="col-sm-5">
+										<input type="text" name="goufang" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-6 text-right">买方签约人:</label>
-									<div class="col-sm-6">
-										<p></p>
+									<label class="col-sm-5 control-label">买方签约人:</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-6 text-right">买方联系电话:</label>
-									<div class="col-sm-6">
-										<p></p>
+									<label class="col-sm-5 control-label">买方联系电话:</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-6 text-right">买方地址:</label>
-									<div class="col-sm-6">
-										<p></p>
+									<label class="col-sm-5 control-label">买方地址:</label>
+									<div class="col-sm-5">
+										<textarea class="form-control input-sm"  rows="3"></textarea>
 									</div>
 								</div>
 							</div>
@@ -242,27 +245,27 @@
 						<div class="col-sm-6">
 							<div class="form-horizontal ours">
 								<div class="form-group">
-									<label class="col-sm-4 text-right">卖方名称:</label>
-									<div class="col-sm-8">
-										<p>中国进出口贸易公司</p>
+									<label class="col-sm-5 control-label">卖方名称:</label>
+									<div class="col-sm-5">
+										<input type="text" name="maifang" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 text-right">卖方签约人:</label>
-									<div class="col-sm-8">
-										<p></p>
+									<label class="col-sm-5 control-label">卖方签约人:</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 text-right">卖方联系电话:</label>
-									<div class="col-sm-8">
-										<p></p>
+									<label class="col-sm-5 control-label">卖方联系电话:</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control input-sm" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 text-right">卖方地址:</label>
-									<div class="col-sm-8">
-										<p></p>
+									<label class="col-sm-5 control-label">卖方地址:</label>
+									<div class="col-sm-5">
+										<textarea class="form-control input-sm"  rows="3"></textarea>
 									</div>
 								</div>
 							</div>
@@ -272,7 +275,7 @@
 				<!-- 联系人信息 -->
 
 				<!-- 附件 -->
-				<div  class="tab-pane" id="fujian">
+				<div  class="tab-pane clearfix" id="fujian">
 					<div class="form-group col-sm-12">
 						<label class="col-sm-2 control-label text-right"><span class="text-danger">*</span>合同源文件:</label>
 						<div class="col-sm-8"><input type="file" name="files1" class="file inputBtn"></div>
@@ -291,6 +294,30 @@
 					</div>
 				</div>
 				<!-- 附件 -->
+				
+				<!-- 备注 -->
+				<div  class="tab-pane clearfix" id="beizhu">
+					<div class="col-sm-9">
+						<textarea class="form-control" rows="8" placeholder="请填写合同的备注信息..."></textarea>
+					</div>
+				</div>
+				<!-- 备注 -->
+				<!-- 是否退税 -->
+				<div  class="tab-pane clearfix" id="tuishui">
+					<div class="form-group col-sm-12">
+						<label class="col-sm-2 control-label">退税标志:</label>
+						<div class="col-sm-10">
+							<label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions" value="1"> 退税
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" name="inlineRadioOptions"  value="0"> 不退税
+							</label>
+						
+						</div>
+					</div>
+				</div>
+				<!-- 备注 -->
 			</div>
 		</form>
 	</div>
