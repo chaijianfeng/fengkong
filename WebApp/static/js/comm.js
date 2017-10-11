@@ -26,10 +26,10 @@ function changeRightTabWidth(boxId) {
 }
 
 /*
- * 格式化任务编号查看详情
+ * 格式标题或者编号查看详情
  */
-function formatterRenWuNo(value, row, index) {
-	return '<a href="javascript:;" class="text-info lookRenWuInfo">' + value + '</a>';
+function formatterLookInfo(value, row, index) {
+	return '<a href="javascript:;" class="text-info lookInfo">' + value + '</a>';
 }
 
 // 初始化表格信息

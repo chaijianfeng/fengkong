@@ -8,7 +8,7 @@ $(document).ready(function(){
 		{
 			title : '供货商名称',
 			field : 'name',
-			formatter : formatterRenWuNo
+			formatter : formatterLookInfo
 		}, 
 		{
 			title : '纳税人识别号',
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	});
 
 	// 查看详情
-	$(document).on("click", ".lookRenWuInfo", function() {
+	$(document).on("click", ".lookInfo", function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
@@ -126,7 +126,7 @@ $(document).ready(function(){
 	                // layero.find("iframe")[0]     将jqeruy对象转化为Dom对象  
 	                // contentWindow                获取当前 iframe 的 内容 window对象（Dom对象）  
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
-					setFormData('ruzhu_add',currentFrame,selectRows[0]);
+					setFormData('addInfoForm',currentFrame,selectRows[0]);
 	            }
 			});
 		}else{

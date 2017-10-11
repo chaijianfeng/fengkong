@@ -5,7 +5,7 @@ $(function() {
 	}, {
 		title : '任务编号',
 		field : 'id',
-		formatter : formatterRenWuNo
+		formatter : formatterLookInfo
 	}, {
 		title : '出口国别',
 		field : 'guobie'
@@ -76,14 +76,14 @@ $(function() {
 	});
 
 	// 查看详情
-	$(document).on("click", ".lookRenWuInfo", function() {
+	$(document).on("click", ".lookInfo", function() {
 		console.log(this);
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "任务详情",
 			area : [ "70%", "65%" ],
-			content : "../../pages/liucheng/operation/renwu_detail.html"
+			content : "../../pages/liucheng/detail.html"
 		});
 	});
 

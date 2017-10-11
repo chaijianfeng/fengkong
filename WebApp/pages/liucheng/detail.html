@@ -7,7 +7,7 @@
 		<!--自适应设备宽度-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-		<title>外贸综合服务企业出口退税风险管控信息系统-供货商详情</title>
+		<title>外贸综合服务企业出口退税风险管控信息系统-任务详情</title>
 		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
 		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
 		<link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
@@ -24,29 +24,36 @@
 		<link rel="stylesheet" href="../../static/css/comm.css"/><!-- 自定义公用css -->
 		<link rel="stylesheet" href="../../static/plugins/layer-3.0.3/skin/default/layer.css"/><!-- 弹窗 -->
 		<script type="text/javascript" src="../../static/plugins/layer-3.0.3/layer.js"></script>
-		<!-- <link rel="stylesheet" href="../../static/css/ruzhu.css"/> -->
-		<script type="text/javascript" src="../../static/js/ruzhu/detail.js"></script><!-- 本页专用 -->
+		<script type="text/javascript" src="../../static/js/liucheng/renwu_detail.js"></script><!-- 本页专用 -->
 	</head>
 	<body>
+		<!-- 任务详情 -->
 		<div class="layerBodyBg">
-			<!-- 供货商详情 -->
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#info" data-toggle="tab">基本信息</a></li>
-				<li ><a href="#link" data-toggle="tab">联系方式</a></li>
-				<li ><a href="#fujian" data-toggle="tab">附件</a></li>
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#info"
+					aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+				<li role="presentation" ><a href="#proList"
+					aria-controls="profile" role="tab" data-toggle="tab">货物清单</a></li>
+				<li role="presentation"><a href="#history"
+					aria-controls="messages" role="tab" data-toggle="tab">历史记录</a></li>
 			</ul>
 			<div class="tab-content">
 				<!-- 基本信息 -->
-				<div  class="tab-pane active" id="info"></div>
+				<div role="tabpanel" class="tab-pane active" id="info">
+				</div>
 				<!-- 基本信息 -->
-				<!-- 联系方式 -->
-				<div class="tab-pane" id="link"></div>
-				<!-- 联系方式 -->
-				<!-- 附件 -->
-				<div class="tab-pane" id="fujian"></div>
-				<!-- 附件 -->
+				<!-- 货物清单 -->
+				<div role="tabpanel" class="tab-pane" id="proList">
+					<table id="tableList" class="myTable table-condensed"></table>
+				</div>
+				<!-- 货物清单 -->
+				<!-- 历史记录 -->
+				<div role="tabpanel" class="tab-pane" id="history">
+					<table id="historyList" class="myTable table-condensed"></table>
+				</div>
+				<!-- 历史记录 -->
 			</div>
-			<!-- 供货商详情 -->
 		</div>
+		<!-- 任务详情 -->
 	</body>
 </html>

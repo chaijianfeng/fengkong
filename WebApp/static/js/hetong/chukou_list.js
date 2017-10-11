@@ -9,7 +9,7 @@ $(function() {
 	}, {
 		title : '合同编号',
 		field : 'id',
-		formatter : formatterRenWuNo
+		formatter : formatterLookInfo
 	}, {
 		title : '合同名称',
 		field : 'name'
@@ -86,14 +86,14 @@ $(function() {
 	});
 
 	// 查看详情
-	$(document).on("click", ".lookRenWuInfo", function() {
+	$(document).on("click", ".lookInfo", function() {
 		console.log(this);
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "出口合同详情",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/operation/chukou_detail.html"
+			content : "../../pages/hetong/chukou/detail.html"
 		});
 	});
 
@@ -102,44 +102,31 @@ $(function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "添加供货商信息",
+			title : "添加出口合同",
 			area : [ "70%", "65%" ],
-			content : "../../pages/ruzhu/operation/add.html"
+			content : "../../pages/hetong/chukou/add.html"
 		});
 	});
 
 	// 修改
-	$(document)
-			.on(
-					"click",
-					"#update",
-					function() {
-						var selectRows = $table.bootstrapTable('getSelections');
-						if (selectRows.length === 1) {
-							parent.layer
-									.open({
-										type : 2,
-										skin : 'myLayui', // 样式类名
-										title : "修改供货商信息",
-										area : [ "70%", "65%" ],
-										content : "../../pages/ruzhu/operation/add.html",
-										success : function(layero, index) {
-											// layero.find("iframe")
-											// 找到iframe的jquery对象
-											// layero.find("iframe")[0]
-											// 将jqeruy对象转化为Dom对象
-											// contentWindow 获取当前 iframe 的 内容
-											// window对象（Dom对象）
-											var currentFrame = layero
-													.find("iframe")[0].contentWindow.document;
-											setFormData('ruzhu_add',
-													currentFrame, selectRows[0]);
-										}
-									});
-						} else {
-							parent.layer.msg("请选择一条数据进行编辑!");
-						}
-					});
+	$(document).on("click","#update",function() {
+		var selectRows = $table.bootstrapTable('getSelections');
+		if (selectRows.length === 1) {
+			parent.layer.open({
+				type : 2,
+				skin : 'myLayui', // 样式类名
+				title : "修改供货商信息",
+				area : [ "70%", "65%" ],
+				content : "../../pages/ruzhu/operation/add.html",
+				success : function(layero, index) {
+					var currentFrame = layero.find("iframe")[0].contentWindow.document;
+					setFormData('ruzhu_add',currentFrame, selectRows[0]);
+				}
+			});
+		} else {
+			parent.layer.msg("请选择一条数据进行编辑!");
+		}
+	});
 
 	// 删除
 	$(document).on('click', '#delete', function() {
