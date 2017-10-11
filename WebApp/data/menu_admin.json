@@ -18,7 +18,7 @@
 			},
 			{
 				"name" : "供货商维护",
-				"url" : "ruzhu/index.html"
+				"url" : "ruzhu/list.html"
 			},
 			{
 				"name" : "供货商核查",
@@ -33,15 +33,15 @@
 		"children" : [
 			{
 				"name" : "出口合同",
-				"url" : "hetong/chukou.html"
+				"url" : "hetong/chukou/list.html"
 			},
 			{
 				"name" : "采购合同",
-				"url" : "hetong/caigou.html"
+				"url" : "hetong/caigou/list.html"
 			},
 			{
 				"name" : "运输协议",
-				"url" : "hetong/wuliu.html"
+				"url" : "hetong/wuliu/list.html"
 			}
 		]
 	},
