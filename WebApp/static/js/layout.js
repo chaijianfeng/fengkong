@@ -3,24 +3,6 @@ $(function(){
 	$('#fkHeader').load('../include/header.html');
 	//加载左侧信息
 	$('#fkLeft').load('../include/left.html');
-	//加载首页
-	//$('#main .con').eq(0).load('include/main.html');
-	
-	/*//var href = window.location.href;
-	//var menuJsonUrl = 'data/menu.json';
-	//if(href.indexOf('zhangsan') != -1){
-		//$('#header_dropdown_menu b').text('张三');
-		//menuJsonUrl = 'data/menu_zhangsan.json';
-		//$('#main .con').eq(0).load('include/main_zhangsan.html');
-	//}else if(href.indexOf('lisi') != -1){
-		//$('#header_dropdown_menu b').text('李四');
-		//menuJsonUrl = 'data/menu_lisi.json';
-		//$('#main .con').eq(0).load('include/main_lisi.html');
-	//}else{
-		//$('#main .con').eq(0).load('include/main.html');
-	}*/
-	
-	//$('#main .con').eq(0).load('system/module.html');
 	
 	//右侧触发点击
 	$('#fkTabs ul').on('click','li',function(){
@@ -47,7 +29,6 @@ $(function(){
 			$('#fkTabs ul').find('li').eq(index-1).addClass('active');
 			$('#main .con').removeClass('active').eq(index-1).addClass('active');
 		}
-		
 		
 		changeRightTabWidth('fkTabs');
 		layer.closeAll();
