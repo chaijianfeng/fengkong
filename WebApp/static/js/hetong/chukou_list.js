@@ -52,7 +52,10 @@ $(function() {
 		"myType" : "一般贸易",
 		"projects" : "货物清单",
 		"shStatus" : "1",
-		"glStatus" : "0"
+		"glStatus" : "0",
+		"cjfs" : "FOB",
+		"ysfs" : "水路运输",
+		"ckka" : "天津新港"
 	}, {
 		"id" : "HT1818991184284",
 		"name" : "电子配件出口合同",
@@ -63,7 +66,10 @@ $(function() {
 		"myType" : "一般贸易",
 		"projects" : "货物清单",
 		"shStatus" : "0",
-		"glStatus" : "0"
+		"glStatus" : "0",
+		"cjfs" : "CIF",
+		"ysfs" : "航空运输",
+		"ckka" : "北京机场"
 	} ];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
@@ -117,10 +123,10 @@ $(function() {
 				skin : 'myLayui', // 样式类名
 				title : "修改供货商信息",
 				area : [ "70%", "65%" ],
-				content : "../../pages/ruzhu/operation/add.html",
+				content : "../../pages/hetong/chukou/add.html",
 				success : function(layero, index) {
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
-					setFormData('ruzhu_add',currentFrame, selectRows[0]);
+					setFormData('addInfoForm',currentFrame, selectRows[0]);
 				}
 			});
 		} else {
