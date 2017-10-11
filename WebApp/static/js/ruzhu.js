@@ -1,64 +1,75 @@
-$(function() {
-	
+$(document).ready(function(){
 	var $table = $('#table');
+	var columns = [ 
+		{
+			field : 'select',
+			checkbox : true
+		},
+		{
+			title : '供货商名称',
+			field : 'name',
+			formatter : formatterRenWuNo
+		}, 
+		{
+			title : '纳税人识别号',
+			field : 'nsrsbh'
+		}, 
+		{
+			title : '企业类型',
+			field : 'type'
+		}, 
+		{
+			title : '纳税信用等级',
+			align:'center',
+			field : 'nsdj'
+		}, 
+		{
+			title : '内部评估等级',
+			align:'center',
+			field : 'pgdj'
+		}, 
+		{
+			title : '税局信用等级',
+			align:'center',
+			field : 'xydj'
+		}, 
+		{
+			title : '审核状态',
+			field : 'shstate',
+			align:'center',
+			formatter : formatterStatus
+		} 
+	];
 
-	var columns = [ {
-		field : 'select',
-		checkbox : true
-	}, {
-		title : '供货商名称',
-		field : 'name',
-		formatter : formatterRenWuNo
-	}, {
-		title : '纳税人识别号',
-		field : 'nsrsbh'
-	}, {
-		title : '企业类型',
-		field : 'type'
-	}, {
-		title : '纳税信用等级',
-		align:'center',
-		field : 'nsdj'
-	}, {
-		title : '内部评估等级',
-		align:'center',
-		field : 'pgdj'
-	}, {
-		title : '税局信用等级',
-		align:'center',
-		field : 'xydj'
-	}, {
-		title : '审核状态',
-		field : 'shstate',
-		align:'center',
-		formatter : formatterStatus
-	} ];
-
-	var data = [ {
-		"name" : "创立信电子厂",
-		"nsrsbh" : "913201059901675",
-		"type" : "生产",
-		"nsdj" : "B",
-		"pgdj" : "B",
-		"xydj" : "白",
-		"shstate" : "1"
-	}, {
-		"name" : "某集团工程有限公司",
-		"nsrsbh" : "913201059901134",
-		"type" : "生产",
-		"nsdj" : "C",
-		"pgdj" : "C",
-		"xydj" : "黑",
-		"shstate" : "0"
-	}, {
-		"name" : "北京某某电子厂",
-		"nsrsbh" : "913201059901422",
-		"type" : "生产",
-		"nsdj" : "A",
-		"pgdj" : "A",
-		"xydj" : "白",
-		"shstate" : "1"
-	} ];
+	var data = [ 
+		{
+			"name" : "创立信电子厂",
+			"nsrsbh" : "913201059901675",
+			"type" : "生产",
+			"nsdj" : "B",
+			"pgdj" : "B",
+			"xydj" : "白",
+			"shstate" : "1"
+		}, 
+		{
+			"name" : "某集团工程有限公司",
+			"nsrsbh" : "913201059901134",
+			"type" : "生产",
+			"nsdj" : "C",
+			"pgdj" : "C",
+			"xydj" : "黑",
+			"shstate" : "0"
+		}, 
+		{
+			"name" : "北京某某电子厂",
+			"nsrsbh" : "913201059901422",
+			"type" : "生产",
+			"nsdj" : "A",
+			"pgdj" : "A",
+			"xydj" : "白",
+			"shstate" : "1"
+		} 
+	];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover table-no-bordered', // 添加样式名称
@@ -133,7 +144,6 @@ $(function() {
 			$table.bootstrapTable('remove', {field: 'nsrsbh', values: selectRows});
 			parent.layer.msg('删除成功!');
 		});
-		
 	});
 	
 	//审核
@@ -145,8 +155,5 @@ $(function() {
 			area : [ "40%", "40%" ],
 			content : "../../pages/ruzhu/operation/shenhe.html"
 		});
-		
 	});
-
 });
-

@@ -1,8 +1,8 @@
 /*@charset "UTF-8";*/
 /*layout start*/
 html,body,#fkBox{width:100%; height:100%; position:relative; font-size:12px; }
-#fkHeader { position:absolute; left:0; top:0; z-index:3; width:100%; height:58px; line-height:58px; background:#337AB7; }
-#fkLeft { position:absolute; left:0; top:0; z-index:2; width:150px; height:100%; background:#293f51; }
+#fkHeader { position:absolute; left:0; top:0; z-index:3; width:100%; height:58px; line-height:58px; background:#68a8df; }
+#fkLeft { position:absolute; left:0; top:0; z-index:2; width:150px; height:100%; background:#3f576a; }
 #fkTabs {position:absolute; top:58px; z-index:1; width:100%; padding-left:150px; height:40px; background:#e5e6e6; border-top:1px solid #d9d9d9; border-bottom:1px solid #d9d9d9;}
 #fkRight { position:absolute; top:98px; z-index:1; width:100%;  padding-left:150px; background:#f4f4f4; overflow:hidden;}
 /*layout end*/
@@ -30,7 +30,7 @@ html,body,#fkBox{width:100%; height:100%; position:relative; font-size:12px; }
 /* right tabs end */
 
 /*header start*/
-.headerInfo { line-height:58px; background: #337AB7;}
+.headerInfo { line-height:58px; background: #68a8df;}
 .headerInfo .logo { width:150px; height:58px; text-align:center; }
 .headerInfo .logo a { display:block; }
 .headerInfo .logo img { display:inline; height:58px; }
@@ -74,7 +74,7 @@ html,body,#fkBox{width:100%; height:100%; position:relative; font-size:12px; }
 	-o-transition-duration:.5s;
 }
 .menus ul li dl dd a { padding:0; white-space: nowrap;  }
-.menus ul li dl dd:hover,.menus ul li dl dd:hover a { background: #337ab7; }
+.menus ul li dl dd:hover,.menus ul li dl dd:hover a { background: #68a8df; }
 /*menu end*/
 
 /*right content start*/

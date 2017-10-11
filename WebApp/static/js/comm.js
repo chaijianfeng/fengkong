@@ -29,7 +29,7 @@ function changeRightTabWidth(boxId) {
  * 格式化任务编号查看详情
  */
 function formatterRenWuNo(value, row, index) {
-	return '<a href="javascript:;" class="lookRenWuInfo">' + value + '</a>';
+	return '<a href="javascript:;" class="text-info lookRenWuInfo">' + value + '</a>';
 }
 
 // 初始化表格信息
@@ -49,7 +49,7 @@ function initBootStrapTable(settings) {
 
 // 初始化详情
 function initDetailInfo(settings) {
-	console.log(settings);
+	//console.log(settings);
 	var i, len, $row;
 	if (settings && (len = settings.elems.length) > 0) {
 		$row = $("<div class='row'><div>");

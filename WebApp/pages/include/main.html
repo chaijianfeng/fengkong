@@ -67,17 +67,17 @@
 							<div class="col-sm-4">
 								<a class="fa fa-bar-chart"></a> <span class="font"
 									style="padding-top: 19px; font-size: 16px;">退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">3,605,600.58</span>
+									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;3,605,600.58</span>
 							</div>
 							<div class="col-sm-4">
 								<a class="fa fa-check-square-o"></a> <span class="font"
 									style="padding-top: 19px; font-size: 16px;">已退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">2,045,783.46</span>
+									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;2,045,783.46</span>
 							</div>
 							<div class="col-sm-4">
 								<a class="fa fa-circle-o"></a> <span class="font"
 									style="padding-top: 19px; font-size: 16px;">未退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">1,559,817.12</span>
+									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;1,559,817.12</span>
 							</div>
 						</div>
 					</div>
@@ -93,7 +93,7 @@
 									style="padding-top: 28px; font-size: 16px;">关单:</p>
 							</div>
 							<div class="col-sm-9">
-								<table class="table">
+								<table class="table sbData">
 									<thead>
 										<tr>
 											<th>总数</th>
@@ -117,7 +117,7 @@
 									style="padding-top: 28px; font-size: 16px;">发票:</p>
 							</div>
 							<div class="col-sm-9">
-								<table class="table">
+								<table class="table sbData">
 									<thead>
 										<tr>
 											<th>总数</th>
@@ -174,18 +174,19 @@
 
 	<script>
 		$(function() {
-			/* $('#main_db_title, .main_db_name').on('click', function() {
-				$('#menu_rw_gl').trigger('click');
+			
+			$('#main_db_title, .main_db_name').on('click', function() {
+				parent.$('#menu_rw_gl',parent.document).trigger('click');
 			});
 			$('#main_rw_title').on('click', function() {
-				$('#menu_yj_renwu').trigger('click');
+				parent.$('#menu_yj_renwu',parent.document).trigger('click');
 			});
 			$('#main_gq_title').on('click', function() {
-				$('#menu_yj_gq').trigger('click');
+				parent.$('#menu_yj_gq',parent.document).trigger('click');
 			});
 			$('#main_sh_title').on('click', function() {
-				$('#menu_yj_sh').trigger('click');
-			}); */
+				parent.$('#menu_yj_sh',parent.document).trigger('click');
+			});
 
 		});
 	</script>

@@ -23,3 +23,6 @@
 }
 #include_main_box .panel-body .col-sm-4:hover .fa,
 #include_main_box .panel-body .col-sm-4:hover .font {color:#333; }
+
+.sbData {}
+.sbData>thead>tr>th, .sbData>tbody>tr>td{ text-align:center; }
