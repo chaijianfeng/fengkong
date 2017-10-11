@@ -8,7 +8,7 @@ $(document).ready(function(){
 		{
 			title : '供货商名称',
 			field : 'name',
-			formatter : formatterRenWuNo
+			formatter : formatterLookInfo
 		}, 
 		{
 			title : '纳税人识别号',
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	});
 
 	// 查看详情
-	$(document).on("click", ".lookRenWuInfo", function() {
+	$(document).on("click", ".lookInfo", function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
@@ -151,18 +151,16 @@ $(document).ready(function(){
 	});
 	
 	//审核
-	$(document).on('click','#shenhe',function(){
+	$(document).on('click','.shenhe',function(){
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "供货商审核",
-			area : [ "40%", "40%" ],
-			content : "../../pages/gonghuo/shidi/detail.html"
+			area : [ "70%", "65%" ],
+			content : "../../pages/gonghuo/shidi/shenhe.html"
 		});
 	});
-	
-	
-});
+//格式化状态
 function formatterStatus(value, row, index) {
 	var title = '';
 	var className = '';
@@ -176,5 +174,6 @@ function formatterStatus(value, row, index) {
 		title = '正在审核...';
 		className = 'fa-question-circle-o text-warning';	
 	}
-	return '<i title="'+title+'" class="fa '+className+' lookRenWuInfo"></i>';
-};
+	return '<a style="cursor: pointer;" title="'+title+'" class="fa '+className+' shenhe"></a>';
+};	
+});
