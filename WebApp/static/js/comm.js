@@ -125,3 +125,10 @@ function formatterStatus(value, row, index) {
 	}
 	return '<i title="'+title+'" class="fa '+className+'"></i>';
 };
+
+/*
+ * 格式化标题为放大镜按钮
+ */
+function formatterTitleToSearchButton(value, row, index) {
+	return '<a href="javascript:;" id="'+row.id+'" class="text-info searchBtn"><i class="text-info fa fa-search"></i></a>';
+}

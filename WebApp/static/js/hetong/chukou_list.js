@@ -30,7 +30,9 @@ $(function() {
 		field : 'myType'
 	}, {
 		title : '货物清单',
-		field : 'projects'
+		field : 'projects',
+		formatter: formatterTitleToSearchButton,
+		align : 'center'
 	}, {
 		title : '审核状态',
 		field : 'shStatus',
@@ -38,7 +40,9 @@ $(function() {
 		align : 'center'
 	}, {
 		title : '关联状态',
-		field : 'glStatus'
+		field : 'glStatus',
+		formatter : formatterGlStatus,
+		align: 'center'
 	}
 
 	];
@@ -66,7 +70,7 @@ $(function() {
 		"myType" : "一般贸易",
 		"projects" : "货物清单",
 		"shStatus" : "0",
-		"glStatus" : "0",
+		"glStatus" : "1",
 		"cjfs" : "CIF",
 		"ysfs" : "航空运输",
 		"ckka" : "北京机场"
@@ -141,10 +145,10 @@ $(function() {
 		}, function() {
 			var selectRows = $table.bootstrapTable('getSelections');
 			selectRows = selectRows.map(function(item) {
-				return item.nsrsbh;
+				return item.id;
 			});
 			$table.bootstrapTable('remove', {
-				field : 'nsrsbh',
+				field : 'id',
 				values : selectRows
 			});
 			parent.layer.msg('删除成功!');
@@ -159,9 +163,62 @@ $(function() {
 			skin : 'myLayui', // 样式类名
 			title : "供货商审核",
 			area : [ "40%", "40%" ],
-			content : "../../pages/ruzhu/operation/shenhe.html"
+			content : "../../pages/ruzhu/shenhe.html"
 		});
 
 	});
+	
+	//import
+	$(document).on('click', '#import', function() {
+		parent.layer.open({
+			type : 2,
+			skin : 'myLayui', // 样式类名
+			title : "导入文件",
+			area : [ "60%", "60%" ],
+			content : "../../pages/include/import.html"
+		});
 
+	});
+	
+	//查看货物清单
+	$(document).on('click', '.searchBtn', function() {
+		console.log($(this).attr("id"));
+		parent.layer.open({
+			type : 2,
+			skin : 'myLayui', // 样式类名
+			title : "货物清单",
+			area : [ "80%", "80%" ],
+			content : "../../pages/hetong/chukou/goods.html"
+		});
+
+	});
+	
+	//查看关联信息
+	$(document).on('click', '.glBtn', function() {
+		console.log($(this).attr("id"));
+		parent.layer.open({
+			type : 2,
+			skin : 'myLayui', // 样式类名
+			title : "关联信息",
+			area : [ "60%", "60%" ],
+			content : "../../pages/hetong/chukou/guanlian.html"
+		});
+
+	});
+	
+	/*
+	 * 格式化关联状态
+	 * */
+	function formatterGlStatus(value, row, index) {
+		var title = '';
+		var className = '';
+		if(value==0){
+			title = '未关联';
+			className = 'fa-times-circle text-danger';
+		}else if(value==1){
+			title = '已关联';
+			className = 'fa-check-circle-o text-success';
+		}
+		return '<a href="javascript:;" id="'+row.id+'" class="text-info glBtn"><i title="'+title+'" class="fa '+className+'"></i></a>';
+	}
 });
