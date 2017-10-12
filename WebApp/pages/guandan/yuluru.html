@@ -1,6 +1,39 @@
 <!--预录入报关单  -->
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!--Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式建议添加一下meta-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--自适应设备宽度-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>外贸综合服务企业出口退税风险管控信息系统-出口合同</title>
+<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
+<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
+<link rel="stylesheet" href="../../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css" />
+<script type="text/javascript" src="../../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<!-- icon字体图标 -->
+<link rel="stylesheet" href="../../../static/plugins/font-awesome-4.7.0/css/font-awesome.css" />
+<!-- 表格 -->
+<link rel="stylesheet" href="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css" />
+
+<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+<!-- 表格导出 -->
+<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script>
+
+<script type="text/javascript" src="../../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+
+<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
+<!-- 美化滚动条 -->
+<script src="../../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
+<!-- 自定义公用css/js -->
+<script type="text/javascript" src="../../../static/js/comm.js"></script>
+<link rel="stylesheet" href="../../../static/css/comm.css" />
+<script type="text/javascript" href="../../../static/js/yuluru/yuluru_list.js"></script>
 <style type="text/css">
-#yulu_formBox .text-center{
+/* #yulu_formBox .text-center{
 text-align: center;
 }
 #yulu_formBox .text-left{
@@ -12,12 +45,12 @@ text-align: left;
 .table {
 	border: 1px solid #ccc;
 }
-/* .table td{
+.table td{
 	border: 1px solid #ccc;
 }
 .table th{
 	border: 1px solid #ccc;
-} */
+}
 .thead{
 	width: 100%;
 }
@@ -34,8 +67,8 @@ text-align: left;
 	padding-top: 5px;
 }
 .form-group {
-	/*border: 1px solid #ccc !important;*/
-	/* background: #D9DEF7; */
+	border: 1px solid #ccc !important;
+	background: #D9DEF7;
 }
 .form-group label{
 	margin-top: 2px;
@@ -44,9 +77,33 @@ text-align: left;
 	vertical-align:middle !important; 
 	margin-top: 5px;
 }
-.form-group input,.form-group textarea {border: none;outline: none;}
+.form-group input,.form-group textarea {border: none;outline: none;} */
 </style>
-<div class="container-fluid">
+</head>
+<body>
+	<div class="myContainer">
+		<div class="tableBox">
+				<!-- 表格头部操作按钮 -->
+			<div class="myBtn">
+				<a id="import" href="javascript:;" class="btn btn-default btn-xs">
+					<i class="glyphicon fa fa-print"></i>打印
+				</a>
+				<a id="delete" href="javascript:;" class="btn btn-default btn-xs">
+					<i class="glyphicon glyphicon-trash"></i>删除
+				</a>
+				<a id="export" href="javascript:;" class="btn btn-default btn-xs">
+					<i class="glyphicon glyphicon-export"></i>导出
+				</a>
+			</div>
+				<!-- 表格头部操作按钮 -->
+				<!-- 表格数据 -->
+			<table id="table" class="myTable table-condensed"></table>
+				<!-- 表格数据 -->
+		</div>
+	</div>
+</body>
+</html>
+<!-- <div class="container-fluid">
 	<div class="col-sm-12 plr0 height100 gridBox" id="yulu_gridBox">
 		<table id="yulu_jqGrid"></table>
 		<div id="yulu_jqGridPager"></div>
@@ -58,7 +115,7 @@ text-align: left;
 		<img src="static/img/baoguanhangguandan.jpg" class="img-responsive"/>
 	</p>
 </div>
-<!-- 新增弹窗 -->
+新增弹窗
 <div id="yulu_formBox" class="layerFormBox">
 	<form class="form-horizontal layerForm col-xs-12">
 		<h4 class="col-xs-12 text-center">预报关单</h4>
@@ -377,7 +434,9 @@ text-align: left;
 			</button>
 		</p>
 	</form>
-</div>
+</div> 
+-->
+<!-- 
 <script type="text/javascript">
 
 	
@@ -575,10 +634,10 @@ function lookInfo(gid,rowId){
 }
 
 	
-</script>
+</script> -->
 	
 <!-- 可用的模板来显示文件上传 id是必须不可修改 如果不是图片类型的文件显示默认的文件图标-->
-<script id="template-upload" type="text/x-tmpl">
+<!-- <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
 	<li class="col-md-2 template-upload fade" style="padding:10px">
 		<div style="margin-bottom:15px;">
@@ -615,7 +674,7 @@ function lookInfo(gid,rowId){
 	</li>	
 {% } %}
 </script>
-<!-- 模板来显示文件可供下载 -->
+模板来显示文件可供下载
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <li class="col-md-2 template-download fade" style="padding:10px;margin-bottom:10px; margin-left:0">
@@ -655,4 +714,4 @@ function lookInfo(gid,rowId){
         {% } %}
 	</li>
 {% } %}
-</script>
+</script> -->

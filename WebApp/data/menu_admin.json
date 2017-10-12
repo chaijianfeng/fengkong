@@ -53,12 +53,12 @@
 		"children" : [
 			{
 				"name" : "预报关单",
-				"url" : "guandan/yuluru.html"
+				"url" : "guandan/yuluru/list.html"
 				
 			},
 			{
 				"name" : "报关单",
-				"url" : "guandan/guandan.html"
+				"url" : "guandan/guandan/list.html"
 				
 			}
 		]

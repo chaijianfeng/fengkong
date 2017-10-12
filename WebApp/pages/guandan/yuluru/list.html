@@ -1,4 +1,4 @@
-<!--备案管理  -->
+<!-- 预录入报关单 -->
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
@@ -41,30 +41,10 @@
 	src="../../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
 <!-- 自定义公用css/js -->
 <link rel="stylesheet" href="../../../static/css/comm.css" />
-<script type="text/javascript" src="../../../static/js/shidi/shidi.js"></script>
+<script type="text/javascript" src="../../../static/js/yuluru/yuluru_list.js"></script>
 <script type="text/javascript" src="../../../static/js/comm.js"></script>
 
 <style type="text/css">
-/* 	#import_formBox .control-label{
-	vertical-align:middle !important; 
-	margin-top: 5px;
-}
-#shenheshidi_history{
-	display: none;
-}
-#shidi_xiangqing_formBox input,#shidi_xiangqing_formBox select,#shidi_xiangqing_formBox textarea {border: none;outline: none;}
-
-.shidi_hc { }
-.shidi_hc .bgf4{ background:#f4f4f4; padding:15px 0; border-radius:3px; }
-.shidi_hc .info { padding:0 15px; }
-.shidi_hc .info:last-child {margin-bottom:0; }
-.shidi_hc .info span { font-weight:bold; padding-right:15px;  }
-.shidi_hc .info .number {text-decoration: underline; padding:0 0 0 15px; }
-.shidi_hc .detail { margin-top:30px; font-size:16px; padding:5px; background:#f4f4f4; }
-.shidi_hc .detaiList {}
-.shidi_hc .shidi_chukou_xiang {display:inline-block; width:180px; }
-.shidi_hc .detaiList  li {margin-bottom:10px;}
-.shidi_hc .detaiList .fj { display :inline-block; width:150px; padding:0 15px; } */
 </style>
 </head>
 <body>
@@ -72,7 +52,9 @@
 		<div class="tableBox">
 				<!-- 表格头部操作按钮 -->
 			<div class="myBtn">
-				<a id="delete" href="javascript:;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i>删除</a>
+					<a id="import" href="javascript:;" class="btn btn-default btn-xs"> <i class="glyphicon fa fa-print"></i>打印</a> 
+					<a id="delete" href="javascript:;" class="btn btn-default btn-xs"> <i class="glyphicon glyphicon-trash"></i>删除</a>
+					<!-- <a id="export" href="javascript:;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-export"></i>导出</a> -->
 			</div>
 				<!-- 表格头部操作按钮 -->
 				<!-- 表格数据 -->
