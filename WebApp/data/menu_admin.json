@@ -71,18 +71,18 @@
 		"children" : [
 				{
 					"name" : "开票通知单",
-					"url" : "piaoju/tongzhi.html"
+					"url" : "piaoju/tongzhi/list.html"
 				},
 				{
 					"name" : "发票管理",
-					"url" : "piaoju/fapiao.html"
+					"url" : "piaoju/fapiao/list.html"
 				}
 		]
 	},
 	
 	{
 		"name" : "收汇管理",
-		"url" : "waihui/waihui.html",
+		"url" : "waihui/list.html",
 		"leftIcon" : "l fa fa-credit-card"
 	},
 	

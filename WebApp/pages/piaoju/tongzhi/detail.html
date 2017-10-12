@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<!--Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式建议添加一下meta-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--自适应设备宽度-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>外贸综合服务企业出口退税风险管控信息系统-出口合同详情</title>
+		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
+		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="../../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../../static/plugins/font-awesome-4.7.0/css/font-awesome.css"/><!-- icon字体图标 -->
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css"/><!-- 表格 -->
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script><!-- 表格导出 -->
+		<script type="text/javascript" src="../../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
+		<script src="../../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script><!-- 美化滚动条 -->
+		<script type="text/javascript" src="../../../static/js/comm.js"></script><!-- 自定义公用js -->
+		<link rel="stylesheet" href="../../../static/css/comm.css"/><!-- 自定义公用css -->
+		<link rel="stylesheet" href="../../../static/plugins/layer-3.0.3/skin/default/layer.css"/><!-- 弹窗 -->
+		<script type="text/javascript" src="../../../static/plugins/layer-3.0.3/layer.js"></script>
+<!-- 		<script type="text/javascript" src="../../../static/js/guandan/guandan_detail.js"></script>本页专用 -->
+<style type="text/css">
+	/* .bgdtemp { position:relative;}
+	.bgdtemp .imgBox { text-align:center; }
+	.bgdtemp .imgBox img { width:1000px; }
+	.bgdDateBox { position:absolute; left:0; top:0; width:100%; height:100%; font-family:"黑体";  }
+	.bgdDateBox p { position:absolute; }
+	.bgdDateBox .ewylrbh, .bgdDateBox .ewgdbh{ font-size:20px; letter-spacing:8px; font-weight:bold;}
+	.bgdDateBox .ylrbh,.bgdDateBox .gdbh { font-size:14px; letter-spacing:3px; font-weight:bold;}
+	.bgdDateBox .ewylrbh {  left:184px; top:75px;   }
+	.bgdDateBox .ewgdbh {  left:689px; top:77px;  }
+	.bgdDateBox .ylrbh {  left:228px; top:186px;  }
+	.bgdDateBox .gdbh {  left:650px; top:187px;  }
+	
+	.bgdDateBox .sfhdw {  left:155px; top:222px; }
+	.bgdDateBox .ckka {left:532px; top:222px; }
+	.bgdDateBox .ckrq {left:733px; top:223px; }
+	.bgdDateBox .sbrq {left:911px; top:225px; }
+	
+	.bgdDateBox .scxsdw {left:155px; top:266px; }
+	.bgdDateBox .ysfs {left:495px; top:266px; }
+	.bgdDateBox .ysgjmc {left:655px; top:266px; }
+	.bgdDateBox .tydh {left:785px; top:266px; }
+	
+	.bgdDateBox .sbdw {left:155px; top:300px; }
+	.bgdDateBox .jgfs {left:535px; top:302px; }
+	.bgdDateBox .zmxz {left:726px; top:304px; }
+	.bgdDateBox .bah {left:850px; top:308px; }
+	
+	.bgdDateBox .myg {left:155px; top:345px; }
+	.bgdDateBox .ydg {left:436px; top:345px; }
+	.bgdDateBox .zyg {left:650px;  top:345px; }
+	.bgdDateBox .jnhyd {left:840px;  top:347px; }
+	
+	.bgdDateBox .xkzh {left:155px; top:388px; }
+	.bgdDateBox .cjfs {left:388px; top:388px; }
+	.bgdDateBox .yunfei {left:530px;  top:388px; }
+	.bgdDateBox .baofei {left:725px;  top:388px; }
+	.bgdDateBox .zafei {left:840px;  top:388px; }
+	
+	.bgdDateBox .htxyh {left:155px; top:424px; }
+	.bgdDateBox .jianshu {left:388px; top:424px; }
+	.bgdDateBox .bzzl {left:530px;  top:424px; }
+	.bgdDateBox .maozhong {left:725px;  top:424px; }
+	.bgdDateBox .jingzhong {left:840px;  top:424px; }
+	
+	.bgdDateBox .jzxh {left:155px; top:462px; }
+	.bgdDateBox .sfdz {left:388px; top:462px; }
+	
+	.bgdDateBox .bjmBz {left:155px; top:500px; }
+	
+	.bgdDateBox .bgdGuowuqingdan { width:905px; position:absolute; left:86px; top:600px; }
+	
+	.bgdDateBox .bgdGuowuqingdan table>tbody>tr>td { border:none;  text-align:center; }
+	
+	.bgdDateBox .tsgxqr { left:355px; bottom:278px;}
+	.bgdDateBox .jgyxqr { left:580px; bottom:278px;}
+	.bgdDateBox .zftxqsyfqr { left:855px; bottom:278px;}
+	
+	 .bgdtemp table>tbody>tr>td{ padding-bottom:0;  }
+	 h4{margin-right: 64px;}
+	.form-group .text-center,.col-xs-4{text-align: center; vertical-align:middle !important}
+	#tongzhi_formBox .form-horizontal input,.form-horizontal textarea {border: none !important;outline: none !important;border:0 !important;}
+	.goumai{width: 30px;text-decoration: row;height: 150px;line-height: 50px;}
+	#tongzhi_jqGrid td{text-align: center; vertical-align:middle !important}
+	.text-left{text-align: left !important;}
+	#tongzhi_qingdan{margin: } */
+</style>
+</head>
+<body>
+<div class="layerBodyBg">
+			<div class="form-group col-xs-12">
+				<p class="text-center">
+					开票通知单
+				</p>
+			</div>
+			<div class="form-group col-xs-12">
+				<div class="col-xs-6">
+					<p class="text-left">
+						通知单号: 200120171015142410
+					</p>
+				</div>
+				<div class="col-xs-6">
+					<p class="text-right">
+						日期: 2017-09-27
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group col-xs-12">
+				<div class="col-xs-2">
+					<p style="padding-top:45px;">购买方</p>
+				</div>
+				<div class="col-xs-8">
+					<p>名称 : 某集团工程有限公司</p>
+					<p>纳税人识别号： 110105678200970</p>
+					<p>地址，电话： 北京市朝阳区XX路123号  010-56780000</p>
+					<p>开户行及账号：工行北京支行 010020203998009</p>
+				</div>
+			</div>
+			
+			<div class="col-xs-12">
+				<table class="table col-xs-12">
+					<thead class="thead">
+						<tr>
+							<th>项号</th>
+							<th>商品编号</th>
+							<th>商品名称 规格型号</th>
+							<th>数量及单位</th>
+							<th>最终目的国（地区）</th>
+							<th>单价</th>
+							<th>总价</th>
+							<th>币值</th>
+							<th>征免</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>4019991010</td>
+							<td>钻井防滑板|无品牌|无型号</td>
+							<td>50  个</td>
+							<td>美国</td>
+							<td>193.36</td>
+							<td>9668.08</td>
+							<td>美元</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>3544492100</td>
+							<td>电缆|传输电力|无型号|400伏</td>
+							<td>0.8  千米</td>
+							<td>美国</td>
+							<td>1012.42</td>
+							<td>10731.69</td>
+							<td>美元</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="form-group col-xs-12">
+				<div class="col-xs-2">
+					<p style="padding-top:45px;">销售方</p>
+				</div>
+				<div class="col-xs-8">
+					<p>名称 : 南京某自动化系统工程有限公司</p>
+					<p>纳税人识别号：913201059901289019</p>
+					<p>地址，电话： 南京安替大街68号3号楼  025-88908765</p>
+					<p>开户行及账号：农行南京支行 320000199900100900</p>
+				</div>
+			</div>
+</div>
+</body>
+</html>
