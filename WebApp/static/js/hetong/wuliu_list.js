@@ -7,32 +7,18 @@ $(function() {
 		field : 'state',
 		checkbox : true
 	}, {
-		title : '合同编号',
+		title : '协议编号',
 		field : 'id',
 		formatter : formatterLookInfo
 	}, {
-		title : '合同名称',
+		title : '协议名称',
 		field : 'name'
 	}, {
 		title : '签订日期',
 		field : 'qdDate'
 	}, {
-		title : '买方',
-		field : 'goufang'
-	}, {
-		title : '卖方',
-		field : 'maifang'
-	}, {
-		title : '出口国别',
-		field : 'guobie'
-	}, {
-		title : '贸易方式',
-		field : 'myType'
-	}, {
-		title : '货物清单',
-		field : 'projects',
-		formatter: formatterTitleToSearchButton,
-		align : 'center'
+		title : '代理方',
+		field : 'daili'
 	}, {
 		title : '审核状态',
 		field : 'shStatus',
@@ -47,34 +33,20 @@ $(function() {
 
 	];
 	var data = [ {
-		"id" : "HT1818991184283",
-		"name" : "办公用品出口合同",
-		"qdDate" : "2015-11-07",
-		"goufang" : "德国Elvira公司",
-		"maifang" : "中国进出口贸易公司",
-		"guobie" : "德国",
-		"myType" : "一般贸易",
-		"projects" : "货物清单",
+		"id" : "17646366093601500",
+		"name" : "办公用品运输协议",
+		"qdDate" : "2014-06-26",
+		"daili" : "蚂蚁物流",
 		"shStatus" : "1",
-		"glStatus" : "0",
-		"cjfs" : "FOB",
-		"ysfs" : "水路运输",
-		"ckka" : "天津新港"
+		"glStatus" : "0"
 	}, {
-		"id" : "HT1818991184284",
-		"name" : "电子配件出口合同",
-		"qdDate" : "2015-04-11",
-		"goufang" : "美国Kristen公司",
-		"maifang" : "中国进出口贸易公司",
-		"guobie" : "美国",
-		"myType" : "一般贸易",
-		"projects" : "货物清单",
+		"id" : "19574380703777430",
+		"name" : "电子配件运输协议",
+		"qdDate" : "2015-01-21",
+		"daili" : "德邦物流",
 		"shStatus" : "0",
-		"glStatus" : "1",
-		"cjfs" : "CIF",
-		"ysfs" : "航空运输",
-		"ckka" : "北京机场"
-	} ];
+		"glStatus" : "1"
+	}];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover table-no-bordered', // 添加样式名称
@@ -101,9 +73,9 @@ $(function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "出口合同详情",
+			title : "运输协议详情",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/detail.html"
+			content : "../../pages/hetong/wuliu/detail.html"
 		});
 	});
 
@@ -112,9 +84,9 @@ $(function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "添加出口合同",
+			title : "添加运输协议",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/add.html"
+			content : "../../pages/hetong/wuliu/add.html"
 		});
 	});
 
@@ -125,9 +97,9 @@ $(function() {
 			parent.layer.open({
 				type : 2,
 				skin : 'myLayui', // 样式类名
-				title : "修改出口合同信息",
+				title : "修改运输协议",
 				area : [ "70%", "65%" ],
-				content : "../../pages/hetong/chukou/add.html",
+				content : "../../pages/hetong/wuliu/add.html",
 				success : function(layero, index) {
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
 					setFormData('addInfoForm',currentFrame, selectRows[0]);

@@ -132,3 +132,24 @@ function formatterStatus(value, row, index) {
 function formatterTitleToSearchButton(value, row, index) {
 	return '<a href="javascript:;" id="'+row.id+'" class="text-info searchBtn"><i class="text-info fa fa-search"></i></a>';
 }
+
+//处理合同关联
+function handlerCancat(ele,target,all){
+	
+	if(all){
+		ele.bootstrapTable('checkAll');
+		var allSRows = ele.bootstrapTable('getAllSelections');
+		target.bootstrapTable('append', allSRows);
+		ele.bootstrapTable('removeAll');
+	}else{
+		var selectRows =  ele.bootstrapTable('getSelections');
+		target.bootstrapTable('append', selectRows);
+		selectRows = selectRows.map(function(item) {
+			return item.id;
+		});
+		ele.bootstrapTable('remove', {
+			field : 'id',
+			values : selectRows
+		});
+	}
+}

@@ -10,18 +10,8 @@ $(function(){
 	var obj = {
 			container:'info',
 			columns:[
-				{col:"id",label:"合同编号",type:"text",required:true,},
-				{col:"name",label:"合同名称",type:"text",required:true,},
-				{col:"bus",label:"业务类型",type:"select",required:true,
-					options:[
-						{
-							value:"一般贸易",text:"一般贸易"
-						},
-						{
-							value:"承包工程",text:"承包工程"
-						}
-					]
-				},
+				{col:"id",label:"协议编号",type:"text",required:true,},
+				{col:"name",label:"协议名称",type:"text",required:true,},
 				{col:"qdDate",label:"签约日期",type:"text",required:true,dateTime:true},
 				{col:"sxDate",label:"生效日期",type:"text",required:true,dateTime:true},
 				{col:"bz",label:"币制",type:"select",required:true,
@@ -45,16 +35,6 @@ $(function(){
 						}
 					]
 				},
-				{col:"cjfs",label:"成交方式",type:"select",required:true,
-					options:[
-						{
-							value:"FOB",text:"FOB"
-						},
-						{
-							value:"CIF",text:"CIF"
-						}
-					]
-				},
 				{col:"ysfs",label:"运输方式",type:"select",required:true,
 					options:[
 						{
@@ -65,56 +45,10 @@ $(function(){
 						}
 						]
 				},
-				{col:"guobie",label:"出口国别",type:"select",required:true,
-					options:[
-						{
-							value:"美国",text:"美国"
-						},
-						{
-							value:"德国",text:"德国"
-						}
-						]
-				},
-				{col:"guobie",label:"出口口岸",type:"select",required:true,
-					options:[
-						{
-							value:"天津新港",text:"天津新港"
-						},
-						{
-							value:"北京机场",text:"北京机场"
-						}
-						]
-				},
-				{col:"ydg",label:"运抵国",type:"select",required:true,
-					options:[
-						{
-							value:"美国",text:"美国"
-						},
-						{
-							value:"德国",text:"德国",selected:true
-						}
-						]
-				},
-				{col:"zyg",label:"指运港",type:"select",required:true,
-					options:[
-						{
-							value:"美国港",text:"美国港"
-						},
-						{
-							value:"法国港",text:"法国港",selected:true
-						}
-						]
-				},
-				{col:"pzwh",label:"批准文号",type:"text" },
-				{col:"jydw",label:"经营单位",type:"text" },
-				{col:"xkz",label:"许可证",type:"text" },
-				{col:"zyq",label:"装运期",type:"text" },
-				{col:"fhdwdm",label:"发货单位代码",type:"text" },
-				{col:"fhdw",label:"发货单位",type:"text" },
-				{col:"js",label:"件数",type:"text" },
-				{col:"gqqssj",label:"工期起始时间",type:"text",dateTime:true },
-				{col:"gqjssj",label:"工期结束时间",type:"text",dateTime:true },
-				{col:"gq",label:"工期（天）",type:"text" }
+				{col:"fyd",label:"发运地",type:"text" },
+				{col:"mdd",label:"目的地",type:"text" },
+				{col:"fkDate",label:"付款日期",type:"text",dateTime:true },
+				{col:"bf",label:"保费",type:"text" }
 				
 			]
 		};

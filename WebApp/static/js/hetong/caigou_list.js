@@ -23,12 +23,9 @@ $(function() {
 		title : '卖方',
 		field : 'maifang'
 	}, {
-		title : '出口国别',
-		field : 'guobie'
-	}, {
-		title : '贸易方式',
-		field : 'myType'
-	}, {
+		title : '合同金额',
+		field : 'totalMoney'
+	},{
 		title : '货物清单',
 		field : 'projects',
 		formatter: formatterTitleToSearchButton,
@@ -47,13 +44,12 @@ $(function() {
 
 	];
 	var data = [ {
-		"id" : "HT1818991184283",
-		"name" : "办公用品出口合同",
-		"qdDate" : "2015-11-07",
-		"goufang" : "德国Elvira公司",
-		"maifang" : "中国进出口贸易公司",
-		"guobie" : "德国",
-		"myType" : "一般贸易",
+		"id" : "CG1818991184244",
+		"name" : "HUFF采购合同",
+		"qdDate" : "2017-03-25",
+		"goufang" : "中国进出口贸易公司",
+		"maifang" : "广东GYNKO有限公司",
+		"totalMoney": "15,0631",
 		"projects" : "货物清单",
 		"shStatus" : "1",
 		"glStatus" : "0",
@@ -61,13 +57,12 @@ $(function() {
 		"ysfs" : "水路运输",
 		"ckka" : "天津新港"
 	}, {
-		"id" : "HT1818991184284",
-		"name" : "电子配件出口合同",
-		"qdDate" : "2015-04-11",
-		"goufang" : "美国Kristen公司",
-		"maifang" : "中国进出口贸易公司",
-		"guobie" : "美国",
-		"myType" : "一般贸易",
+		"id" : "CG1818991184223",
+		"name" : "SYLVIA采购合同",
+		"qdDate" : "2017-04-08",
+		"goufang" : "中国进出口贸易公司",
+		"maifang" : "北京QNEKT有限责任公司	",
+		"totalMoney": "18,8198",
 		"projects" : "货物清单",
 		"shStatus" : "0",
 		"glStatus" : "1",
@@ -103,7 +98,7 @@ $(function() {
 			skin : 'myLayui', // 样式类名
 			title : "出口合同详情",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/detail.html"
+			content : "../../pages/hetong/caigou/detail.html"
 		});
 	});
 
@@ -114,7 +109,7 @@ $(function() {
 			skin : 'myLayui', // 样式类名
 			title : "添加出口合同",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/add.html"
+			content : "../../pages/hetong/caigou/add.html"
 		});
 	});
 
@@ -125,9 +120,9 @@ $(function() {
 			parent.layer.open({
 				type : 2,
 				skin : 'myLayui', // 样式类名
-				title : "修改出口合同信息",
+				title : "修改采购合同信息",
 				area : [ "70%", "65%" ],
-				content : "../../pages/hetong/chukou/add.html",
+				content : "../../pages/hetong/caigou/add.html",
 				success : function(layero, index) {
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
 					setFormData('addInfoForm',currentFrame, selectRows[0]);
