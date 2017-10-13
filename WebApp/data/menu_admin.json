@@ -94,15 +94,15 @@
 		"children" : [
 				{
 					"name" : "申报批次",
-					"url" : "tuishui/pici.html"
+					"url" : "tuishui/pici/list.html"
 				},
 				{
 					"name" : "预申报",
-					"url" : "tuishui/yushenbao.html"
+					"url" : "tuishui/yushenbao/list.html"
 				},
 				{
 					"name" : "正式申报",
-					"url" : "tuishui/zhengshi.html"
+					"url" : "tuishui/zhengshi/list.html"
 				}
 		]
 	},
