@@ -1,0 +1,7 @@
+/*关联*/
+.guanLianBox { border:1px solid #999; border-radius:3px; }
+.guanLianBtnBox { margin-top:100px;  }
+.guanLianBtnBox i { padding:0 7px;}
+.glQueRen{margin-top:50px;}
+.glQueRen button {margin:0 15px;}
+#addInfoForm span.req { position:relative; right:-20px;}
