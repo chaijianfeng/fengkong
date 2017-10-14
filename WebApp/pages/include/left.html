@@ -1,11 +1,30 @@
 <!-- 左侧菜单 -->
 <div class="menus clearfix">
-	<!-- <p class="intro text-center">功能菜单</p> -->
+	<p class="intro text-center"><a href="javascript:;" title="菜单" id="foldBtn"><i class="fa fa-exchange"></i></a></p>
 	<ul class="list-unstyled" id="menuList"></ul>
 </div>
-
+<style>
+	#foldBtn {display:block;color:#fff; }
+</style>
 <script> 
 	$(function(){
+		
+		//折叠
+		$(document).on('click','#foldBtn',function(){
+			
+			var leftWidth = $('#fkLeft').width();
+			if(leftWidth !== 20){
+				$('#fkLeft').animate({width:"20px"},300);
+				$('#fkTabs,#fkRight').animate({"paddingLeft":"20px"},300);
+				$('#menuList').hide();
+			}else{
+				$('#fkLeft').animate({width:"150px"},300);
+				$('#fkTabs,#fkRight').animate({"paddingLeft":"150px"},300);
+				$('#menuList').fadeIn(500);
+			}
+			
+		});
+		
 		//修改用户菜单
 		var menuJsonUrl = sessionStorage.getItem("url");
 		

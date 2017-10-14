@@ -52,7 +52,7 @@ html,body,#fkBox{width:100%; height:100%; position:relative; font-size:12px; ove
 
 /*menu start*/
 .menus { padding-top:58px; }
-.menus .intro { color:#eee; height:40px; line-height:40px; background:#21394c;  margin-bottom:0;  }
+.menus .intro { color:#eee; height:40px; line-height:40px; background:#374f62;  margin-bottom:0;  }
 .menus ul { padding-top:8px; }
 .menus ul li{ position:relative;   }
 .menus ul li a{ color:#eee; display:block;  padding:8px 0;}
