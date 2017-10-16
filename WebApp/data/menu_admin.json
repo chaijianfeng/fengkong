@@ -110,7 +110,7 @@
 	
 	{
 		"name" : "备案单证",
-		"url" : "system/beian.html",
+		"url" : "system/beian/list.html",
 		"leftIcon" : "l fa fa-camera-retro"
 	},
 	
@@ -122,11 +122,11 @@
 		"children" : [
 			{
 				"name" : "退税额年统计",
-				"url" : "tongji/tuishui.html"
+				"url" : "tongji/tuishui/list.html"
 			},
 			{
 				"name" : "按出口国统计",
-				"url" : "statistics/hetong.html"
+				"url" : "tongji/hetong/list.html"
 			}
 		]
 	},
@@ -137,11 +137,11 @@
 		"children" : [
 			{
 				"name" : "情况备案表",
-				"url" : "tongji/qingkuang.html"
+				"url" : "tongji/qingkuang/list.html"
 			},
 			{
 				"name" : "退税申报表",
-				"url" : "tongji/tuibao.html"
+				"url" : "tongji/tuibao/list.html"
 			}
 		]
 	},
@@ -153,22 +153,22 @@
 			{
 				"id" : "menu_yj_renwu",
 				"name" : "待办提醒",
-				"url" : "yujing/renwu.html"
+				"url" : "yujing/renwu/list.html"
 			},
 			{
 				"id" : "menu_yj_gq",
 				"name" : "供货商预警",
-				"url" : "yujing/gongqi.html"
+				"url" : "yujing/gongqi/list.html"
 			},
 			{
 				"id" : "menu_yj_sh",
 				"name" : "收汇预警",
-				"url" : "yujing/shouhuiyujing.html"
+				"url" : "yujing/shouhui/list.html"
 			},
 			{
 				"id" : "menu_yj_sh",
 				"name" : "申报预警",
-				"url" : "yujing/shenbaoyujing.html"
+				"url" : "yujing/shenbao/list.html"
 			}
 		]
 	},

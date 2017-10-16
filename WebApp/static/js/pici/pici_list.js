@@ -7,48 +7,44 @@ $(function() {
 		field : 'state',
 		checkbox : true
 	}, {
-		title : '预关单号',
+		title : '报关单号',
 		field : 'id',
 		formatter : formatterLookInfo
+	}, {
+		title : '贸易类型',
+		field : 'myType'
+	}, {
+		title : '出口国家',
+		field : 'guobie'
+	}, {
+		title : '成交方式',
+		field : 'cjway'
 	}, {
 		title : '出口日期',
 		field : 'ckDate'
 	}, {
-		title : '贸易方式',
-		field : 'myType'
+		title : '发票数量',
+		field : 'fpmany'
 	}, {
-		title : '出口口岸',
-		field : 'kouan'
+		title : '提交人',
+		field : 'updatapeople',
+		align:'center'
 	}, {
-		title : '出口国别',
-		field : 'guobie'
-	}, {
-		title : '任务编号',
-		field : 'rwbh'
-	}, {
-		title : '报关行预关单号',
-		field : 'bghyg',
-		align:'center',
-		formatter : formatterLookInfos
+		title : '提交时间',
+		field : 'updatatime',
+		align:'center'
 	}
 
 	];
 	var data = [ {
-		"id" : "000000000092371271",
-		"ckDate" : "2014-10-19",
+		"id" : "220120090519142814",
 		"myType" : "一般贸易",
-		"kouan" : "天津港",
-		"guobie" : "德国",
-		"rwbh" : "201703120001",
-		"bghyg" : "000000000092376544"
-	}, {
-		"id" : "000000000092371949",
-		"ckDate" : "2017-02-10",
-		"myType" : "一般贸易",
-		"kouan" : "天津港",
-		"guobie" : "日本",
-		"rwbh" : "201703120012",
-		"bghyg" : "000000000092376512"
+		"guobie" : "委内瑞拉",
+		"cjway" : "FOB",
+		"ckDate" : "2017-09-19",
+		"fpmany" : "3",
+		"updatapeople" : "钱八",
+		"updatatime" : "2017-09-27"
 	} ];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
@@ -76,20 +72,19 @@ $(function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "预录入报关单详情",
-			area : [ "70%", "65%" ],
-			content : "../../pages/guandan/yuluru/detail.html"
+			title : "报关单详情",
+			area : [ "80%", "80%" ],
+			content : "../../pages/guandan/guandan/detail.html"
 		});
 	});
-
-	// 添加
+	// 生成批次
 	$(document).on("click", "#add", function() {
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "添加出口合同",
+			title : "生成批次",
 			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/add.html"
+			content : "../../pages/tuishui/pici/detail.html"
 		});
 	});
 
@@ -113,39 +108,6 @@ $(function() {
 		}
 	});
 
-	// 删除
-	$(document).on('click', '#delete', function() {
-		var selectRows = $table.bootstrapTable('getSelections');
-		if (selectRows.length >= 1) {
-			parent.layer.confirm('确定要删除吗?', {
-				btn : [ "确定" ]
-			}, function() {
-				var selectRows = $table.bootstrapTable('getSelections');
-				selectRows = selectRows.map(function(item) {
-					return item.id;
-				});
-				$table.bootstrapTable('remove', {
-					field : 'id',
-					values : selectRows
-				});
-				parent.layer.msg('删除成功!');
-			});
-		}else{
-			parent.layer.msg("请选择一条数据进行编辑!");
-		}
-	});
-
-	// 查看报关行预关单
-	$(document).on('click', '.lookInfos', function() {
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "报关行预关单",
-			area : [ "70%", "65%" ],
-			content : "../../pages/guandan/yuluru/xiangqing.html"
-		});
-
-	});
 
 });
 function formatterLookInfos(value, row, index) {
