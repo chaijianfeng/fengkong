@@ -12,33 +12,25 @@
 <meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
 <meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
 
-<link rel="stylesheet"
-	href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css" />
-<script type="text/javascript"
-	src="../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
-<script type="text/javascript"
-	src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css" />
+<script type="text/javascript" src="../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 <!-- icon字体图标 -->
-<link rel="stylesheet"
-	href="../../static/plugins/font-awesome-4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" href="../../static/plugins/font-awesome-4.7.0/css/font-awesome.css" />
 <!-- 表格 -->
-<link rel="stylesheet"
-	href="../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css" />
-<script type="text/javascript"
-	src="../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+<link rel="stylesheet" href="../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css" />
+<script type="text/javascript" src="../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
 
 <!-- 表格导出 -->
 <script type="text/javascript"
 	src="../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script>
-<script type="text/javascript"
-	src="../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+<script type="text/javascript" src="../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
 <script type="text/javascript"
 	src="../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
 
 <!-- 美化滚动条 -->
-<script
-	src="../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
+<script src="../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
 
 <!-- 自定义公用css/js -->
 <script type="text/javascript" src="../../static/js/comm.js"></script>
@@ -66,18 +58,18 @@
 						<div class="row">
 							<div class="col-sm-4">
 								<a class="fa fa-bar-chart"></a> <span class="font"
-									style="padding-top: 19px; font-size: 16px;">退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;3,605,600.58</span>
+									style="padding-top: 19px; font-size: 16px;">退税额</span> <span class="font"
+									style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;3,605,600.58</span>
 							</div>
 							<div class="col-sm-4">
 								<a class="fa fa-check-square-o"></a> <span class="font"
-									style="padding-top: 19px; font-size: 16px;">已退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;2,045,783.46</span>
+									style="padding-top: 19px; font-size: 16px;">已退税额</span> <span class="font"
+									style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;2,045,783.46</span>
 							</div>
 							<div class="col-sm-4">
 								<a class="fa fa-circle-o"></a> <span class="font"
-									style="padding-top: 19px; font-size: 16px;">未退税额</span> <span
-									class="font" style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;1,559,817.12</span>
+									style="padding-top: 19px; font-size: 16px;">未退税额</span> <span class="font"
+									style="padding-top: 7px; font-size: 13px;">&yen;&nbsp;1,559,817.12</span>
 							</div>
 						</div>
 					</div>
@@ -89,8 +81,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-3">
-								<p class="text-center"
-									style="padding-top: 28px; font-size: 16px;">关单:</p>
+								<p class="text-center" style="padding-top: 28px; font-size: 16px;">关单:</p>
 							</div>
 							<div class="col-sm-9">
 								<table class="table sbData">
@@ -113,8 +104,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<p class="text-center"
-									style="padding-top: 28px; font-size: 16px;">发票:</p>
+								<p class="text-center" style="padding-top: 28px; font-size: 16px;">发票:</p>
 							</div>
 							<div class="col-sm-9">
 								<table class="table sbData">
@@ -162,8 +152,7 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">收汇预警</div>
 					<div class="panel-body">
-						<a class="fa fa-exchange" id="main_sh_title"></a> <span
-							class="font">36</span>
+						<a class="fa fa-exchange" id="main_sh_title"></a> <span class="font">36</span>
 					</div>
 				</div>
 			</div>
@@ -174,18 +163,18 @@
 
 	<script>
 		$(function() {
-			
+
 			$('#main_db_title, .main_db_name').on('click', function() {
-				parent.$('#menu_rw_gl',parent.document).trigger('click');
+				parent.$('#menu_rw_gl', parent.document).trigger('click');
 			});
 			$('#main_rw_title').on('click', function() {
-				parent.$('#menu_yj_renwu',parent.document).trigger('click');
+				parent.$('#menu_yj_renwu', parent.document).trigger('click');
 			});
 			$('#main_gq_title').on('click', function() {
-				parent.$('#menu_yj_gq',parent.document).trigger('click');
+				parent.$('#menu_yj_gq', parent.document).trigger('click');
 			});
 			$('#main_sh_title').on('click', function() {
-				parent.$('#menu_yj_sh',parent.document).trigger('click');
+				parent.$('#menu_yj_sh', parent.document).trigger('click');
 			});
 
 		});

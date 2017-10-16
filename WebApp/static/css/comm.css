@@ -33,6 +33,10 @@ html,body { height:100%; background:#f4f4f4; font-size:12px; letter-spacing:1px;
 .layerBodyBg .yj{margin-top:15px;}
 .layerBodyBg  .shSave { margin-top:30px; }
 
+/*基本信息*/
+#info {}
+#info label { padding-right:5px;}
+#info .col-xs-7 { padding-left:5px; }
 /*合同签订双方*/
 #link .ours { background:#f4f4f4; padding:15px;}
 

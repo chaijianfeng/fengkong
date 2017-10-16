@@ -119,50 +119,89 @@ $(function(){
 			]
 		};
 	
-	var $container = formGenerator(obj);
+	formGenerator(obj);
 });
 
 /*
 生成表单
 */
 function formGenerator(obj){
-	if(obj && !$.isEmptyObject(obj) && obj.container){
-		var $container = typeof obj.container == "string" ?  $("#"+obj.container) : obj.container;
-		//$container.addClass("tab-pane clearfix active");
-		if(obj.columns && obj.columns.length>0){
-			for(var i=0;i<obj.columns.length; i++){
-				if(obj.columns[i]) $container.append(getInputByType(obj.columns[i],4,5));
+	if(!obj || $.isEmptyObject(obj)){
+		return;
+	}
+	//处理容器
+	var container = obj.container;
+	var $container = null;
+	var columns = [];
+	if(container){
+		$container = typeof container == "string" ?  $("#"+container) : container;
+		columns = obj.columns;
+		if(columns && columns.length>0){
+			for(var i=0, len= columns.length; i<len; i++){
+				var column = columns[i];
+				if(!column){
+					return;
+				}
+				//表单组容器
+				var $formGroup = $('<div class="form-group col-sm-4"></div>');
+				
+				//label
+				var spanEle = '';
+				if(column.required){
+					spanEle = '<span class="text-danger req">*&nbsp;</span>';
+				}
+				var label = '<label class="col-xs-5 control-label" style="padding-right:5px">'+spanEle+column.label+'&nbsp:</label>';
+				
+				//input
+				var $inputBox = $('<div class="col-xs-7" style="padding-left:5px"></div>');
+				var input = getInputByType(column); //调用获取input的函数
+				
+				//表单组容器添加label和input
+				$formGroup.append($(label)).append($inputBox.append($(input)));
+				
+				//给容器添加表单组
+				$container.append($formGroup);
+				
 			}
 		}
-		return $container;
 	}
 }
 
 //根据类型获取input
-function getInputByType(column,sm,xs){
-	var prefix = '<div class="form-group col-sm-'+(sm||column.sm||12)+'"><label class="col-xs-'+(xs||column.xs||0)+' control-label">'+(column.required?'<span class="text-danger req">*&nbsp;</span>':'')+ column.label + ':</label><div class="col-xs-'+(12-(xs||column.xs||0))+'">',input='',suffix='</div></div>';
-	var type = $.trim(column.type || 'text');
+function getInputByType(column){
+	var input = '';
+	
+	var type = column.type || 'text';
 	switch(type){
 		case 'text':
-			input = '<input type="text" name="'+column.col+'" class="form-control input-sm"/>';
+			var dateTime = '';
+			if(column.dateTime){
+				dateTime = 'onclick\="WdatePicker()\;"';
+			}
+			input = '<input '+dateTime+' type="'+column.type+'" name="'+column.col+'" class="form-control input-sm">';
 			break;
 		case 'select':
-			var array = ['<select name="'+column.col+'" class="form-control input-sm">'];
-			if(column.options && column.options.length>0){
-				for(var i=0;i<column.options.length;i++) array.push('<option value="'+column.options[i].value+'"'+(column.options[i].selected ? ' selected' : '')+'>'+column.options[i].text+'</option>');
+			var options = column.options;
+			var input = '<select name="'+column.col+'" class="form-control input-sm">';
+			if(options && options.length>0){
+				for(var i=0, len=options.length; i<len; i++){
+					var option = options[i];
+					var selected = '';
+					if(option.selected){
+						selected = 'selected';
+					}
+					input += '<option value="'+option.value+'" '+selected+'>'+option.text+'</option>';
+				}
 			}
-			input = array.join('') + '</select>';
+			input += '</select>'; 
 			break;
 		case 'radio':
 			break;
 		case 'checkbox':
 			break;
-		case 'date':
-			input = '<input type="text" name="'+column.col+'" class="form-control input-sm" onclick=""WdatePicker();"/>';
-			break;
 		default:
 			//不处理
-			break;
 	}
-	return prefix + input + suffix;
+	
+	return input;
 }

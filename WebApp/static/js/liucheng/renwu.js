@@ -1,4 +1,5 @@
 $(function() {
+	
 	var columns = [ {
 		field : 'state',
 		checkbox : true
@@ -30,6 +31,10 @@ $(function() {
 	} /*
 		 * , { title : '操作', field : 'operation' }
 		 */];
+	var username = sessionStorage.getItem("name");
+	if(username != "管理员"){
+		columns.push({title : '操作', field : 'operation',formatter:formatOperation});
+	}
 	var data = [ {
 		"id" : "CK201709220001",
 		"guobie" : "法国",
@@ -38,8 +43,8 @@ $(function() {
 		"yunshufangshi" : "水路运输",
 		"huanjie" : "创建任务",
 		"createName" : "张三",
-		"createTime" : "2017-09-27"
-	// "operation" : "未处理"
+		"createTime" : "2017-09-27",
+		"operation" : "未处理"
 	}, {
 		"id" : "CK201709220002",
 		"guobie" : "美国",
@@ -48,9 +53,11 @@ $(function() {
 		"yunshufangshi" : "航空运输",
 		"huanjie" : "创建任务",
 		"createName" : "张三",
-		"createTime" : "2017-09-27"
-	// "operation" : "未处理"
+		"createTime" : "2017-09-27",
+		"operation" : "未处理"
 	} ];
+	
+	
 	$('#table').bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover table-no-bordered', // 添加样式名称
 		striped : true, // 隔行变色
@@ -77,7 +84,7 @@ $(function() {
 
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		console.log(this);
+		//console.log(this);
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
@@ -86,5 +93,15 @@ $(function() {
 			content : "../../pages/liucheng/detail.html"
 		});
 	});
+	
+	
+	$(document).on('click','.main_rewu_ope_btn',function(){
+		
+	})
 
 });
+
+//格式化处理任务
+function formatOperation(value,row,index){
+	return '<a href="javascript:;" class="text-info main_rewu_ope_btn">'+value+'</a>';
+}

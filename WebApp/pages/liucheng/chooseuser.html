@@ -24,45 +24,48 @@
 		<link rel="stylesheet" href="../../static/css/comm.css"/><!-- 自定义公用css -->
 		<link rel="stylesheet" href="../../static/plugins/layer-3.0.3/skin/default/layer.css"/><!-- 弹窗 -->
 		<script type="text/javascript" src="../../static/plugins/layer-3.0.3/layer.js"></script>
-		<script type="text/javascript" src="../../static/js/liucheng/renwu.js"></script><!-- 本页专用 -->
 	</head>
 <body>
 
-	<div class="container-fluid myContainer">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="tableBox">
-
-					<!-- 表格头部操作按钮 -->
-					<!-- <div class="myBtn">
-						<a id="add" href="javascript:;" class="btn btn-default btn-xs">
-							<i class="glyphicon glyphicon-plus"></i>添加
-						</a>
-						<a id="update" href="javascript:;" class="btn btn-default btn-xs">
-							<i class="glyphicon glyphicon-pencil"></i>修改
-						</a>
-						<a id="delete" href="javascript:;" class="btn btn-default btn-xs">
-							<i class="glyphicon glyphicon-trash"></i>删除
-						</a>
-						<a id="shenhe" href="javascript:;" class="btn btn-default btn-xs">
-							<i class="glyphicon glyphicon-pawn"></i>审核
-						</a>
-						<a id="import" href="javascript:;" class="btn btn-default btn-xs">
-							<i class="glyphicon glyphicon-import"></i>导入
-						</a>
-						<a id="export" href="javascript:;" class="btn btn-default btn-xs"><i
-							class="glyphicon glyphicon-export"></i>导出
-						</a>
-					</div> -->
-					<!-- 表格头部操作按钮 -->
-
-					<!-- 表格数据 -->
-					<table id="table" class="myTable table-condensed"></table>
-					<!-- 表格数据 -->
+	<div class="layerBodyBg">
+		<!-- 选择用户处理流程 -->
+			<p>请选择要提交的用户：</p>
+			<select class="form-control input-sm">
+				<option>创建任务组</option>
+				<option selected="selected">预关单审核组</option>
+				<option>报关单审核组</option>
+				<option>开票通知组</option>
+				<option>收票确认组</option>
+				<option>发票认证组</option>
+				<option>申报组</option>
+				<option>备案组</option>
+			</select>
+			<div class="row" style="background:#f4f4f4; margin-left:0; margin-right:0; margin-top:15px;">
+				<div class="col-xs-4">
+					<div class="checkbox">
+					  <label>
+					    <input type="checkbox" value="">李四
+					  </label>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="checkbox">
+					  <label>
+					    <input type="checkbox" value="">李小四
+					  </label>
+					</div>
+				</div>
+				
+			</div>
+			<div class="row" style="margin-top:15px;">
+				<div class="col-xs-12">
+					<textarea class="form-control input-sm" cols="3" placeholder="意见..."></textarea>
 				</div>
 			</div>
-		</div>
+			
+			<!-- <ul id="renwu_user_Tree" class="ztree" style="background:#f4f4f4; "></ul>-->
+			<p class="text-center"><button class="btn btn-info btn-sm" style="margin-top:35px;" id="save">确认</button></p> 
+		<!-- 选择用户处理流程 -->
 	</div>
-
 </body>
 </html>

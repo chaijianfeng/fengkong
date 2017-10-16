@@ -3,7 +3,7 @@
 	{
 		"id" : "menu_rw_gl",
 		"name" : "任务管理",
-		"url" : "liucheng/renwu.html",
+		"url" : "liucheng/renwu_zhangsan.html",
 		"leftIcon" : "l fa fa-tasks"
 		
 	},
@@ -15,15 +15,15 @@
 			
 			{
 				"name" : "出口合同",
-				"url" : "hetong/chukou.html"
+				"url" : "hetong/chukou/list.html"
 			},
 			{
 				"name" : "采购合同",
-				"url" : "hetong/caigou.html"
+				"url" : "hetong/caigou/list.html"
 			},
 			{
 				"name" : "运输协议",
-				"url" : "hetong/wuliu.html"
+				"url" : "hetong/wuliu/list.html"
 			}
 		]
 	}
