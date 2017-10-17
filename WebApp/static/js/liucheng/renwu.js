@@ -96,8 +96,20 @@ $(function() {
 	
 	
 	$(document).on('click','.main_rewu_ope_btn',function(){
+		handlerRenWu(username);
+	});
+	
+	function handlerRenWu(username){
+		if(username == "张三"){
+			//columns.push({title : '操作', field : 'operation',formatter:formatOperation});
+			console.log(username);
+		}
 		
-	})
+		layer.open({
+			type :2,
+			title : ''
+		});
+	}
 
 });
 
