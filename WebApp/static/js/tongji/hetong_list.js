@@ -11,7 +11,7 @@ var guandan = 'guandan';
 			$('#jine').show().siblings().hide();
 			jinechart();
 		}else if($('#selecter option:selected').text() == '商品分类数量'){
-			$('#fenlei').show().siblings().hide();
+			$('#fenlei').show(1000).siblings().hide();
 			fenleichart();
 		}
 	})
