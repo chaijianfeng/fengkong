@@ -8,38 +8,44 @@ $(function() {
 		checkbox : true
 	}, {
 		title : '合同编号',
+		align:'center',
 		field : 'id',
 		formatter : formatterLookInfo
 	}, {
 		title : '合同名称',
+		align:'center',
 		field : 'name'
 	}, {
 		title : '签订日期',
+		align:'center',
 		field : 'qdDate'
 	}, {
 		title : '买方',
+		align:'center',
 		field : 'goufang'
 	}, {
 		title : '卖方',
+		align:'center',
 		field : 'maifang'
 	}, {
 		title : '合同金额',
+		align:'center',
 		field : 'totalMoney'
 	},{
 		title : '货物清单',
 		field : 'projects',
-		formatter: formatterTitleToSearchButton,
-		align : 'center'
+		align : 'center',
+		formatter: formatterTitleToSearchButton
 	}, {
 		title : '审核状态',
 		field : 'shStatus',
-		formatter : formatterStatus,
-		align : 'center'
+		align : 'center',
+		formatter : formatterStatus
 	}, {
 		title : '关联状态',
 		field : 'glStatus',
-		formatter : formatterGlStatus,
-		align: 'center'
+		align: 'center',
+		formatter : formatterGlStatus
 	}
 
 	];
@@ -72,7 +78,7 @@ $(function() {
 	} ];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
-		classes : 'table table-hover table-no-bordered', // 添加样式名称
+		classes : 'table table-hover', // 添加样式名称 //添加此样式让框消失table-no-bordered
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',
