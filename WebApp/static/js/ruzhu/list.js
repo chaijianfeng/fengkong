@@ -3,19 +3,23 @@ $(document).ready(function(){
 	var columns = [ 
 		{
 			field : 'select',
+			align:'center',
 			checkbox : true
 		},
 		{
 			title : '供货商名称',
 			field : 'name',
+			align:'center',
 			formatter : formatterLookInfo
 		}, 
 		{
 			title : '纳税人识别号',
+			align:'center',
 			field : 'nsrsbh'
 		}, 
 		{
 			title : '企业类型',
+			align:'center',
 			field : 'type'
 		}, 
 		{
@@ -72,7 +76,7 @@ $(document).ready(function(){
 	];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
-		classes : 'table table-hover table-no-bordered', // 添加样式名称
+		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',

@@ -2,31 +2,40 @@ $(function() {
 	
 	var columns = [ {
 		field : 'state',
+		align:'center',
 		checkbox : true
 	}, {
 		title : '任务编号',
+		align:'center',
 		field : 'id',
 		formatter : formatterLookInfo
 	}, {
 		title : '出口国别',
+		align:'center',
 		field : 'guobie'
 	}, {
 		title : '业务类型',
+		align:'center',
 		field : 'type'
 	}, {
 		title : '出口口岸',
+		align:'center',
 		field : 'kouan'
 	}, {
 		title : '运输方式',
+		align:'center',
 		field : 'yunshufangshi'
 	}, {
 		title : '当前环节',
+		align:'center',
 		field : 'huanjie'
 	}, {
 		title : '操作人',
+		align:'center',
 		field : 'createName'
 	}, {
 		title : '操作时间',
+		align:'center',
 		field : 'createTime'
 	} /*
 		 * , { title : '操作', field : 'operation' }
@@ -59,7 +68,7 @@ $(function() {
 	
 	
 	$('#table').bootstrapTable('destroy').bootstrapTable({
-		classes : 'table table-hover table-no-bordered', // 添加样式名称
+		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',

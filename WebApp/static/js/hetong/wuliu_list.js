@@ -5,30 +5,35 @@ $(function() {
 	 */
 	var columns = [ {
 		field : 'state',
+		align:'center',
 		checkbox : true
 	}, {
 		title : '协议编号',
+		align:'center',
 		field : 'id',
 		formatter : formatterLookInfo
 	}, {
 		title : '协议名称',
+		align:'center',
 		field : 'name'
 	}, {
 		title : '签订日期',
+		align:'center',
 		field : 'qdDate'
 	}, {
 		title : '代理方',
+		align:'center',
 		field : 'daili'
 	}, {
 		title : '审核状态',
 		field : 'shStatus',
-		formatter : formatterStatus,
-		align : 'center'
+		align : 'center',
+		formatter : formatterStatus
 	}, {
 		title : '关联状态',
 		field : 'glStatus',
-		formatter : formatterGlStatus,
-		align: 'center'
+		align: 'center',
+		formatter : formatterGlStatus
 	}
 
 	];
@@ -49,7 +54,7 @@ $(function() {
 	}];
 
 	$table.bootstrapTable('destroy').bootstrapTable({
-		classes : 'table table-hover table-no-bordered', // 添加样式名称
+		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',
