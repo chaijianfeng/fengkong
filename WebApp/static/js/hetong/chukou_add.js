@@ -10,9 +10,9 @@ $(function(){
 	var config = {
 		container:'info',
 		columns:[
-			{col:"id",label:"合同编号",type:"text",validate:{required:true,minlength:4}},
-			{col:"name",label:"合同名称",type:"text",validate:{required:true,maxlength:4}},
-			{col:"bus",label:"业务类型",type:"select",validate:{required:true,minlength:4},
+			{col:"id",label:"合同编号",type:"text",validate:{required:true,minlength:4,commonChar:true}},
+			{col:"name",label:"合同名称",type:"text",validate:{required:true,maxlength:4,commonChar:true}},
+			{col:"bus",label:"业务类型",type:"select",validate:{required:true},
 				options:[
 					{
 						value:"一般贸易",text:"一般贸易"
@@ -34,7 +34,7 @@ $(function(){
 					}
 				]
 			},
-			{col:"htje",label:"合同金额",type:"text",required:true},
+			{col:"htje",label:"合同金额",type:"text",validate:{required:true,minlength:4,commonChar:true}},
 			{col:"bz",label:"结汇方式",type:"select",required:true,
 				options:[
 					{
@@ -45,7 +45,7 @@ $(function(){
 					}
 				]
 			},
-			{col:"cjfs",label:"成交方式",type:"select",required:true,
+			{col:"cjfs",label:"成交方式",type:"select",validate:{required:true},
 				options:[
 					{
 						value:"FOB",text:"FOB"
