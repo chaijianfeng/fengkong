@@ -63,8 +63,8 @@
 <script>
 	$(function() {
 		$('#header_dropdown_menu>b').text(sessionStorage.getItem("name"));
-		console.log(sessionStorage.getItem("mainUrl"));
-		console.log($('#main .con').eq(0));
+		//console.log(sessionStorage.getItem("mainUrl"));
+		//console.log($('#main .con').eq(0));
 		$('#main .con').eq(0).find('iframe').attr('src',sessionStorage.getItem("mainUrl"));
 	});
 </script>

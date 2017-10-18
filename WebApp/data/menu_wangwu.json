@@ -3,7 +3,7 @@
 	{
 		"id" : "menu_rw_gl",
 		"name" : "任务管理",
-		"url" : "liucheng/renwu_wangwu.html",
+		"url" : "liucheng/renwu.html",
 		"leftIcon" : "l fa fa-tasks"
 		
 	},
@@ -15,15 +15,15 @@
 			
 			{
 				"name" : "出口合同",
-				"url" : "hetong/chukou.html"
+				"url" : "hetong/chukou/list.html"
 			},
 			{
 				"name" : "采购合同",
-				"url" : "hetong/caigou.html"
+				"url" : "hetong/caigou/list.html"
 			},
 			{
 				"name" : "运输协议",
-				"url" : "hetong/wuliu.html"
+				"url" : "hetong/wuliu/list.html"
 			}
 		]
 	},
@@ -34,12 +34,12 @@
 		"children" : [
 			{
 				"name" : "预报关单",
-				"url" : "guandan/yuluru.html"
+				"url" : "guandan/yuluru/list.html"
 				
 			},
 			{
 				"name" : "报关单",
-				"url" : "guandan/guandan.html"
+				"url" : "guandan/guandan/list.html"
 				
 			}
 		]

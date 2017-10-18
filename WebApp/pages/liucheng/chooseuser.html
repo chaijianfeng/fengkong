@@ -7,7 +7,7 @@
 		<!--自适应设备宽度-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-		<title>外贸综合服务企业出口退税风险管控信息系统-任务管理</title>
+		<title>外贸综合服务企业出口退税风险管控信息系统-任务管理-提交选择用户</title>
 		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
 		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
 		<link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
@@ -28,19 +28,19 @@
 <body>
 
 	<div class="layerBodyBg">
-		<!-- 选择用户处理流程 -->
+			<!-- 选择用户处理流程 -->
 			<p>请选择要提交的用户：</p>
-			<select class="form-control input-sm">
-				<option>创建任务组</option>
-				<option selected="selected">预关单审核组</option>
-				<option>报关单审核组</option>
-				<option>开票通知组</option>
-				<option>收票确认组</option>
-				<option>发票认证组</option>
-				<option>申报组</option>
-				<option>备案组</option>
+			<select class="form-control input-sm" name="renWuZu">
+				<option value="0">创建任务组</option>
+				<option value="1" selected="selected">预关单审核组</option>
+				<option value="2">报关单审核组</option>
+				<option value="3">开票通知组</option>
+				<option value="4">收票确认组</option>
+				<option value="5">发票认证组</option>
+				<option value="6">申报组</option>
+				<option value="7">备案组</option>
 			</select>
-			<div class="row" style="background:#f4f4f4; margin-left:0; margin-right:0; margin-top:15px;">
+			<div id="usersList" class="row" style="background:#f4f4f4; margin-left:0; margin-right:0; margin-top:15px;">
 				<div class="col-xs-4">
 					<div class="checkbox">
 					  <label>
@@ -64,8 +64,81 @@
 			</div>
 			
 			<!-- <ul id="renwu_user_Tree" class="ztree" style="background:#f4f4f4; "></ul>-->
-			<p class="text-center"><button class="btn btn-info btn-sm" style="margin-top:35px;" id="save">确认</button></p> 
-		<!-- 选择用户处理流程 -->
+			<p class="text-center"><button class="btn btn-info btn-sm" style="margin-top:35px;" id="chooseUserConmmitBtn">确认</button></p> 
+			<!-- 选择用户处理流程 -->
 	</div>
+	<script> 
+		$(function(){
+			
+			var username = sessionStorage.getItem("name");
+			
+			var users = [];
+			
+			switch(username){
+				case "张三":
+					$(":input[name=renWuZu]").val(1);
+					users = ["李四","李小四"];
+					break;
+				case "李四":
+					$(":input[name=renWuZu]").val(2);
+					users = ["王五","王小五"];
+					break;
+				case "王五":
+					$(":input[name=renWuZu]").val(3);
+					users = ["赵六","赵小六"];
+					break;
+				case "赵六":
+					$(":input[name=renWuZu]").val(4);
+					users = ["田七","田小七"];
+					break;
+				case "田七":
+					$(":input[name=renWuZu]").val(5);
+					users = ["钱八","钱小八"];
+					break;
+				case "钱八":
+					$(":input[name=renWuZu]").val(5);
+					break;
+				default:
+					break;
+			
+			}
+			
+			//改变用户
+			var input = '';
+			for(var i=0; i<users.length; i++){
+				input += '<div class="col-xs-4">'+
+							'<div class="checkbox">'+
+							  '<label>'+
+							    '<input type="checkbox" value="">'+users[i]+
+							  '</label>'+
+							'</div>'+
+						'</div>'; 
+				
+			}
+			
+			$('#usersList').html(input);
+			
+			/*
+				<div class="col-xs-4">
+					<div class="checkbox">
+					  <label>
+					    <input type="checkbox" value="">李四
+					  </label>
+					</div>
+				</div>
+			*/
+			
+			//保存后关闭
+			$(document).on("click","#chooseUserConmmitBtn",function(){
+				//var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+				//parent.layer.close(index);
+				parent.layer.closeAll();
+				
+				parent.layer.msg("提交成功!");
+			});
+			
+		});
+	</script>
+	
 </body>
 </html>

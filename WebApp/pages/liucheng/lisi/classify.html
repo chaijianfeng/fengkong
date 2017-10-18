@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<!--Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式建议添加一下meta-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--自适应设备宽度-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>外贸综合服务企业出口退税风险管控信息系统-李四任务管理商品归类</title>
+		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
+		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="../../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../../static/plugins/font-awesome-4.7.0/css/font-awesome.css"/><!-- icon字体图标 -->
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css"/><!-- 表格 -->
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script><!-- 表格导出 -->
+		<script type="text/javascript" src="../../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
+		<script src="../../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script><!-- 美化滚动条 -->
+		<script type="text/javascript" src="../../../static/plugins/My97DatePicker-4.8/WdatePicker.js"></script><!-- 日历 -->
+		<script type="text/javascript" src="../../../static/js/comm.js"></script><!-- 自定义公用js -->
+		<link rel="stylesheet" href="../../../static/css/comm.css"/><!-- 自定义公用css -->
+		<link rel="stylesheet" href="../../../static/plugins/layer-3.0.3/skin/default/layer.css"/><!-- 弹窗 -->
+		<script type="text/javascript" src="../../../static/plugins/layer-3.0.3/layer.js"></script>
+	</head>
+<body>
+	
+	
+	<div class="layerBodyBg">
+		<div class="row">
+			<div class="col-sm-9">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#info"
+						aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+					<li role="presentation" ><a href="#proList"
+						aria-controls="profile" role="tab" data-toggle="tab">货物分类</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-3 text-right">
+				<button type="button" class="btn btn-default btn-xs" id="save"><i class="glyphicon glyphicon-saved"></i>保存</button>
+				<button type="reset" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-repeat"></i>重置</button>
+			</div>
+			
+		</div>
+		<div class="tab-content">
+			<!-- 基本信息 -->
+			<div role="tabpanel" class="tab-pane active" id="info">
+				<form class="form-horizontal layerForm">
+					<div class="col-xs-12 index" style="padding: 0">
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 出口口岸
+							</label>
+							<div class="col-xs-7">
+								<select class="form-control input-sm" disabled="disabled">
+									<option selected="selected">天津新港</option>
+									<option >北京机场</option>
+								</select>
+								<!-- <input type="text" id="yulu_bus" value="天津新港" name="bus" class="form-control input-sm"  placeholder="出口口岸"> -->
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 备案号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 申报日期 </label>
+							<div class="col-xs-7">
+								<input type="text" id="yulu_anotherTime" name="createTime"
+									onclick="WdatePicker();" class="form-control input-sm">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label">经营单位
+							</label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="某集团工程有限公司" disabled="disabled">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 运输方式 </label>
+							<div class="col-xs-7">
+								<select class="form-control input-sm" disabled="disabled">
+									<option selected="selected">水路运输</option>
+									<option >航空运输</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 运输工具 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 提运单号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" >
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 发货单位
+							</label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="某集团工程有限公司" disabled="disabled">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 贸易方式 </label>
+							<div class="col-xs-7">
+								<select class="form-control input-sm" disabled="disabled">
+									<option value="一般贸易" selected="selected">一般贸易</option>
+									<option value="承包工程">承包工程</option>
+									<option value="外综服贸易">外综服贸易</option>
+								</select>
+								<!-- <input type="text" id="yulu_property" name="property" class="form-control input-sm"  placeholder="运输方式"> -->
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 征免性质 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" >
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 许可证号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="S2564875" disabled="disabled">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-6 control-label"> 抵运国（地区） </label>
+							<div class="col-xs-6">
+								<select class="form-control input-sm" disabled="disabled">
+									<option>美国</option>
+									<option selected="selected">委内瑞拉</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 指运港 </label>
+							<div class="col-xs-7">
+								<select name="anotherBus" class="form-control input-sm" disabled="disabled">
+									<option selected="selected">拉瓜伊拉</option>
+									<option>天津新港</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 境内货源地 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 批准文号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="PZX52D546" disabled="disabled">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 成交方式 </label>
+							<div class="col-xs-7">
+								<select name="anotherBus" class="form-control input-sm" disabled="disabled">
+									<option selected="selected">FOB</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 运费 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" >
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 保费 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 杂费 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 合同协议号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="4520000254" disabled="disabled" >
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 件数 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" >
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 包装种类 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 毛重（kg） </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 净重（kg） </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm" value="">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 集装箱号 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 随附单据 </label>
+							<div class="col-xs-7">
+								<input type="text" id="yulu_accessory" name="accessory"
+									class="form-control input-sm" >
+							</div>
+						</div>
+						<div class="form-group col-xs-3">
+							<label class="col-xs-5 control-label"> 生产厂家 </label>
+							<div class="col-xs-7">
+								<input type="text" class="form-control input-sm">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-12">
+							<label class="col-xs-1 control-label text-left"> 标记码及备注
+							</label>
+							<div class="col-xs-10">
+								<textarea  class="form-control input-sm">任务编号 :CK201709220001</textarea>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- 基本信息 -->
+			<!-- 货物分类 -->
+			<div role="tabpanel" class="tab-pane" id="proList">
+				<div class="myBtn">
+					<a id="addClassify" href="javascript:;" class="btn btn-default btn-xs">
+						<i class="glyphicon glyphicon-plus"></i>归类
+					</a>
+				</div>
+				<table id="tableList" class="myTable table-condensed"></table>
+			</div>
+			<!-- 货物分类 -->
+		</div>
+	</div>	
+	
+	
+<script> 
+	$(function(){
+										
+		var columns = [ {
+			field : '项号',
+			formatter : function(value,row,index){return index+1;}
+		}, {
+			title : '商品编码',
+			field : 'id',
+			formatter : formatterLookInfo
+		}, {
+			title : '商品名称、规格型号',
+			field : 'mcgg'
+		}, {
+			title : '数量',
+			field : 'sl'
+		}, {
+			title : '单位',
+			field : 'dw'
+		}, {
+			title : '最终目的国',
+			field : 'zzmdg'
+		}, {
+			title : '单价',
+			field : 'dj'
+		}, {
+			title : '总价',
+			field : 'zj'
+		}, {
+			title : '币制',
+			field : 'bz'
+		}, {
+			title : '征免',
+			field : 'zm'
+		}, {
+			title : '操作',
+			field : 'operation'
+		}];
+		
+		
+		$('#tableList').bootstrapTable('destroy').bootstrapTable({
+			classes : 'table table-hover table-no-bordered', // 添加样式名称
+			striped : true, // 隔行变色
+			exportTypes : [ 'txt', 'csv', 'excel' ],
+			toolbar : '.myBtn',
+			toolbarAlign : 'left',
+			pageNumber : 1,
+			pageSize : 10,
+			pageList : [ 10, 20, 50 ],
+			height : 300,
+			pagination : true,
+			columns : columns
+		});
+		
+		//添加归类
+		$('#addClassify').on('click',function(){
+			parent.layer.open({
+				type : 2,
+				skin : 'myLayui', // 样式类名
+				title : "货物归类",
+				area : ['89%',"88%"],
+				content : "../../pages/liucheng/lisi/addClassify.html"
+			});
+		});
+		
+	});
+</script>
+
+</body>
+</html>

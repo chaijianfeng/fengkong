@@ -244,11 +244,14 @@ $.validator = function( options, form ) {
 // https://jqueryvalidation.org/jQuery.validator.format/
 $.validator.format = function( source, params ) {
 	if ( arguments.length === 1 ) {
+		/*
 		return function() {
 			var args = $.makeArray( arguments );
 			args.unshift( source );
 			return $.validator.format.apply( this, args );
 		};
+		*/
+		return source;
 	}
 	if ( params === undefined ) {
 		return source;
@@ -264,6 +267,10 @@ $.validator.format = function( source, params ) {
 			return n;
 		} );
 	} );
+	var regexp = new RegExp("\\{\\d+?\\}","g");
+	if(regexp.test(source)){
+		source = source.replace(regexp,"").replace("加","");
+	}
 	return source;
 };
 

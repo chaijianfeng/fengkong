@@ -115,13 +115,84 @@ $(function() {
 		title : '说明',
 		field : 'sm'
 	} ],
-
-	hisData = [ {
-		"lscz" : "创建任务",
-		"czName" : "张三",
-		"czTime" : "2017-09-27",
-		"sm" : ""
-	} ];
+	
+	
+	hisData = [ 
+		{
+			"lscz" : "创建任务",
+			"czName" : "张三",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		},
+		{
+			"lscz" : "预关单审核",
+			"czName" : "李四",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		}, 
+		{
+			"lscz" : "关单审核",
+			"czName" : "王五",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		}, 
+		{
+			"lscz" : "开票通知",
+			"czName" : "赵六",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		}, 
+		{
+			"lscz" : "收票确认",
+			"czName" : "田七",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		}, 
+		{
+			"lscz" : "发票认证",
+			"czName" : "钱八",
+			"czTime" : "2017-09-27",
+			"sm" : ""
+		}
+	];
+	
+	var username = sessionStorage.getItem('name');
+	
+	switch(username){
+		case "张三":
+			infos[5]["value"] = "预关单审核";
+			infos[6]["value"] = "李四";
+			hisData = hisData.slice(0,1);
+			break;
+		case "李四":
+			infos[5]["value"] = "预关单审核";
+			infos[6]["value"] = "李四";
+			hisData = hisData.slice(0,1);
+			break;
+		case "王五":
+			infos[5]["value"] = "关单审核";
+			infos[6]["value"] = "王五";
+			hisData = hisData.slice(0,2);
+			break;
+		case "赵六":
+			infos[5]["value"] = "开票通知";
+			infos[6]["value"] = "赵六";
+			hisData = hisData.slice(0,3);
+			break;
+		case "田七":
+			infos[5]["value"] = "收票确认";
+			infos[6]["value"] = "田七";
+			hisData = hisData.slice(0,4);
+			break;
+		case "钱八":
+			infos[5]["value"] = "发票认证";
+			infos[6]["value"] = "钱八";
+			hisData = hisData.slice(0,5);
+			break;
+		default:
+			break;
+	
+	}
 	
 	//任务详情添加
 	initDetailInfo({

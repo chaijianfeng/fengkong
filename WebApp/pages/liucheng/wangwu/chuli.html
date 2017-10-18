@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<!--Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式建议添加一下meta-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--自适应设备宽度-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>外贸综合服务企业出口退税风险管控信息系统-王五任务管理</title>
+		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
+		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="../../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../../static/plugins/font-awesome-4.7.0/css/font-awesome.css"/><!-- icon字体图标 -->
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css"/><!-- 表格 -->
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script><!-- 表格导出 -->
+		<script type="text/javascript" src="../../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
+		<script src="../../../static/plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script><!-- 美化滚动条 -->
+		<script type="text/javascript" src="../../../static/js/comm.js"></script><!-- 自定义公用js -->
+		<link rel="stylesheet" href="../../../static/css/comm.css"/><!-- 自定义公用css -->
+		<link rel="stylesheet" href="../../../static/plugins/layer-3.0.3/skin/default/layer.css"/><!-- 弹窗 -->
+		<script type="text/javascript" src="../../../static/plugins/layer-3.0.3/layer.js"></script>
+	</head>
+<body>
+	<!-- 任务详情 -->
+	<div class="layerBodyBg">
+		<div class="row" style="background:#f4f4f4; margin:0; padding-top:15px">
+			<div class="col-xs-3">
+				<p><span>任务编号 :</span>CK201709220001</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>出口国别 :</span>委内瑞拉</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>业务类型 :</span>一般贸易</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>出口口岸 :</span>天津新港</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>运输方式 :</span>水路运输</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>操作人 :</span>王五</p>
+			</div>
+			<div class="col-xs-3">
+				<p><span>操作时间 :</span>2017-09-27</p>
+			</div>
+		</div>
+		<!-- 任务基本信息 -->
+		
+		<!-- 操作 -->
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- 操作按钮 -->
+				<p style="margin: 15px 0">
+					<button class="btn btn-info btn-sm" id="renwu_bd_load">比对</button>
+				</p>
+				<!-- 操作按钮 -->
+			</div>
+		</div>
+		<!-- 操作 -->
+		<div class="row">
+			<div class="col-xs-12">
+				<table id="guanDanList" class="myTable table-condensed"></table>
+				<input type="hidden" id="gdId"/>
+			</div>
+		</div>
+		<!-- 当前流程 -->
+		<div class="row" style="margin-top:15px; ">
+			<div class="col-xs-12 text-center">
+				<button class="btn  btn-sm ">1.创建任务</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn btn-sm ">2.预关单审核</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm btn-warning">3.报关单审核</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">4.开票通知</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">5.收票确认</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">6.发票认证</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">7.申报</button>
+				<i class="glyphicon glyphicon-triangle-right"></i>
+				<button class="btn  btn-sm ">8.备案</button>
+			</div>
+		</div>
+		<!-- 当前流程 -->
+		<p class="text-center" style="margin-top:30px;" ><button class="btn btn-info btn-sm"  id="renwu_choose_user_btn">提交</button></p>
+	</div>
+<script> 
+	$(function(){
+		//选择用户提交
+		$('#renwu_choose_user_btn').on('click',function(){
+			parent.layer.open({
+				type : 2,
+				skin : 'myLayui', // 样式类名
+				title : "选择用户",
+				area : ['25%',"60%"],
+				content : "../../pages/liucheng/chooseuser.html"
+			});
+		});
+		
+		//预关单数据列表
+		var columns = [ {
+			title : '预录入编号',
+			field : 'id'
+			//formatter : formatterLookInfo
+		}, {
+			title : '出口口岸',
+			field : 'ckka'
+		}, {
+			title : '运抵国',
+			field : 'ydg'
+		}, {
+			title : '指运港',
+			field : 'zyg'
+		}, {
+			title : '成交方式',
+			field : 'cjfs'
+		}, {
+			title : '贸易方式',
+			field : 'myfs'
+		}, {
+			title : '审核状态',
+			field : 'shstatus',
+			formatter : formatterShStatus,
+			align : 'center'
+		}, {
+			title : '关单号',
+			field : 'gdh',
+			formatter : formatterGdh
+		}, {
+			title : '选择关单',
+			field : 'xzgd',
+			formatter : faomatChooseGd
+		}],
+		
+		data = [
+				{
+					"id":"123123123122312999",
+					"ckka":"天津新港",
+					"ydg":"委内瑞拉",
+					"zyg":"拉瓜伊拉",
+					"cjfs":"FOB",
+					"myfs":"一般贸易",
+					"shstatus":0,
+					"gdh":"--",
+					"xzgd":"选择"
+				}
+			];
+		
+		
+		$('#guanDanList').bootstrapTable('destroy').bootstrapTable({
+			classes : 'table table-hover table-no-bordered', // 添加样式名称
+			striped : true, // 隔行变色
+			exportTypes : [ 'txt', 'csv', 'excel' ],
+			//toolbar : '.myBtn',
+			//toolbarAlign : 'left',
+			//pageNumber : 1,
+			//pageSize : 1,
+			//pageList : [ 10, 20, 50 ],
+			height : 100,
+			//pagination : true,
+			columns : columns,
+			data : data,
+			uniqueId : 'id'
+		});
+		
+		// 查看详情
+		$(document).on("click", ".lookInfo", function() {
+			parent.layer.open({
+				type : 2,
+				skin : 'myLayui', // 样式类名
+				title : "预关单详情",
+				area : [ "65%", "65%" ],
+				content : "../../pages/guandan/yuluru/detail.html"
+			});
+		});
+		
+		//选择关单
+		$(document).on('click','.chooseGdBtn',function(){
+			var id = $(this).attr('id');
+			layer.open({
+				type : 2,
+				skin : 'myLayui', // 样式类名
+				title : "选择海关关单",
+				area : [ "98%", "98%" ],
+				content : "../../../pages/liucheng/wangwu/haiGuanDan.html",
+				end : function(){
+					updateData(id,$('#gdId').val()); //更新
+				}
+			});
+		});
+		
+	});
+	
+	//格式化选择关单
+	function faomatChooseGd(value,row,index){
+		return '<a href="javascript:;" id="'+row.id+'" class="text-info chooseGdBtn">'+value+'</a>';
+	}
+	
+	//关联状态
+	function formatterShStatus(value, row, index) {
+		var title = '';
+		var className = '';
+		if(value==0){
+			title = '未审核';
+			className = 'fa-times-circle text-danger';
+		}else if(value==1){
+			title = '已审核';
+			className = 'fa-check-circle-o text-success';
+		}
+		return '<a href="javascript:;" id="'+row.id+'" class="text-info glBtn"><i title="'+title+'" class="fa '+className+'"></i></a>';
+	}
+	//格式化关单号
+	function formatterGdh(value,row,index){
+		return '<a href="javascript:;" id="'+row.id+'" class="text-info chooseGdBtn">'+value+'</a>';
+	}
+	//updateTableData 
+	function updateData(id,gdh){
+		var rows =  $('#guanDanList').bootstrapTable("getRowByUniqueId","123123123122312999");
+		rows.gdh = gdh;
+		$('#guanDanList').bootstrapTable("updateByUniqueId",{id:"123123123122312999",row:rows});
+	}
+	
+	
+</script>
+
+</body>
+</html>
