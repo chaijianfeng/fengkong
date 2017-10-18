@@ -4,7 +4,8 @@ function MyJQueryValidateExtend(window){
 
 //////////////////////////////////////////////////////////基本格式验证开始//////////////////////////////////////////////////////////
 /*
-问题项:characterNum,lowerCharacterOrNum,hasChineseChar,commonChar
+基础问题项:characterNum,lowerCharacterOrNum,hasChineseChar,commonChar
+特殊问题项:
  */
 
 /*
