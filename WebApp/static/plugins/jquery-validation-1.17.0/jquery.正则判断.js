@@ -4,8 +4,9 @@ function MyJQueryValidateExtend(window){
 
 //////////////////////////////////////////////////////////基本格式验证开始//////////////////////////////////////////////////////////
 /*
-基础问题项:characterNum,lowerCharacterOrNum,hasChineseChar,commonChar
-特殊问题项:
+基础问题项:
+特殊问题项:qq,telephone
+比较验证问题项:
  */
 
 /*
@@ -552,7 +553,8 @@ jQuery.validator.addMethod("strLEVal",function(value,element,param){
 function getElByName(name){
 	if($.trim(name)=="")return null;
 	name = $.trim(name);
-	var $anotherDataInput = $(":input[name='"+name+"']");
+	var $anotherDataInput = $(name);
+	if($anotherDataInput.length<=0) $(":input[name='"+name+"']");
 	if($anotherDataInput.length<=0) $anotherDataInput = $("#" + name);
 	if($anotherDataInput.length<=0) $anotherDataInput = $("."+name);
 	if($anotherDataInput.length>0) return $anotherDataInput.eq(0);

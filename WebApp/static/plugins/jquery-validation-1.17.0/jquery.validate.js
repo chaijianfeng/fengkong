@@ -1497,6 +1497,11 @@ $.extend( $.validator, {
 
 			// Bind to the blur event of the target in order to revalidate whenever the target field is updated
 			var target = $( param );
+			if(target.length==0) target = $(":input[name='"+param+"']:eq(0)");
+			if(target.length==0) target = $("#" + param);
+			if(target.length==0) target = $("." + param);
+			if(target.length==0) return true;
+			
 			if ( this.settings.onfocusout && target.not( ".validate-equalTo-blur" ).length ) {
 				target.addClass( "validate-equalTo-blur" ).on( "blur.validate-equalTo", function() {
 					$( element ).valid();

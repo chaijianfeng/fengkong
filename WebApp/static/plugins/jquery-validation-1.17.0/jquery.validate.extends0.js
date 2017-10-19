@@ -1,114 +1,12 @@
 function MyJQueryValidateExtend(window){
 	var $ = jQuery = window.$;
 	var document = window.document;
-//////////////////////////////////////////////////////////税务系统开始//////////////////////////////////////////////////////////
-/*
-@athor:周小建
-@time:2007-10-15 08:00:00
-@description:发票代码
-*/
-jQuery.validator.addMethod("isFpdm",function(value,element){
-	return this.optional(element) || (/^[0-9]{11,12}$/.test(value));
-},"发票代码必须为10-12位数字");
-
-/*
-@athor:周小建
-@time:2007-10-15 08:10:00
-@description:发票号码
-*/
-jQuery.validator.addMethod("isFphm",function(value,element){
-	return this.optional(element) || (/^[0-9]{8}$/.test(value));
-},"发票号码必须为8位数字");
-
-/*
-@athor:周小建
-@time:2007-10-15 08:20:00
-@description:针对税务系统的开票模式的验证
-*/
-jQuery.validator.addMethod("kpmsValidator",function(value,element,param){
-	var item = $(param).val();
-	if((item!='3'&&value!='1')&&(item!='4'&&value!='1')){
-		return false;
-	}else{
-		return true;
-	}
-},$.validator.format("只有开票模式为一户多机或汇总申报时,开票端数量才能不等于1"));
-
-/*
-@athor:周小建
-@time:2007-10-15 08:30:00
-@description:输入的开票端数量小于纳税人拥有的加密U盘数量
-*/
-jQuery.validator.addMethod("kpdslValidator",function(value,element,param){
-	var items=param.split(",");
-	var modifyContent=$(items[0]).val();
-	var regUdiskSize=$(items[1]).val();
-	if(modifyContent=='1'&&value<regUdiskSize){
-		return false;
-	}else{
-		return true;
-	}
-},$.validator.format("输入的开票端数量小于纳税人拥有的加密U盘数量"));
-
-/*
-@athor:周小建
-@time:2007-10-15 08:40:00
-@description:验证开票日期
-*/
-jQuery.validator.addMethod("valKprq",function(value,element,param){
-	var kprqqj=$(param).val();
-	var kprqs=kprqqj.split("||");
-	
-	if(value>=kprqs[0]&&value<=kprqs[1]){
-		return true;
-	}else{
-		return false;
-	}
-},$.validator.format("开票日期不正确"));
-
-/*
-@athor:周小建
-@time:2007-10-15 08:50:00
-@description:加密盘机器号不能为空
-*/
-jQuery.validator.addMethod("ukeydivValidator",function(value,element,param){
-	var item = $(param).val();
-	if(item=='1' && value==""){
-		return false;
-	}else{
-		return true;
-	}
-},$.validator.format("加密盘机器号不能为空"));
-
-/*
-@athor:周小建
-@time:2007-10-15 09:00:00
-@description:CA序列号不能为空
-*/
-jQuery.validator.addMethod("caValidator",function(value,element,param){
-	var item = $(param).val();
-	if(item=='1' && value==""){
-		return false;
-	}else{
-		return true;
-	}
-},$.validator.format("CA序列号不能为空"));
-//////////////////////////////////////////////////////////税务系统结束//////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
 
 //////////////////////////////////////////////////////////基本格式验证开始//////////////////////////////////////////////////////////
 /*
 @athor:周小建
 @time:2007-10-15
-@description:只能是合法字符（字母数字下划线，不能是美元符井号）
+@description:只能是合法字符（字母数字下划线美元符井号）
 */
 jQuery.validator.addMethod("characterNum",function(value,element){
 	return this.optional(element) || (/^(\w+)$/.test(value));
@@ -137,14 +35,14 @@ jQuery.validator.addMethod("upperCharacter",function(value,element){
 @time:2007-10-15
 @description:只能是小写字母
 */
-jQuery.validator.addMethod("lowerCharacter",function(value,element){
+jQuery.validator.addMethod("lowerCharacterOrNum",function(value,element){
 	return this.optional(element) || (/^([a-z]*)$/.test(value));
 },"只能小写字母");
 
 /*
 @athor:周小建
 @time:2007-10-15
-@description:只能是字母或数字
+@description:只能是字母和数字
 */
 jQuery.validator.addMethod("characterOrNum",function(value,element){
 	return this.optional(element) || (/^([a-zA-Z0-9]*)$/.test(value));
@@ -338,8 +236,7 @@ jQuery.validator.addMethod("chineseChar",function(value,element){
 @description:必须包含中文
 */
 jQuery.validator.addMethod("hasChineseChar",function(value,element){
-	//return this.optional(element) || /[\u4e00-\u9fa5]/g.test(value) || /[\x00-\xff]+/g.test(value);
-	return this.optional(element) || /[\u4e00-\u9fa5]/g.test(value);
+	return this.optional(element) || /[\u4e00-\u9fa5]/g.test(value) || /[\x00-\xff]+/g.test(value);
 },"必须包含中文");
 
 /*
@@ -403,7 +300,7 @@ jQuery.validator.addMethod("roughDate",function(value,element){
 			}
 		}
 		return result;
-	})(value);
+	})(value); 
 },"只能是合法日期格式[yyyy-mm-dd]" );
 
 /*
@@ -502,7 +399,7 @@ jQuery.validator.addMethod("verificationCode",function(value,element){
 @description:手机检验方法
 */
 jQuery.validator.addMethod("mobile",function(value,element){
-	return this.optional(element) || (/^0?(13|15|17|18)[0-9]{9}$/.test(value));
+	return this.optional(element) || (/^0?(13|15|18)[0-9]{9}$/.test(value));
 },"只能是合法手机");
 
 /*
@@ -511,7 +408,7 @@ jQuery.validator.addMethod("mobile",function(value,element){
 @description:电话检验方法
 */
 jQuery.validator.addMethod("telephone",function(value,element){
-	return this.optional(element) || (/^[+]{0,1}(\d){1,4}[ ]?([-]?((\d)|[ ]){7,12})+$/.test(value));
+	return this.optional(element) || (/^[+]{0,1}(\d){1,4}[ ]?([-]?((\d)|[ ]){1,12})+$/.test(value));
 },"只能是合法电话");
 
 /*
@@ -529,7 +426,7 @@ jQuery.validator.addMethod("ip",function(value,element){
 @description:QQ检验方法（腾讯QQ号从10000开始）
 */
 jQuery.validator.addMethod("qq",function(value,element){
-	return this.optional(element) || (/^[1-9][0-9]{4,12}$/.test(value));
+	return this.optional(element) || (/^[1-9][0-9]{4,}$/.test(value));
 },"只能是合法QQ");
 		
 /*
@@ -620,11 +517,10 @@ jQuery.validator.addMethod("strLEVal",function(value,element,param){
 @time:2007-10-15
 @description:通过名称获取输入框
 */
-function getInputByName(name){
+function getElByName(name){
 	if($.trim(name)=="")return null;
 	name = $.trim(name);
-	var $anotherDataInput = $(name);
-	if($anotherDataInput.length<=0) $anotherDataInput = $(":input[name='"+name+"']");
+	var $anotherDataInput = $(":input[name='"+name+"']");
 	if($anotherDataInput.length<=0) $anotherDataInput = $("#" + name);
 	if($anotherDataInput.length<=0) $anotherDataInput = $("."+name);
 	if($anotherDataInput.length>0) return $anotherDataInput.eq(0);
@@ -636,9 +532,9 @@ function getInputByName(name){
 @time:2007-10-15
 @description:通过名称获取输入框的值
 */
-function getInputValueByName(name){
-	var $input = getInputByName(name);
-	if($input!=null && $input.length>0) return $input.val();
+function getElValueByName(name){
+	var $input = getElByName(name);
+	if($input!=null && getElByName.length>0) return $input.val();
 	return "";
 }
 
@@ -659,15 +555,14 @@ function addDate(date,days){
 @description:与另一输入框比较的通用处理
 */
 function commonCompare(value,element,param,method){
-	//var result=this.optional(element);
-	var result = false;
-	if(param==null || (typeof param=="array"&&param.length==0))return result;
+	var result=this.optional(element);
+	if(result || param==null || (typeof param=="array"&&param.length==0))return result;
 	method = $.trim(method);
 	var kindArray=["str","len","date","num"],kind="",opt="";
 	for(var i=0;i<kindArray.length;i++){
-		kind = kindArray[i];
-		if(method.indexOf(kind)==0){
-			//method = method.replace(new RegExp("^"+kind),"");
+		if(method.indexOf(kindArray[i])==0){
+			kind = kindArray[i];
+			method = method.replace("^"+kindArray[i],"");
 			break;
 		}
 		if(i==kindArray.length-1)return;
@@ -688,14 +583,7 @@ function commonCompare(value,element,param,method){
 			//var anotherDataVal = $anotherDataInput.val();
 			//return this.optional(element) || ($.trim(value)==$.trim(anotherDataVal));
 		}
-		
-		//anotherDataVal = getInputValueByName(anotherName);
-		var $another = $(element).data("another");
-		if($another==null || $another.length==0){ 
-			$another = getInputByName(anotherName);
-			if($another.length>0) $(element).data("another",$another);
-		}
-		if($another!=null && $another.length>0) anotherDataVal = $another.val();
+		anotherDataVal = getElValueByName(anotherName);
 	}
 	
 	if(kind=="num"){//数字
@@ -858,7 +746,6 @@ function commonCompare(value,element,param,method){
 			}
 		}
 	}
-	return result;
 }
 
 /*
@@ -873,11 +760,10 @@ jQuery.validator.addMethod("strEQInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)==$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strEQInput");
-	//return commonCompare.apply(this,$.makeArray(arguments).push("strEQInput"));
+	return commonCompare(value,element,param,"strEQInput");
 },$.validator.format("应等于{0}加{1}"));
 
 /*
@@ -892,10 +778,10 @@ jQuery.validator.addMethod("strNEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)!=$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strNEInput");
+	return commonCompare(value,element,param,"strNEInput");
 },$.validator.format("应不等于{0}加{1}"));
 
 /*
@@ -910,10 +796,10 @@ jQuery.validator.addMethod("strGTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)>$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strGTInput");
+	return commonCompare(value,element,param,"strGTInput");
 },$.validator.format("应大于{0}加{1}"));
 
 /*
@@ -928,10 +814,10 @@ jQuery.validator.addMethod("strGEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)>=$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strGEInput");
+	return commonCompare(value,element,param,"strGEInput");
 },$.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -946,10 +832,10 @@ jQuery.validator.addMethod("strLTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)<$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strLTInput");
+	return commonCompare(value,element,param,"strLTInput");
 },$.validator.format("应小于{0}加{1}"));
 
 /*
@@ -964,10 +850,10 @@ jQuery.validator.addMethod("strLEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)<$.trim(anotherDataVal));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"strLEInput");
+	return commonCompare(value,element,param,"strLEInput");
 },$.validator.format("应小于等于{0}加{1}"));
 
 /*
@@ -976,7 +862,7 @@ jQuery.validator.addMethod("strLEInput",function(value,element,param){
 @description:包含但不等另一输入框
 */
 jQuery.validator.addMethod("strGMInput",function(value,element,param){
-	return this.optional(element) || commonCompare(value,element,param,"strGMInput");
+	return commonCompare(value,element,param,"strGMInput");
 },$.validator.format("应包含但不等{0}加{1}"));
 
 /*
@@ -985,7 +871,7 @@ jQuery.validator.addMethod("strGMInput",function(value,element,param){
 @description:包含另一输入框且可等
 */
 jQuery.validator.addMethod("strGHInput",function(value,element,param){
-	return this.optional(element) || commonCompare(value,element,param,"strGHInput");
+	return commonCompare(value,element,param,"strGHInput");
 },$.validator.format("应包含且可等{0}加{1}"));
 
 /*
@@ -994,7 +880,7 @@ jQuery.validator.addMethod("strGHInput",function(value,element,param){
 @description:被另一输入框包含但不等
 */
 jQuery.validator.addMethod("strLMInput",function(value,element,param){
-	return this.optional(element) || commonCompare(value,element,param,"strLMInput");
+	return commonCompare(value,element,param,"strLMInput");
 },$.validator.format("应被{0}加{1}包含但不等"));
 
 /*
@@ -1003,7 +889,7 @@ jQuery.validator.addMethod("strLMInput",function(value,element,param){
 @description:被另一输入框包含且可等
 */
 jQuery.validator.addMethod("strLHInput",function(value,element,param){
-	return this.optional(element) || commonCompare(value,element,param,"strLHInput");
+	return commonCompare(value,element,param,"strLHInput");
 },$.validator.format("应被{0}加{1}包含且可等"));
 
 /*
@@ -1013,7 +899,7 @@ jQuery.validator.addMethod("strLHInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenEQVal",function(value,element,param){
 	//return value.length==param;
-	return this.optional(element) || commonCompare(value,element,param,"lenEQVal");
+	return commonCompare(value,element,param,"lenEQVal");
 },jQuery.validator.format("长度应等于{0}加{1}"));
 
 /*
@@ -1023,7 +909,7 @@ jQuery.validator.addMethod("lenEQVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenNEVal",function(value,element,param){
 	//return value.length!=param;
-	return this.optional(element) || commonCompare(value,element,param,"lenNEVal");
+	return commonCompare(value,element,param,"lenNEVal");
 },jQuery.validator.format("长度应不等于{0}加{1}"));
 
 /*
@@ -1033,7 +919,7 @@ jQuery.validator.addMethod("lenNEVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenGTVal",function(value,element,param){
 	//return value.length>param;
-	return this.optional(element) || commonCompare(value,element,param,"lenGTVal");
+	return commonCompare(value,element,param,"lenGTVal");
 },jQuery.validator.format("长度应大于{0}加{1}"));
 
 /*
@@ -1043,7 +929,7 @@ jQuery.validator.addMethod("lenGTVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenGEVal",function(value,element,param){
 	//return value.length>=param;
-	return this.optional(element) || commonCompare(value,element,param,"lenGEVal");
+	return commonCompare(value,element,param,"lenGEVal");
 },jQuery.validator.format("长度应大于等于{0}加{1}"));
 
 /*
@@ -1053,7 +939,7 @@ jQuery.validator.addMethod("lenGEVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenLTVal",function(value,element,param){
 	//return value.length<param;
-	return this.optional(element) || commonCompare(value,element,param,"lenLTVal");
+	return commonCompare(value,element,param,"lenLTVal");
 },jQuery.validator.format("长度应小于{0}加{1}"));
 
 /*
@@ -1063,7 +949,7 @@ jQuery.validator.addMethod("lenLTVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenLEVal",function(value,element,param){
 	//return value.length>=param;
-	return this.optional(element) || commonCompare(value,element,param,"lenLEVal");
+	return commonCompare(value,element,param,"lenLEVal");
 },jQuery.validator.format("长度应小于等于{0}加{1}"));
 
 /*
@@ -1073,7 +959,7 @@ jQuery.validator.addMethod("lenLEVal",function(value,element,param){
 */
 jQuery.validator.addMethod("lenEQInput",function(value,element,param){
 	//return value.length == $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenEQInput");
+	return commonCompare(value,element,param,"lenEQInput");
 },$.validator.format("长度应等于{0}加{1}"));
 
 /*
@@ -1083,7 +969,7 @@ jQuery.validator.addMethod("lenEQInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenNEInput",function(value,element,param){
 	//return value.length == $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenNEInput");
+	return commonCompare(value,element,param,"lenNEInput");
 },$.validator.format("长度应不等于{0}加{1}"));
 
 /*
@@ -1093,7 +979,7 @@ jQuery.validator.addMethod("lenNEInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenGTInput",function(value,element,param){
 	//return value.length > $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenGTInput");
+	return commonCompare(value,element,param,"lenGTInput");
 },$.validator.format("长度应大于{0}加{1}"));
 
 /*
@@ -1103,7 +989,7 @@ jQuery.validator.addMethod("lenGTInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenGEInput",function(value,element,param){
 	//return value.length >= $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenGEInput");
+	return commonCompare(value,element,param,"lenGEInput");
 },$.validator.format("长度应大于等于{0}加{1}"));
 
 
@@ -1114,7 +1000,7 @@ jQuery.validator.addMethod("lenGEInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenLTInput",function(value,element,param){
 	//return value.length < $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenLTInput");
+	return commonCompare(value,element,param,"lenLTInput");
 },$.validator.format("长度应小于{0}加{1}"));
 
 /*
@@ -1124,7 +1010,7 @@ jQuery.validator.addMethod("lenLTInput",function(value,element,param){
 */
 jQuery.validator.addMethod("lenLEInput",function(value,element,param){
 	//return value.length <= $(param).val();
-	return this.optional(element) || commonCompare(value,element,param,"lenLEInput");
+	return commonCompare(value,element,param,"lenLEInput");
 },$.validator.format("长度应小于等于{0}加{1}"));
 
 /*
@@ -1139,7 +1025,7 @@ jQuery.validator.addMethod("numEQVal",function(value,element,param){
 	//return parseInt(value,10) > parseInt(param,10);
 	return parseFloat(value,10) == parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numEQVal");
+	return commonCompare(value,element,param,"numEQVal");
 },jQuery.validator.format("应等于{0}加{1}"));
 
 /*
@@ -1154,7 +1040,7 @@ jQuery.validator.addMethod("numNEVal",function(value,element,param){
 	//return parseInt(value,10) > parseInt(param,10);
 	return parseFloat(value,10) != parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numNEVal");
+	return commonCompare(value,element,param,"numNEVal");
 },jQuery.validator.format("应不等于{0}加{1}"));
 
 /*
@@ -1169,7 +1055,7 @@ jQuery.validator.addMethod("numGTVal",function(value,element,param){
 	//return parseInt(value,10) > parseInt(param,10);
 	return parseFloat(value,10) > parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numGTVal");
+	return commonCompare(value,element,param,"numGTVal");
 },jQuery.validator.format("应大于{0}加{1}"));
 
 /*
@@ -1184,7 +1070,7 @@ jQuery.validator.addMethod("numGEVal",function(value,element,param){
 	//return parseInt(value,10) >= parseInt(param,10);
 	return parseFloat(value,10) >= parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numGEVal");
+	return commonCompare(value,element,param,"numGEVal");
 },jQuery.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -1199,7 +1085,7 @@ jQuery.validator.addMethod("numLTVal",function(value,element,param){
 	//return parseInt(value,10) < parseInt(param,10);
 	return parseFloat(value,10) < parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numLTVal");
+	return commonCompare(value,element,param,"numLTVal");
 },jQuery.validator.format("应小于{0}加{1}"));
 
 /*
@@ -1214,7 +1100,7 @@ jQuery.validator.addMethod("numLEVal",function(value,element,param){
 	//return parseInt(value,10) <= parseInt(param,10);
 	return parseFloat(value,10) <= parseFloat(param,10);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numLEVal");
+	return commonCompare(value,element,param,"numLEVal");
 },jQuery.validator.format("应小于等于{0}加{1}"));
 
 /*
@@ -1228,11 +1114,11 @@ jQuery.validator.addMethod("numEQInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)==parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numEQInput");
+	return commonCompare(value,element,param,"numEQInput");
 },jQuery.validator.format("应等于{0}加{1}"));
 
 /*
@@ -1246,11 +1132,11 @@ jQuery.validator.addMethod("numNEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)!=parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numNEInput");
+	return commonCompare(value,element,param,"numNEInput");
 },jQuery.validator.format("应不等于{0}加{1}"));
 
 /*
@@ -1264,11 +1150,11 @@ jQuery.validator.addMethod("numGTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)>parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numGTInput");
+	return commonCompare(value,element,param,"numGTInput");
 },jQuery.validator.format("应大于{0}加{1}"));
 
 /*
@@ -1282,11 +1168,11 @@ jQuery.validator.addMethod("numGEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)>=parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numGEInput");
+	return commonCompare(value,element,param,"numGEInput");
 },jQuery.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -1300,11 +1186,11 @@ jQuery.validator.addMethod("numLTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)<parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numLTInput");
+	return commonCompare(value,element,param,"numLTInput");
 },jQuery.validator.format("应小于{0}加{1}"));
 
 /*
@@ -1318,11 +1204,11 @@ jQuery.validator.addMethod("numLEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	if(!$.isNumeric($.trim(value)) || !$.isNumeric($.trim(anotherDataVal))) return false;
 	return this.optional(element) || (parseFloat($.trim(value),10)<=parseFloat($.trim(anotherDataVal),10));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"numLEInput");
+	return commonCompare(value,element,param,"numLEInput");
 },jQuery.validator.format("应小于等于{0}加{1}"));
 
 /*
@@ -1336,7 +1222,7 @@ jQuery.validator.addMethod("dateEQVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)==$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateEQVal");
+	return commonCompare(value,element,param,"dateEQVal");
 },jQuery.validator.format("应等于{0}加{1}"));
 
 /*
@@ -1350,7 +1236,7 @@ jQuery.validator.addMethod("dateNEVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)!=$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateNEVal");
+	return commonCompare(value,element,param,"dateNEVal");
 },jQuery.validator.format("应不等于{0}加{1}"));
 
 /*
@@ -1364,7 +1250,7 @@ jQuery.validator.addMethod("dateGTVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)>$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateGTVal");
+	return commonCompare(value,element,param,"dateGTVal");
 },jQuery.validator.format("应大于{0}加{1}"));
 
 /*
@@ -1378,7 +1264,7 @@ jQuery.validator.addMethod("dateGEVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)>=$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateGEVal");
+	return commonCompare(value,element,param,"dateGEVal");
 },jQuery.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -1392,7 +1278,7 @@ jQuery.validator.addMethod("dateLTVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)<$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateLTVal");
+	return commonCompare(value,element,param,"dateLTVal");
 },jQuery.validator.format("应小于{0}加{1}"));
 
 /*
@@ -1406,7 +1292,7 @@ jQuery.validator.addMethod("dateLEVal",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	return this.optional(element) || ($.trim(value)<=$.trim(value));
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateLEVal");
+	return commonCompare(value,element,param,"dateLEVal");
 },jQuery.validator.format("应小于等于{0}加{1}"));
 
 /*
@@ -1420,10 +1306,10 @@ jQuery.validator.addMethod("dateEQInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)==anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateEQInput");
+	return commonCompare(value,element,param,"dateEQInput");
 },jQuery.validator.format("应等于{0}加{1}"));
 
 /*
@@ -1437,10 +1323,10 @@ jQuery.validator.addMethod("dateNEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)!=anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateNEInput");
+	return commonCompare(value,element,param,"dateNEInput");
 },jQuery.validator.format("不等于{0}加{1}"));
 
 /*
@@ -1454,10 +1340,10 @@ jQuery.validator.addMethod("dateGTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)>anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateGTInput");
+	return commonCompare(value,element,param,"dateGTInput");
 },jQuery.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -1471,10 +1357,10 @@ jQuery.validator.addMethod("dateGEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)>=anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateGEInput");
+	return commonCompare(value,element,param,"dateGEInput");
 },jQuery.validator.format("应大于等于{0}加{1}"));
 
 /*
@@ -1488,10 +1374,10 @@ jQuery.validator.addMethod("dateLTInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)<anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateLTInput");
+	return commonCompare(value,element,param,"dateLTInput");
 },jQuery.validator.format("应小于{0}加{1}"));
 
 /*
@@ -1505,10 +1391,10 @@ jQuery.validator.addMethod("dateLEInput",function(value,element,param){
 	if(!(typeof value == "string" && $.trim(value))) return false;
 	//var $anotherDataInput = $("#" + param);
 	//var anotherDataVal = $anotherDataInput.val();
-	var anotherDataVal = getInputValueByName(param);
+	var anotherDataVal = getElValueByName(param);
 	return this.optional(element) || ($.trim(value)<=anotherDataVal);
 	*/
-	return this.optional(element) || commonCompare(value,element,param,"dateLEInput");
+	return commonCompare(value,element,param,"dateLEInput");
 },jQuery.validator.format("应小于等于{0}加{1}"));
 //////////////////////////////////////////////////////////比较验证结束//////////////////////////////////////////////////////////
 

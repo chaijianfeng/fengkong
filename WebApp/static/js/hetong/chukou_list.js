@@ -102,28 +102,16 @@ $(function() {
 		columns : columns,
 		data : data
 	});
-
+	
+	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		console.log(this);
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "出口合同详情",
-			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/detail.html"
-		});
+		openLayer({title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
 	});
 
 	// 添加
 	$(document).on("click", "#add", function() {
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "添加出口合同",
-			area : [ "70%", "65%" ],
-			content : "../../pages/hetong/chukou/add.html"
-		});
+		openLayer({title:"添加出口合同",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/add.html"});
 	});
 
 	// 修改
@@ -166,52 +154,22 @@ $(function() {
 
 	// 审核
 	$(document).on('click', '#shenhe', function() {
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "供货商审核",
-			area : [ "40%", "40%" ],
-			content : "../../pages/ruzhu/shenhe.html"
-		});
-
+		openLayer({title:"供货商审核",area:[ "40%", "40%" ],url:"../../pages/ruzhu/shenhe.html"});
 	});
 	
 	//import
 	$(document).on('click', '#import', function() {
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "导入文件",
-			area : [ "60%", "60%" ],
-			content : "../../pages/include/import.html"
-		});
-
+		openLayer({title:"导入文件",area:[ "60%", "60%" ],url:"../../pages/include/import.html"});
 	});
 	
 	//查看货物清单
 	$(document).on('click', '.searchBtn', function() {
-		console.log($(this).attr("id"));
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "货物清单",
-			area : [ "80%", "80%" ],
-			content : "../../pages/hetong/chukou/goods.html"
-		});
-
+		openLayer({title:"货物清单",area:[ "80%", "80%" ],url:"../../pages/hetong/chukou/goods.html"});
 	});
 	
 	//查看关联信息
 	$(document).on('click', '.glBtn', function() {
-		console.log($(this).attr("id"));
-		parent.layer.open({
-			type : 2,
-			skin : 'myLayui', // 样式类名
-			title : "关联信息",
-			area : [ "60%", "60%" ],
-			content : "../../pages/hetong/chukou/guanlian.html"
-		});
-
+		openLayer({title:"关联信息",area:["60%","60%"],url:"../../pages/hetong/chukou/guanlian.html"});
 	});
 	
 	/*
@@ -229,4 +187,19 @@ $(function() {
 		}
 		return '<a href="javascript:;" id="'+row.id+'" class="text-info glBtn"><i title="'+title+'" class="fa '+className+'"></i></a>';
 	}
+	
+	//打开新窗口
+	function openLayer(settings){
+		
+		parent.layer.open({
+			type : settings.type ? settings.type : 2,
+			move : false,
+			skin : settings.skin ? settings.skin : 'myLayui', // 样式类名
+			title : settings.title,
+			area : settings.area,
+			content : settings.url
+		});
+		
+	}
+	
 });

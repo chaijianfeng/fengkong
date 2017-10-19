@@ -10,8 +10,8 @@ $(function(){
 	var config = {
 		container:'info',
 		columns:[
-			{col:"id",label:"合同编号",type:"text",validate:{required:true,minlength:4,commonChar:true}},
-			{col:"name",label:"合同名称",type:"text",validate:{required:true,maxlength:4,commonChar:true}},
+			{col:"id",label:"合同编号",type:"text",validate:{required:true,strEQInput:"name"}},
+			{col:"name",label:"合同名称",type:"text",validate:{required:true,maxlength:4}},
 			{col:"bus",label:"业务类型",type:"select",validate:{required:true},
 				options:[
 					{
@@ -112,8 +112,8 @@ $(function(){
 			{col:"fhdwdm",label:"发货单位代码",type:"text" },
 			{col:"fhdw",label:"发货单位",type:"text" },
 			{col:"js",label:"件数",type:"text" },
-			{col:"gqqssj",label:"工期起始时间",type:"text",dateTime:true },
-			{col:"gqjssj",label:"工期结束时间",type:"text",dateTime:true },
+			{col:"gqqssj",label:"工期起始时间",type:"date",validate:{dateLTInput:"gqjssj"} },
+			{col:"gqjssj",label:"工期结束时间",type:"date",validate:{dateGTInput:"gqqssj"}  },
 			{col:"gq",label:"工期（天）",type:"text" }
 			
 		]
