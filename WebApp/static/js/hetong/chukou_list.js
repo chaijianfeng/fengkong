@@ -54,7 +54,7 @@ $(function() {
 	}
 
 	];
-	var data = [ {
+	/*var data = [ {
 		"id" : "HT1818991184283",
 		"name" : "办公用品出口合同",
 		"qdDate" : "2015-11-07",
@@ -82,27 +82,30 @@ $(function() {
 		"cjfs" : "CIF",
 		"ysfs" : "航空运输",
 		"ckka" : "北京机场"
-	} ];
-
+	} ];*/
+	
+	
 	$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',
-		toolbar : '.myBtn',
+		toolbar : '#optionsBtn',
 		toolbarAlign : 'right',
 		// buttonsAlign : 'left',
 		showExport : true,
 		exportTypes : [ 'txt', 'csv', 'excel' ],
 		pageNumber : 1,
-		pageSize : 10,
+		pageSize : 1,
 		pageList : [ 10, 20, 50 ],
 		height : $('body').height() - 32,
 		pagination : true,
 		columns : columns,
-		data : data
+		sidePagination : "server",//分页从服务器加载
+		ajax : queryList, //请求后台函数
+		queryParams : setParams 
+		
 	});
-	
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
@@ -193,13 +196,36 @@ $(function() {
 		
 		parent.layer.open({
 			type : settings.type ? settings.type : 2,
-			move : false,
-			skin : settings.skin ? settings.skin : 'myLayui', // 样式类名
-			title : settings.title,
-			area : settings.area,
+			move : settings.move ? settings.move : false,
+			skin : settings.skin ? settings.skin : "myLayui", // 样式类名
+			title : settings.title ? settings.title : "窗口",
+			area : settings.area ? settings.area : ["60%","60%"],
 			content : settings.url
 		});
 		
+	}
+	
+	//后台查询数据
+	function queryList(params){
+		
+		$.post("../../../data/data1.json",params.data,function(data){
+			setTimeout(function () {
+				params.success({
+	                total: 100,
+	                rows: data
+	            });
+	        }, 30);
+		},'json');
+	}
+	//设置参数
+	function setParams(params){
+		return  {
+			pageSize : this.pageSize,
+			pageNumber : this.pageNumber,
+			searchText : this.searchText,
+			sortName : this.sortName,
+			sortOrder : this.sortOrder
+		};
 	}
 	
 });
