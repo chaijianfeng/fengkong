@@ -86,7 +86,7 @@ $(document).ready(function(){
 			skin : 'myLayui', // 样式类名
 			title : "供货商信息",
 			area : [ "80%", "80%" ],
-			content : "../../pages/guandan/guandan/detail.html"
+			content : "../../pages/yujing/shenbao/detail.html"
 		});
 	});
 	

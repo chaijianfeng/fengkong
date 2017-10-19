@@ -84,7 +84,7 @@ $(document).ready(function(){
 		parent.layer.open({
 			type : 2,
 			skin : 'myLayui', // 样式类名
-			title : "供货商信息",
+			title : "预关单信息",
 			area : [ "80%", "80%" ],
 			content : "../../pages/yujing/shouhui/detail.html"
 		});
