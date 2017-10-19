@@ -10,8 +10,8 @@ $(function(){
 	var obj = {
 			container:'info',
 			columns:[
-				{col:"id",label:"协议编号",type:"text",required:true,},
-				{col:"name",label:"协议名称",type:"text",required:true,},
+				{col:"id",label:"协议编号",type:"text",required:true},
+				{col:"name",label:"协议名称",type:"text",required:true},
 				{col:"qdDate",label:"签约日期",type:"text",required:true,dateTime:true},
 				{col:"sxDate",label:"生效日期",type:"text",required:true,dateTime:true},
 				{col:"bz",label:"币制",type:"select",required:true,

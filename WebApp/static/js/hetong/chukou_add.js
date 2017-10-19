@@ -10,9 +10,9 @@ $(function(){
 	var config = {
 		container:'info',
 		columns:[
-			{col:"id",label:"合同编号",type:"text",validate:{required:true,numLEInput:"name"}},
-			{col:"name",label:"合同名称",type:"text",validate:{required:true,maxlength:4}},
-			{col:"bus",label:"业务类型",type:"select",validate:{required:true},
+			{col:"id",label:"合同编号",type:"text",validate:{required:true,roughDate:true}},
+			{col:"name",label:"合同名称",type:"text",validate:{required:true,roughDate:true}},
+			{col:"bus",label:"业务类型",type:"select",validate:{required:true,roughDate:true},
 				options:[
 					{
 						value:"一般贸易",text:"一般贸易"

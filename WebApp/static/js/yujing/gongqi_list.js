@@ -89,7 +89,7 @@ $(document).ready(function(){
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "供货商信息",
-			area : [ "70%", "65%" ],
+			area : [ "80%", "80%" ],
 			content : "../../pages/yujing/gongqi/detail.html"
 		});
 	});
