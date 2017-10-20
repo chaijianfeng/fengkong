@@ -98,7 +98,7 @@ $(function() {
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "任务详情",
-			area : [ "70%", "65%" ],
+			area : [ "80%", "80%" ],
 			content : "../../pages/liucheng/detail.html"
 		});
 	});

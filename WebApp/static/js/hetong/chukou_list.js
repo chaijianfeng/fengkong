@@ -103,8 +103,7 @@ $(function() {
 		columns : columns,
 		sidePagination : "server",//分页从服务器加载
 		ajax : queryList, //请求后台函数
-		queryParams : setParams 
-		
+		queryParams : setParams
 	});
 	
 	// 查看详情

@@ -92,6 +92,7 @@ $(function() {
 		pageList : [ 10, 20, 50 ],
 		height : $('body').height() - 32,
 		pagination : true,
+		sidePagination: "server",
 		columns : columns,
 		data : data
 	});
@@ -168,7 +169,6 @@ $(function() {
 		});
 
 	});
-	
 	//import
 	$(document).on('click', '#import', function() {
 		parent.layer.open({
