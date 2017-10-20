@@ -10,9 +10,9 @@ $(function(){
 	var config = {
 		container:'info',
 		columns:[
-			{col:"id",label:"合同编号",type:"text",validate:{required:true,roughDate:true}},
-			{col:"name",label:"合同名称",type:"text",validate:{required:true,roughDate:true}},
-			{col:"bus",label:"业务类型",type:"select",validate:{required:true,roughDate:true},
+			{col:"id",label:"合同编号",type:"text",validate:{required:true}},
+			{col:"name",label:"合同名称",type:"text",validate:{required:true}},
+			{col:"bus",label:"业务类型",type:"select",validate:{required:true},
 				options:[
 					{
 						value:"一般贸易",text:"一般贸易"
@@ -22,7 +22,7 @@ $(function(){
 					}
 				]
 			},
-			{col:"qdDate",label:"签约日期",type:"date",validate:{required:true,strictDate:true,dateEQInput:"sxDate"}},
+			{col:"qdDate",label:"签约日期",type:"date",validate:{required:true,strictDate:true}},
 			{col:"sxDate",label:"生效日期",type:"date",validate:{required:true,dateGTInput:"qdDate"}},
 			{col:"bz",label:"币制",type:"select",required:true,
 				options:[
