@@ -24,88 +24,29 @@
 		<link rel="stylesheet" href="../../../static/css/comm.css"/><!-- 自定义公用css -->
 		<link rel="stylesheet" href="../../../static/plugins/layer-v3.1.0/theme/default/layer.css"/><!-- 弹窗 -->
 		<script type="text/javascript" src="../../../static/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript" src="../../../static/js/yujing/gongqi_detail.js"></script><!-- 本页专用 -->
 	</head>
 	<body>
 		<!-- 任务详情 -->
 	<div class="layerBodyBg">
-		<div class="tab-content">
-			<form class="form-horizontal zzxx">
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						<span class="text-danger">*</span>供货商名称:
-					</label>
-					<div class="col-xs-6">
-						<p>创立信电子厂</p>
-					</div>
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#info"
+					aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+				<li role="presentation"><a href="#history"
+					aria-controls="messages" role="tab" data-toggle="tab">历史记录</a></li>
+			</ul>
+			<div class="tab-content">
+				<!-- 基本信息 -->
+				<div role="tabpanel" class="tab-pane active" id="info">
 				</div>
-
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						<span class="text-danger">*</span>纳税人识别号:
-					</label>
-					<div class="col-xs-6">
-						<p>2017923099</p>
-					</div>
+				<!-- 基本信息 -->
+				<!-- 历史记录 -->
+				<div role="tabpanel" class="tab-pane" id="history">
+					<table id="historyList" class="myTable table-condensed"></table>
 				</div>
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						企业类型:
-					</label>
-					<div class="col-xs-6">
-						<p>生产</p>
-					</div>
-				</div>
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						<span class="text-danger">*</span>纳税信用等级:
-					</label>
-					<div class="col-xs-6">
-						<p>C</p>
-					</div>
-				</div>
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						税局信用等级:
-					</label>
-					<div class="col-xs-6">
-						<p>C</p>
-					</div>
-				</div>
-				<div class="form-group col-xs-4">
-					<label class="col-xs-6 text-right">
-						内部评估等级:
-					</label>
-					<div class="col-xs-6">
-						<p>黑</p>
-					</div>
-				</div>
-			</form>
-			<div class="panel-body" style="padding:0; height:180px;">
-				<table class="table table-striped  table-condensed" style="margin-bottom:0;">
-					<thead>
-						<tr>
-							<th >供货商名称</th>
-							<th >纳税人识别好</th>
-							<th >企业类型</th>
-							<th >纳税信用等级·</th>
-							<th >内部评估等级</th>
-							<th >税局信用等级</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td >创立信电子厂</td>
-							<td >201738127837127</td>
-							<td >生产</td>
-							<th >黑</th>
-							<td >黑</td>
-							<td >黑</td>
-						</tr>
-					</tbody>
-				</table>
+				<!-- 历史记录 -->
 			</div>
 		</div>
-	</div>
 		<!-- 任务详情 -->
 	</body>
 </html>
