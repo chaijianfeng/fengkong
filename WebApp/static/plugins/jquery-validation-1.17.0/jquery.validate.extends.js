@@ -247,16 +247,16 @@ jQuery.validator.addMethod("strongRoughNum",function(value,element){
 */
 jQuery.validator.addMethod("strictPositiveNum",function(value,element){
 	return this.optional(element) || (/^(\+?\d+(\.\d+)?)$/.test(value));
-},"只能是合法正数数字");
+},"只能是合法正数");
 
 /*
 @athor:周小建
 @time:2007-10-15
-@description:只能是严格数字，可以有正号、小数点，但限制了小数点的个数只能为1位置只能为中间
+@description:只能是严格数字，可以有负号、小数点，但限制了小数点的个数只能为1位置只能为中间
 */
 jQuery.validator.addMethod("strictNegativeNum",function(value,element){
 	return this.optional(element) || (/^(-?\d+(\.\d+)?)$/.test(value));
-},"只能是合法数字");
+},"只能是合法负数");
 
 /*
 @athor:周小建
@@ -618,6 +618,42 @@ jQuery.validator.addMethod("strLEVal",function(value,element,param){
 /*
 @athor:周小建
 @time:2007-10-15
+@description:包含但不等于某值
+*/
+jQuery.validator.addMethod("strGMVal",function(value,element,param){
+	return $.trim(value) != $.trim(param) && $.trim(value).indexOf($.trim(param))>=0;
+},$.validator.format("应包含但不等{0}"));
+
+/*
+@athor:周小建
+@time:2007-10-15
+@description:包含且可等某值
+*/
+jQuery.validator.addMethod("strGHVal",function(value,element,param){
+	return $.trim(value).indexOf($.trim(param))>=0;
+},$.validator.format("应包含且可等{0}"));
+
+/*
+@athor:周小建
+@time:2007-10-15
+@description:被包含但不等于某值
+*/
+jQuery.validator.addMethod("strLMVal",function(value,element,param){
+	return $.trim(value) != $.trim(param) && $.trim(param).indexOf($.trim(value))>=0;
+},$.validator.format("应被{0}包含但不等"));
+
+/*
+@athor:周小建
+@time:2007-10-15
+@description:被包含且可等某值
+*/
+jQuery.validator.addMethod("strLHVal",function(value,element,param){
+	return $.trim(param).indexOf($.trim(value))>=0;
+},$.validator.format("应被包含{0}且可等"));
+
+/*
+@athor:周小建
+@time:2007-10-15
 @description:通过名称获取输入框
 */
 function getInputByName(name){
@@ -677,12 +713,12 @@ function commonCompare(value,element,param,method){
 	if(!isVal){//输入框
 		//return value == $(param).val();
 		var anotherName=null,anotherDataVal=null;
-		var isMulti = typeof param=="array" && param.length>1;
+		var isMulti = $.isArray(param) && param.length>1;
 		if(isMulti){
 			anotherName = param[0];
 			param = param[1];
 		}else{
-			if(typeof param=="array" && param.length==1) param = param[0];
+			if($.isArray(param) && param.length==1) param = param[0];
 			anotherName=param;
 			//var $anotherDataInput = $("#" + param);
 			//var anotherDataVal = $anotherDataInput.val();
@@ -835,22 +871,23 @@ function commonCompare(value,element,param,method){
 					break;
 				case "GM"://包含但不等
 					if(isVal)result = value!=param && value.indexOf(param)>=0;
-					else if(isMulti && kind!="date") value!=anotherDataVal && value.indexOf(anotherDataVal)>=0 && vlaue.replace(anotherDataVal,"").indexOf(param)>=0;
+					else if(isMulti && kind!="date") result = value!=anotherDataVal && value.indexOf(anotherDataVal)>=0 && value.replace(anotherDataVal,"").indexOf(param)>=0;
 					else result = value!=anotherDataVal && value.indexOf(anotherDataVal)>=0;
 					break;
 				case "GH"://包含且可等
 					if(isVal)result =  value.indexOf(param)>=0;
-					else if(isMulti && kind!="date") value.indexOf(anotherDataVal)>=0 && vlaue.replace(anotherDataVal,"").indexOf(param)>=0;
+					else if(isMulti && kind!="date") result = value.indexOf(anotherDataVal)>=0 && value.replace(anotherDataVal,"").indexOf(param)>=0;
 					else result = value.indexOf(anotherDataVal)>=0;
 					break;
 				case "LM"://被包含但不等
 					if(isVal)result = value!=param && param.indexOf(value)>=0;
-					else if(isMulti && kind!="date") value!=anotherDataVal && anotherDataVal.indexOf(value)>=0 && anotherDataVal.replace(vlaue,"").indexOf(param)>=0;
+					//else if(isMulti && kind!="date") result = anotherDataVal!=value.replace(param,"") && anotherDataVal.indexOf(value.replace(param,""))>=0;
+					else if(isMulti && kind!="date") result = anotherDataVal!=value.replace(param,"") && anotherDataVal.indexOf(value.replace(param,""))>=0 && value.indexOf(param) >= 0;
 					else result = value!=anotherDataVal && anotherDataVal.indexOf(value)>=0;
 					break;
 				case "LH"://被包含且可等
 					if(isVal)result = param.indexOf(value)>=0;
-					else if(isMulti && kind!="date") anotherDataVal.indexOf(value)>=0 && anotherDataVal.replace(vlaue,"").indexOf(param)>=0;
+					else if(isMulti && kind!="date") result = anotherDataVal.indexOf(value.replace(param,""))>=0 && value.indexOf(param) >= 0;
 					else result = anotherDataVal.indexOf(value)>=0;
 					break;
 				default:
@@ -1145,7 +1182,7 @@ jQuery.validator.addMethod("numEQVal",function(value,element,param){
 /*
 @athor:周小建
 @time:2007-10-15
-@description:数字等于某值
+@description:数字不等于某值
 */
 jQuery.validator.addMethod("numNEVal",function(value,element,param){
 	/*

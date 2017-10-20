@@ -54,8 +54,8 @@ $(function() {
 	}
 
 	];
-	/*var data = [ {
-		"id" : "HT1818991184283",
+	/*var datas = [ {
+		"id" : "HT1818991181111",
 		"name" : "办公用品出口合同",
 		"qdDate" : "2015-11-07",
 		"goufang" : "德国Elvira公司",
@@ -69,7 +69,7 @@ $(function() {
 		"ysfs" : "水路运输",
 		"ckka" : "天津新港"
 	}, {
-		"id" : "HT1818991184284",
+		"id" : "HT1818991182222",
 		"name" : "电子配件出口合同",
 		"qdDate" : "2015-04-11",
 		"goufang" : "美国Kristen公司",
@@ -89,31 +89,93 @@ $(function() {
 		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
-		searchAlign : 'left',
+		//searchAlign : 'left',
 		toolbar : '#optionsBtn',
-		toolbarAlign : 'right',
+		toolbarAlign : 'left',
 		// buttonsAlign : 'left',
-		showExport : true,
-		exportTypes : [ 'txt', 'csv', 'excel' ],
+		//showExport : true,
+		//exportTypes : [ 'txt', 'csv', 'excel' ],
+		uniqueId : "id",
 		pageNumber : 1,
-		pageSize : 1,
+		pageSize : 10,
 		pageList : [ 10, 20, 50 ],
-		height : $('body').height() - 32,
+		//height : $('body').height(),
 		pagination : true,
 		columns : columns,
 		sidePagination : "server",//分页从服务器加载
 		ajax : queryList, //请求后台函数
-		queryParams : setParams
+		queryParams : getParams
 	});
+	
+	/*$table.bootstrapTable('destroy').bootstrapTable({
+		classes : 'table table-hover', // 添加样式名称
+		striped : true, // 隔行变色
+		toolbar : '#optionsBtn',
+		toolbarAlign : 'left',
+		//height : $('body').height(),
+		pageSize : 1,
+		columns : columns,
+		method: "get",
+		url : "../../../data/data1.json",
+		sidePagination : "server",
+		queryParams : getParams,
+		pagination : true
+		//search : true, // 显示搜索工具条
+		//searchAlign : 'left'
+		
+	});*/
+
+	//表头查询
+	$(document).on("click","#thSearchBtn",function(){
+		//queryData("../../../data/data2.json");
+		queryList();
+	});
+	
+	//1.初始化后台查询数据
+	function queryList(params,url){
+		url = url ? url : "../../../data/data1.json";
+		$.get(url,params.data,function(data){
+			setTimeout(function(){
+				params.success({
+					total : data.total,
+					rows : data.rows
+				});
+			},30)
+		},"json");
+	}
+	
+	//2.初始查询
+	//queryData("../../../data/data1.json");
+	
+	//查询数据
+	function queryData(url){
+		$table.bootstrapTable('destroy').bootstrapTable({
+			classes : 'table table-hover', // 添加样式名称
+			striped : true, // 隔行变色
+			toolbar : '#optionsBtn',
+			toolbarAlign : 'left',
+			//height : $('body').height(),
+			pageSize : 1,
+			columns : columns,
+			method: "get",
+			url : url,
+			sidePagination : "server",
+			queryParams : getParams,
+			pagination : true
+			//search : true, // 显示搜索工具条
+			//searchAlign : 'left'
+		});
+	}
+	
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		openLayer({title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
+		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
 	});
 
 	// 添加
 	$(document).on("click", "#add", function() {
-		openLayer({title:"添加出口合同",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/add.html"});
+		openLayer({title:"添加出口合同",area:[ "80%", "90%" ],url:"../../pages/hetong/chukou/add.html"});
 	});
 
 	// 修改
@@ -127,6 +189,7 @@ $(function() {
 				area : [ "70%", "65%" ],
 				content : "../../pages/hetong/chukou/add.html",
 				success : function(layero, index) {
+					console.log(selectRows[0]);
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
 					setFormData('addInfoForm',currentFrame, selectRows[0]);
 				}
@@ -149,6 +212,8 @@ $(function() {
 				field : 'id',
 				values : selectRows
 			});
+			
+			
 			parent.layer.msg('删除成功!');
 		});
 
@@ -173,6 +238,7 @@ $(function() {
 	$(document).on('click', '.glBtn', function() {
 		openLayer({title:"关联信息",area:["60%","60%"],url:"../../pages/hetong/chukou/guanlian.html"});
 	});
+	
 	
 	/*
 	 * 格式化关联状态
@@ -199,32 +265,28 @@ $(function() {
 			skin : settings.skin ? settings.skin : "myLayui", // 样式类名
 			title : settings.title ? settings.title : "窗口",
 			area : settings.area ? settings.area : ["60%","60%"],
-			content : settings.url
+			content : settings.url,
+			success : function(layero,index){
+				var currentFrame = layero.find("iframe")[0].contentWindow.document;
+				$("#uuid",currentFrame).val(settings.id);
+			}
 		});
 		
 	}
 	
-	//后台查询数据
-	function queryList(params){
-		
-		$.post("../../../data/data1.json",params.data,function(data){
-			setTimeout(function () {
-				params.success({
-	                total: 100,
-	                rows: data
-	            });
-	        }, 30);
-		},'json');
-	}
-	//设置参数
-	function setParams(params){
-		return  {
-			pageSize : this.pageSize,
-			pageNumber : this.pageNumber,
-			searchText : this.searchText,
-			sortName : this.sortName,
-			sortOrder : this.sortOrder
+	
+	//获取参数
+	function getParams(params){
+		params = {
+				pageSize : this.pageSize,
+				pageNumber : this.pageNumber,
+				sortName : this.sortName,
+				sortOrder : this.sortOrder,	
 		};
+		$.each( $("#thSearchForm :input[name]"),function(i,e){
+			params[$(e).attr("name")] = $(e).val();
+		});
+		return params;
 	}
 	
 });
