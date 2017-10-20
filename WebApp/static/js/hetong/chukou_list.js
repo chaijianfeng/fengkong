@@ -85,7 +85,7 @@ $(function() {
 	} ];*/
 	
 	
-	$table.bootstrapTable('destroy').bootstrapTable({
+	/*$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
@@ -105,7 +105,7 @@ $(function() {
 		sidePagination : "server",//分页从服务器加载
 		ajax : queryList, //请求后台函数
 		queryParams : getParams
-	});
+	});*/
 	
 	/*$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover', // 添加样式名称
@@ -127,8 +127,8 @@ $(function() {
 
 	//表头查询
 	$(document).on("click","#thSearchBtn",function(){
-		//queryData("../../../data/data2.json");
-		queryList();
+		queryData("../../../data/data2.json");
+		//queryList();
 	});
 	
 	//1.初始化后台查询数据
@@ -145,7 +145,7 @@ $(function() {
 	}
 	
 	//2.初始查询
-	//queryData("../../../data/data1.json");
+	queryData("../../../data/data1.json");
 	
 	//查询数据
 	function queryData(url){
