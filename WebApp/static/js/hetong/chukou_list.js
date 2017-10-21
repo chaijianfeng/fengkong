@@ -170,7 +170,7 @@ $(function() {
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../../pages/hetong/chukou/detail.html"});
+		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
 	});
 
 	// 添加
@@ -266,7 +266,7 @@ $(function() {
 			content : settings.url,
 			offset : 'lt',
 			success : function(layero,index){
-				console.log(layero);
+				//console.log(layero);
 				var currentFrame = layero.find("iframe")[0].contentWindow.document;
 				$("#uuid",currentFrame).val(settings.id);
 			}
@@ -287,5 +287,21 @@ $(function() {
 		});
 		return params;
 	}
+	
+	//高级查询
+	$("#advancedSearch").on("click",function(){
+		parent.layer.open({
+			type : 2,
+			title : "高级查询",
+			skin : "myLayui",
+			area : ["40%","55%"],
+			content : "../../pages/hetong/chukou/advancedSearch.html"
+		});
+	});
+	
+	//更多
+	$("#other").on('click',function(){
+		$(".searchBox").animate({height:"75px"},200);
+	});
 	
 });

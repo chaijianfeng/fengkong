@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<!--Bootstrap 不支持 IE 古老的兼容模式。为了让 IE 浏览器运行最新的渲染模式建议添加一下meta-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--自适应设备宽度-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>外贸综合服务企业出口退税风险管控信息系统-新增出口合同-高级查询</title>
+		<meta name="Keywords" content="外贸综合服务企业出口退税风险管控信息系统">
+		<meta name="description" content="外贸综合服务企业出口退税风险管控信息系统">
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-3.3.7/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="../../../static/plugins/jquery-2.1.1/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../../static/plugins/font-awesome-4.7.0/css/font-awesome.css"/><!-- icon字体图标 -->
+		<link rel="stylesheet" href="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.css"/><!-- 表格 -->
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/bootstrap-table.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js"></script><!-- 表格导出 -->
+		<script type="text/javascript" src="../../../static/plugins/tableExport.jquery.plugin/tableExport.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js"></script>
+		
+		<script type="text/javascript" src="../../../static/plugins/jquery-validation-1.17.0/jquery.validate.js"></script>
+		<script type="text/javascript" src="../../../static/plugins/jquery-validation-1.17.0/jquery.validate.extends.js"></script>
+
+		<link rel="stylesheet" href="../../../static/plugins/poshytip-1.2/tip-yellowsimple/tip-yellowsimple.css" type="text/css"/>
+		<script type="text/javascript" src="../../../static/plugins/poshytip-1.2/jquery.poshytip.js"></script>
+		
+		<script type="text/javascript" src="../../../static/js/common.js"></script><!-- 自定义公用js -->
+		<link rel="stylesheet" href="../../../static/css/comm.css"/><!-- 自定义公用css -->
+		<link rel="stylesheet" href="../../../static/plugins/layer-v3.1.0/theme/default/layer.css"/><!-- 弹窗 -->
+		<script type="text/javascript" src="../../../static/plugins/layer-v3.1.0/layer.js"></script>
+		
+		<link rel="stylesheet" href="../../../static/css/hetong.css"/><!-- 合同专用 -->
+		<style> 
+			#thSearchForm {}
+			#thSearchForm label{ padding-top:7px; text-align:right; }
+			#thSearchForm .pl5{ padding-left:5px;}
+			#thSearchForm .pr5{ padding-right:5px;}
+		</style>
+	</head>
+<body>
+	<!-- 出口合同详情 -->
+	<div class="layerBodyBg">
+		<!-- 高级查询 -->
+		<form class="form-horizontal" id="thSearchForm">
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">合同编号:</label>
+					<div class="col-xs-7 pl5">
+						<input type="text" name="id" class="form-control input-sm" />
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">合同名称:</label>
+					<div class="col-xs-7 pl5">
+						<input type="text" name="name" class="form-control input-sm" />
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">签订日期:</label>
+					<div class="col-xs-7 pl5">
+						<input type="text" class="form-control input-sm" onclick="WdatePicker();"/>
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">出口国别:</label>
+					<div class="col-xs-7 pl5">
+						<select class="form-control input-sm" name="guobie">
+							<option value="英国">英国</option>
+							<option value="美国">美国</option>
+							<option value="日本">日本</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">贸易方式:</label>
+					<div class="col-xs-7 pl5">
+						<select class="form-control input-sm" name="myfs">
+							<option value="一般贸易">一般贸易</option>
+							<option value="承包工程">承包工程</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">审核状态:</label>
+					<div class="col-xs-7 pl5" name="shStatus">
+						<select class="form-control input-sm">
+							<option value="已通过">已通过</option>
+							<option value="未通过">未通过</option>
+							<option value="未审核">未审核</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label col-xs-5 pr5">关联状态:</label>
+					<div class="col-xs-7 pl5">
+						<select class="form-control input-sm" name="glStatus">
+							<option value="已关联">已关联</option>
+							<option value="未关联">未关联</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group col-xs-12">
+					<label class="control-label col-xs-2 pr5">签订日期:</label>
+					<div class="col-xs-4" style="padding-left:5px;">
+						<input type="text" name="qdrqks" class="form-control input-sm" onclick="WdatePicker();" />
+					</div>
+					<i class="glyphicon glyphicon-minus pull-left" style="positon:relative; top:6px;color:#666;"></i>
+					<div class="col-xs-4">
+						<input type="text" name="qdrqjs" class="form-control input-sm" onclick="WdatePicker();" />
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<p class="text-center" style="margin-top:15px;">
+						<button class="btn btn-info btn-xs" id="thSearchBtn" type="button">查询</button>
+						<button class="btn btn-info btn-xs" type="reset" style="margin-left:20px;">重置</button>
+					</p>
+				</div>
+			</form>
+			<!-- 高级查询 -->
+	</div>
+	
+</body>
+</html>

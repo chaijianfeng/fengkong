@@ -16,3 +16,6 @@
 #info .form-group { margin-left:0; margin-right:0; }
 /*合同签订双方*/
 #link .ours { background:#f4f4f4; padding:15px;}
+
+/*高级搜索*/
+.searchBox { height:32px; overflow:hidden;}
