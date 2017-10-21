@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="../../static/css/comm.css"/><!-- 自定义公用css -->
 		<link rel="stylesheet" href="../../static/plugins/layer-v3.1.0/theme/default/layer.css"/><!-- 弹窗 -->
 		<script type="text/javascript" src="../../static/plugins/layer-v3.1.0/layer.js"></script>
+		<script type="text/javascript" src="../../static/plugins/bootstrap-table-1.11.1/extensions/toolbar/bootstrap-table-toolbar.js"></script>
 		<!-- <link rel="stylesheet" href="../../static/css/ruzhu.css"/> -->
 		<script type="text/javascript" src="../../static/js/ruzhu/list.js"></script><!-- 本页专用 -->
 	</head>
@@ -31,6 +32,72 @@
 		<div class="myContainer">
 			<div class="tableBox">
 				<!-- 表格头部操作按钮 -->
+				<div class="panel panel-info" id="commSearch">
+		<div class="panel-heading" style="padding:7px 15px;">
+			<a href="#collapseOne_ruzhu" data-toggle="collapse" class="center-block">查询<i class="pull-right glyphicon glyphicon-menu-down"></i></a>
+		</div>
+		<div id="collapseOne_ruzhu" class="panel-collapse collapse in">
+			<div class="panel-body" style="padding:15px 0 0 0">
+				<form class="form-horizontal">
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">纳税人识别号:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-sm" />
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">供货商名称:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-sm" />
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">企业类型:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="生产">生产</option>
+								<option value="外贸">外贸</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">纳税信用等级:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">税局信用等级:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="黑">黑</option>
+								<option value="白">白</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label col-sm-6 text-align:right">内部评估等级:</label>
+						<div class="col-sm-6">
+							<select class="form-control input-sm">
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<p class="text-right" style="height:0;margin-bottom:0"><button style="position:relative;top:-54px;" class="btn btn-info btn-sm" type="button">查询</button></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 				<div class="myBtn">
 					<a id="import" href="javascript:;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-import"></i>导入</a>
 					<a id="add" href="javascript:;" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-plus"></i>添加</a>
@@ -40,7 +107,11 @@
 				</div>
 				<!-- 表格头部操作按钮 -->
 				<!-- 表格数据 -->
-				<table id="table" class="myTable table-condensed"></table>
+				<table id="table" class="myTable table-condensed"
+				data-advanced-search="true"
+				data-id-table="advancedTable">
+					
+				</table>
 				<!-- 表格数据 -->
 			</div>
 		</div>

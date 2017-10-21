@@ -62,7 +62,7 @@ $(function() {
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "备案详情",
-			area : [ "80%", "80%" ],
+			area : [ "60%", "76%" ],
 			content : "../../pages/system/beian/detail.html"
 		});
 	});
@@ -72,7 +72,7 @@ $(function() {
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "导入文件",
-			area : [ "60%", "60%" ],
+			area : [ "80%", "80%" ],
 			content : "../../pages/include/import.html"
 		});
 

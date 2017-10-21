@@ -50,6 +50,7 @@ $(function() {
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',
+		searchable:true,
 		toolbar : '.myBtn',
 		toolbarAlign : 'right',
 		// buttonsAlign : 'left',

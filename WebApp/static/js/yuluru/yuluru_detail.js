@@ -41,9 +41,6 @@ $(function() {
 		name : "征免性质",
 		value : ""
 	}, {
-		name : "提运单号",
-		value : ""
-	}, {
 		name : "许可证号",
 		value : ""
 	}, {
@@ -54,6 +51,9 @@ $(function() {
 		value : "波士顿"
 	}, {
 		name : "境内货源地",
+		value : ""
+	}, {
+		name : "批准文号",
 		value : "PZX63D832"
 	}, {
 		name : "成交方式",

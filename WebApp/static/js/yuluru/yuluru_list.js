@@ -77,7 +77,7 @@ $(function() {
 			type : 2,
 			skin : 'myLayui', // 样式类名
 			title : "预录入报关单详情",
-			area : [ "70%", "65%" ],
+			area : [ "80%", "80%" ],
 			content : "../../pages/guandan/yuluru/detail.html"
 		});
 	});

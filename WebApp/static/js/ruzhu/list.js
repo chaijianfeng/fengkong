@@ -10,7 +10,8 @@ $(document).ready(function(){
 			title : '供货商名称',
 			field : 'name',
 			align:'center',
-			formatter : formatterLookInfo
+			formatter : formatterLookInfo,
+			sortable: true
 		}, 
 		{
 			title : '纳税人识别号',
@@ -45,35 +46,7 @@ $(document).ready(function(){
 		} 
 	];
 
-	var data = [ 
-		{
-			"name" : "创立信电子厂",
-			"nsrsbh" : "913201059901675",
-			"type" : "生产",
-			"nsdj" : "B",
-			"pgdj" : "B",
-			"xydj" : "白",
-			"shstate" : "1"
-		}, 
-		{
-			"name" : "某集团工程有限公司",
-			"nsrsbh" : "913201059901134",
-			"type" : "生产",
-			"nsdj" : "C",
-			"pgdj" : "C",
-			"xydj" : "黑",
-			"shstate" : "0"
-		}, 
-		{
-			"name" : "北京某某电子厂",
-			"nsrsbh" : "913201059901422",
-			"type" : "生产",
-			"nsdj" : "A",
-			"pgdj" : "A",
-			"xydj" : "白",
-			"shstate" : "1"
-		} 
-	];
+	var data = "../../data/gonghuo2.json";
 
 	$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover', // 添加样式名称
@@ -81,7 +54,7 @@ $(document).ready(function(){
 		search : true, // 显示搜索工具条
 		searchAlign : 'left',
 		toolbar : '.myBtn',
-		toolbarAlign : 'right',
+		toolbarAlign : 'left',
 		showExport : true,
 		exportTypes : [ 'txt', 'csv', 'excel' ],
 		pageNumber : 1,
@@ -90,7 +63,11 @@ $(document).ready(function(){
 		height : $('body').height() - 32,
 		pagination : true,
 		columns : columns,
-		data : data
+		sidePagination: 'server',
+		ajax: query,
+		queryParams: setParams,
+		toggle: 'table',
+		url: data
 	});
 
 	// 查看详情
@@ -161,5 +138,24 @@ $(document).ready(function(){
 		});
 	});
 	
-	
+	function query(params){
+		
+		$.post("../../data/gonghuo2.json",params.data,function(data){
+			setTimeout(function () {
+				params.success({
+	                total: 100,
+	                rows: data
+	            });
+	        }, 30);
+		},'json');
+	}
+	function setParams(params){
+		return  {
+			pageSize : this.pageSize,
+			pageNumber : this.pageNumber,
+			searchText : this.searchText,
+			sortName : this.sortName,
+			sortOrder : this.sortOrder
+		};
+	}
 });
