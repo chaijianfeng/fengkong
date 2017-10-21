@@ -2,10 +2,10 @@ $(function(){
 	// 供货商信息
 	var infos = [ {
 		name : "供货商名称",
-		value : "创立信电子厂"
+		value : "name"
 	}, {
 		name : "企业海关代码",
-		value : "4016999090"
+		value : "id"
 	}, {
 		name : "纳税人识别号",
 		value : "913201059901675"
@@ -91,4 +91,29 @@ $(function(){
 		id : "fujian",
 		elems : files
 	});
+	
+	
+	//修改后处理详情
+	function initDetailInfo(settings){
+		if(settings){
+			var $row = $("<div class='row'><div>").appendTo($('#' + settings.id));
+			for(var i=0;i<settings.elems.length;i++){
+				$row.append('<div class="col-sm-4"><label class="col-sm-5 text-right">'
+					+ settings.elems[i].name + ':</label><div class="col-sm-7">' 
+					+ '<p id="'+settings.elems[i].value+'"></p></div></div>');
+			}
+		}
+	}
+	
+	$.ajax({
+		type : "post",
+		dataType : "json",
+		url : "../../data/detail.json",
+		success : function(j){
+			$.each(j,function(k,v){
+				$('#'+k).html(v);
+			});
+		}
+	});
+	
 })

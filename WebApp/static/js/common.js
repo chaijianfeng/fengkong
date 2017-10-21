@@ -22,7 +22,7 @@ function changeRightTabWidth(boxId){
  * 格式标题或者编号查看详情
  */
 function formatterLookInfo(value, row, index){
-	return '<a href="javascript:;" class="text-info lookInfo">' + value + '</a>';
+	return '<a href="javascript:;" id="'+row.id+'" class="text-info lookInfo">' + value + '</a>';
 }
 
 // 初始化表格信息
@@ -57,7 +57,7 @@ function initDetailInfo(settings){
 
 //设置表单数据
 function setFormData(id,curr,rowData){
-	$.each($("#"+id+":input",curr),function(i,e){
+	$.each($("#"+id+" :input",curr),function(i,e){
 		var name = $(e).attr('name');
 		if(name) $(e).val(rowData[name]);
 	});
@@ -686,13 +686,13 @@ function getRealValidateStandardConfig(config,$insertOrUpdateForm){
 			var valueParamSpecialKeys = ["min","max",
 			"strEQVal","strNEVal","strGTVal","strGEVal","strLTVal","strLEVal","strGMVal","strGHVal","strLMVal","strLHVal",
 			"lenEQVal","strNEVal","lenGTVal","lenGEVal","lenLTVal","lenLEVal",
-			"numEQVal","numGTVal","numGEVal","numLTVal","numLEVal",
-			"dateEQVal","dateGTVal","dateGEVal","dateLTVal","dateLEVal"];
+			"numEQVal","numNEVal","numGTVal","numGEVal","numLTVal","numLEVal",
+			"dateEQVal","dateNEVal","dateGTVal","dateGEVal","dateLTVal","dateLEVal"];
 			var inputParamSpecialKeys = ["equalTo",
-			"strEQInput","strGTInput","strGEInput","strLTInput","strLEInput",
-			"lenEQInput","lenGTInput","lenGEInput","lenLTInput","lenLEInput",
-			"numEQInput","numGTInput","numGEInput","numLTInput","numLEInput",
-			"dateEQInput","dateGTInput","dateGEInput","dateLTInput","dateLEInput"];
+			"strEQInput","strNEInput","strGTInput","strGEInput","strLTInput","strLEInput","strGMInput","strGHInput","strLMInput","strLHInput",
+			"lenEQInput","lenNEInput","lenGTInput","lenGEInput","lenLTInput","lenLEInput",
+			"numEQInput","numNEInput","numGTInput","numGEInput","numLTInput","numLEInput",
+			"dateEQInput","dateNEInput","dateGTInput","dateGEInput","dateLTInput","dateLEInput"];
 			function existsInArray(source,array){
 				if(source==null || typeof source!="string" || $.trim(source).length==0 || !$.isArray(array) && array.length==0) return false;
 				source = $.trim(source);

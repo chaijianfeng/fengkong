@@ -149,6 +149,10 @@ $(function() {
 			selectRows = selectRows.map(function(item) {
 				return item.id;
 			});
+			
+			//alert(selectRows.join(","));
+			//console.log(selectRows.join(","));
+			
 			$table.bootstrapTable('remove', {
 				field : 'id',
 				values : selectRows

@@ -136,5 +136,15 @@ $(function() {
 		id : "fujian",
 		elems : files
 	});
+	
+	var getVal = setInterval(function(){
+		var id = $("#uuid").val();
+		if(id){
+			console.log(id);
+			clearInterval(getVal);
+		}
+	});
+	
+	
 
 });

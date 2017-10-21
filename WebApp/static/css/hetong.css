@@ -4,3 +4,15 @@
 .guanLianBtnBox i { padding:0 7px;}
 .glQueRen{margin-top:50px;}
 .glQueRen button {margin:0 15px;}
+.layerForm .nav-tabs {}
+.layerForm .nav-tabs li{}
+.layerForm .nav-tabs li a{ color:#000; font-weight:bold;}
+
+
+/*基本信息*/
+#info {}
+#info label { padding-right:5px; font-weight:500;}
+#info .col-xs-7 { padding-left:5px; }
+#info .form-group { margin-left:0; margin-right:0; }
+/*合同签订双方*/
+#link .ours { background:#f4f4f4; padding:15px;}
