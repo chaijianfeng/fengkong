@@ -61,7 +61,6 @@ $(function(){
 							value:"CIF",text:"CIF"
 						}
 					]
-<<<<<<< HEAD
 				},
 				{col:"ysfs",label:"运输方式",type:"select",required:true,
 					options:[
@@ -146,24 +145,8 @@ $(function(){
 		var $container = formUser(link);
 		registerValidate("addInfoForm",link);
 	}
-=======
-			},
-			{col:"pzwh",label:"批准文号",type:"text" },
-			{col:"jydw",label:"经营单位",type:"text" },
-			{col:"xkz",label:"许可证",type:"text" },
-			{col:"zyq",label:"装运期",type:"text" },
-			{col:"fhdwdm",label:"发货单位代码",type:"text" },
-			{col:"fhdw",label:"发货单位",type:"text" },
-			{col:"js",label:"件数",type:"text" },
-			{col:"gqqssj",label:"工期起始时间",type:"date",validate:{dateLTInput:"gqjssj"} },
-			{col:"gqjssj",label:"工期结束时间",type:"date",validate:{dateGTInput:"gqqssj"}  },
-			{col:"gq",label:"工期（天）",type:"text" }
-			
-		]
-	};
 	var $container = formGenerator(config);
 	registerValidate("addInfoForm",config);
-	
 	
 	
 	$("#saveOrUupdateBtn").on("click",function(){
@@ -171,7 +154,6 @@ $(function(){
 		parent.refreshTable(); //刷新页面
 	});
 	
->>>>>>> 7aded40ab4d85b85065becab6e1b8677ebef3866
 });
 // 创建联系方式依赖方法
 function formUser(obj){
