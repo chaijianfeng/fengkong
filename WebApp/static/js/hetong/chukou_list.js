@@ -170,7 +170,7 @@ $(function() {
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
+		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../../pages/hetong/chukou/detail.html"});
 	});
 
 	// 添加
@@ -212,7 +212,6 @@ $(function() {
 				field : 'id',
 				values : selectRows
 			});
-			
 			
 			parent.layer.msg('删除成功!');
 		});
@@ -258,7 +257,6 @@ $(function() {
 	
 	//打开新窗口
 	function openLayer(settings){
-		
 		parent.layer.open({
 			type : settings.type ? settings.type : 2,
 			move : settings.move ? settings.move : false,
@@ -266,12 +264,13 @@ $(function() {
 			title : settings.title ? settings.title : "窗口",
 			area : settings.area ? settings.area : ["60%","60%"],
 			content : settings.url,
+			offset : 'lt',
 			success : function(layero,index){
+				console.log(layero);
 				var currentFrame = layero.find("iframe")[0].contentWindow.document;
 				$("#uuid",currentFrame).val(settings.id);
 			}
 		});
-		
 	}
 	
 	
