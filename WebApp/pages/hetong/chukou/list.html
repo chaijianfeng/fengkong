@@ -40,37 +40,38 @@
 					<div class="form-group ml15">
 						<label for="name">合同名称:</label> <input type="text" name="name" class="form-control input-sm searWidth">
 					</div>
-					<div class="form-group ml15" style="margin-left:15px">
+					<div class="form-group ml15">
 						<label class="control-label">签订日期:</label>
 						<input type="text" class="form-control input-sm searWidth" onclick="WdatePicker();"  />
 					</div>
+					<div class="form-group ml15">
+						<label class="control-label">出口国别:</label>
+						<select class="form-control input-sm searWidth" name="guobie">
+							<option value="请选择">请选择</option>
+							<option value="英国">英国</option>
+							<option value="美国">美国</option>
+							<option value="日本">日本</option>
+						</select>
+					</div>
+					<div class="form-group ml15">
+						<label class="control-label ">贸易方式:</label>
+						<select class="form-control input-sm searWidth" name="myfs">
+							<option value="请选择">请选择</option>
+							<option value="一般贸易">一般贸易</option>
+							<option value="承包工程">承包工程</option>
+						</select>
+					</div>
 					
 					<button type="button" class="btn btn-info btn-xs search" id="thSearchBtn"><i class="glyphicon glyphicon-search"></i>查询</button>
-					<button type="reset" class="btn btn-info btn-xs "><i class="glyphicon glyphicon-refresh"></i>重置</button>
+					<button type="reset" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-refresh"></i>重置</button>
 					<!-- <button type="button" class="btn btn-info btn-xs advancedSearch" id="advancedSearch" data-toggle="modal" data-target="#advancedSearchModal"><i class="glyphicon glyphicon-search"></i>高级查询</button> -->
-					<button type="button" class="btn btn-info btn-xs advancedSearch" id="advancedSearch" ><i class="glyphicon glyphicon-search"></i>高级查询</button>
+					<!-- <button type="button" class="btn btn-info btn-xs advancedSearch" id="advancedSearch" ><i class="glyphicon glyphicon-search"></i>高级查询</button> -->
 					<button type="button" class="btn btn-info btn-xs advancedSearch" id="other" ><i class="glyphicon glyphicon-menu-down"></i>更多</button>
 					<div class="form-inline" style="padding:0; margin-top:10px;">
-						<div class="form-group">
-							<label class="control-label">出口国别:</label>
-							<select class="form-control input-sm searWidth" name="guobie">
-								<option value="请选择">请选择</option>
-								<option value="英国">英国</option>
-								<option value="美国">美国</option>
-								<option value="日本">日本</option>
-							</select>
-						</div>
-						<div class="form-group ml15">
-							<label class="control-label">贸易方式:</label>
-							<select class="form-control input-sm" name="myfs">
-								<option value="请选择">请选择</option>
-								<option value="一般贸易">一般贸易</option>
-								<option value="承包工程">承包工程</option>
-							</select>
-						</div>
-						<div class="form-group ml15">
-							<label class="control-label5">审核状态:</label>
-							<select class="form-control input-sm" name="shStatus">
+						
+						<div class="form-group ml15" style="margin-left:0;">
+							<label class="control-label5 ">审核状态:</label>
+							<select class="form-control input-sm searWidth" name="shStatus">
 								<option value="请选择">请选择</option>
 								<option value="已通过">已通过</option>
 								<option value="未通过">未通过</option>
@@ -78,8 +79,8 @@
 							</select>
 						</div>
 						<div class="form-group ml15">
-							<label class="control-label">关联状态:</label>
-							<select class="form-control input-sm" name="glStatus">
+							<label class="control-label ">关联状态:</label>
+							<select class="form-control input-sm searWidth" name="glStatus">
 								<option value="请选择">请选择</option>
 								<option value="已关联">已关联</option>
 								<option value="未关联">未关联</option>
