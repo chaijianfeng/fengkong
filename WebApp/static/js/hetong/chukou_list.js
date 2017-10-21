@@ -235,12 +235,12 @@ $(function() {
 	
 	//查看货物清单
 	$(document).on('click', '.searchBtn', function() {
-		openLayer({title:"货物清单",url:"../../pages/hetong/chukou/goods.html"});
+		openLayer({title:"货物清单",url:"../../../pages/hetong/chukou/goods.html"});
 	});
 	
 	//查看关联信息
 	$(document).on('click', '.glBtn', function() {
-		openLayer({title:"关联信息",url:"../../pages/hetong/chukou/guanlian.html"});
+		openLayer({title:"关联信息",url:"../../../pages/hetong/chukou/guanlian.html"});
 	});
 	
 	/*
