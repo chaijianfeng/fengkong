@@ -8,6 +8,10 @@ $(function() {
 		align:'center',
 		checkbox : true
 	}, {
+		title : '序号',
+		align:'center',
+		formatter : function(value,row,index){ return index+1; }
+	},{
 		title : '合同编号',
 		align:'center',
 		field : 'id',
@@ -128,7 +132,6 @@ $(function() {
 	//表头查询
 	$(document).on("click","#thSearchBtn",function(){
 		queryData("../../../data/data2.json");
-		//queryList();
 	});
 	
 	//1.初始化后台查询数据
@@ -155,13 +158,13 @@ $(function() {
 			toolbar : '#optionsBtn',
 			toolbarAlign : 'left',
 			//height : $('body').height(),
-			pageSize : 1,
 			columns : columns,
 			method: "get",
 			url : url,
 			sidePagination : "server",
 			queryParams : getParams,
 			pagination : true
+			//paginationHAlign : 'left'
 			//search : true, // 显示搜索工具条
 			//searchAlign : 'left'
 		});
@@ -170,24 +173,25 @@ $(function() {
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
-		openLayer({id:$(this).attr("id"),title:"出口合同详情",area:[ "70%", "65%" ],url:"../../pages/hetong/chukou/detail.html"});
+		openLayer({id:$(this).attr("id"),title:"出口合同详情",url:"../../../pages/hetong/chukou/detail.html"});
 	});
 
 	// 添加
 	$(document).on("click", "#add", function() {
-		openLayer({title:"添加出口合同",area:[ "80%", "90%" ],url:"../../pages/hetong/chukou/add.html"});
+		openLayer({title:"添加出口合同",url:"../../../pages/hetong/chukou/add.html"});
 	});
 
 	// 修改
 	$(document).on("click","#update",function() {
 		var selectRows = $table.bootstrapTable('getSelections');
 		if (selectRows.length === 1) {
-			parent.layer.open({
+			layer.open({
 				type : 2,
 				skin : 'myLayui', // 样式类名
 				title : "修改出口合同信息",
-				area : [ "70%", "65%" ],
-				content : "../../pages/hetong/chukou/add.html",
+				area : [ "80%", "80%" ],
+				offset : 'lt',
+				content : "../../../pages/hetong/chukou/add.html",
 				success : function(layero, index) {
 					console.log(selectRows[0]);
 					var currentFrame = layero.find("iframe")[0].contentWindow.document;
@@ -195,49 +199,49 @@ $(function() {
 				}
 			});
 		} else {
-			parent.layer.msg("请选择一条数据进行编辑!");
+			layer.msg("请选择一条数据进行编辑!");
 		}
 	});
 
 	// 删除
 	$(document).on('click', '#delete', function() {
-		parent.layer.confirm('确定要删除吗?', {
+		layer.confirm('确定要删除吗?', {
 			btn : [ "确定" ]
 		}, function() {
 			var selectRows = $table.bootstrapTable('getSelections');
 			selectRows = selectRows.map(function(item) {
 				return item.id;
 			});
+			
 			$table.bootstrapTable('remove', {
 				field : 'id',
 				values : selectRows
 			});
 			
-			parent.layer.msg('删除成功!');
+			layer.msg('删除成功!');
 		});
 
 	});
 
 	// 审核
 	$(document).on('click', '#shenhe', function() {
-		openLayer({title:"供货商审核",area:[ "40%", "40%" ],url:"../../pages/ruzhu/shenhe.html"});
+		openLayer({title:"供货商审核",area:[ "60%", "60%" ],url:"../../../pages/ruzhu/shenhe.html"});
 	});
 	
 	//import
 	$(document).on('click', '#import', function() {
-		openLayer({title:"导入文件",area:[ "60%", "60%" ],url:"../../pages/include/import.html"});
+		openLayer({title:"导入文件",area:[ "60%", "60%" ],url:"../../../pages/include/import.html"});
 	});
 	
 	//查看货物清单
 	$(document).on('click', '.searchBtn', function() {
-		openLayer({title:"货物清单",area:[ "80%", "80%" ],url:"../../pages/hetong/chukou/goods.html"});
+		openLayer({title:"货物清单",url:"../../pages/hetong/chukou/goods.html"});
 	});
 	
 	//查看关联信息
 	$(document).on('click', '.glBtn', function() {
-		openLayer({title:"关联信息",area:["60%","60%"],url:"../../pages/hetong/chukou/guanlian.html"});
+		openLayer({title:"关联信息",url:"../../pages/hetong/chukou/guanlian.html"});
 	});
-	
 	
 	/*
 	 * 格式化关联状态
@@ -257,18 +261,20 @@ $(function() {
 	
 	//打开新窗口
 	function openLayer(settings){
-		parent.layer.open({
+		layer.open({
 			type : settings.type ? settings.type : 2,
 			move : settings.move ? settings.move : false,
 			skin : settings.skin ? settings.skin : "myLayui", // 样式类名
 			title : settings.title ? settings.title : "窗口",
-			area : settings.area ? settings.area : ["60%","60%"],
+			area : settings.area ? settings.area : ["80%","80%"],
 			content : settings.url,
 			offset : 'lt',
 			success : function(layero,index){
 				//console.log(layero);
-				var currentFrame = layero.find("iframe")[0].contentWindow.document;
-				$("#uuid",currentFrame).val(settings.id);
+				if(settings.id){
+					var currentFrame = layero.find("iframe")[0].contentWindow.document;
+					$("#uuid",currentFrame).val(settings.id);
+				}
 			}
 		});
 	}
@@ -290,18 +296,31 @@ $(function() {
 	
 	//高级查询
 	$("#advancedSearch").on("click",function(){
-		parent.layer.open({
+		layer.open({
 			type : 2,
 			title : "高级查询",
 			skin : "myLayui",
-			area : ["40%","55%"],
+			area : ["60%","70%"],
 			content : "../../pages/hetong/chukou/advancedSearch.html"
 		});
 	});
 	
 	//更多
 	$("#other").on('click',function(){
-		$(".searchBox").animate({height:"75px"},200);
+		var searchBox = $(".searchBox");
+		if(searchBox.height() != 75){
+			$(".searchBox").animate({height:"75px"},200);
+			$(this).html('<i class="glyphicon glyphicon-menu-up"></i>收起');
+		}else{
+			$(".searchBox").animate({height:"32px"},200);
+			$(this).html('<i class="glyphicon glyphicon-menu-down"></i>收起');
+		}
+		
 	});
 	
+	
 });
+//刷新数据
+function refreshTable(){
+	$('#table').bootstrapTable("refresh");
+}

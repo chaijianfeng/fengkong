@@ -120,5 +120,13 @@ $(function(){
 	};
 	var $container = formGenerator(config);
 	registerValidate("addInfoForm",config);
+	
+	
+	
+	$("#saveOrUupdateBtn").on("click",function(){
+		parent.layer.close(parent.layer.getFrameIndex(window.name));//成功后关闭页面
+		parent.refreshTable(); //刷新页面
+	});
+	
 });
 /////////////////////////////////////////////////////////////JQuery验证配置结束/////////////////////////////////////////////////////////////
