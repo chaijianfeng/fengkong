@@ -145,9 +145,6 @@ $(function(){
 		var $container = formUser(link);
 		registerValidate("addInfoForm",link);
 	}
-	var $container = formGenerator(config);
-	registerValidate("addInfoForm",config);
-	
 	
 	$("#saveOrUupdateBtn").on("click",function(){
 		parent.layer.close(parent.layer.getFrameIndex(window.name));//成功后关闭页面
