@@ -19,3 +19,6 @@
 
 /*高级搜索*/
 .searchBox { height:32px; overflow:hidden;}
+.commSearch{}
+.ml15{ margin-left:15px;}
+.commSearch .searWidth { width:100px; }

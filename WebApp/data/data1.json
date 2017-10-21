@@ -150,21 +150,6 @@
 			"cjfs": "CIF",
 			"ysfs": "航空运输",
 			"ckka": "北京机场"
-		},
-		{
-			"id": "HT1818991184284",
-			"name": "电子配件出口合同",
-			"qdDate": "2015-04-11",
-			"goufang": "美国Kristen公司",
-			"maifang": "中国进出口贸易公司",
-			"guobie": "美国",
-			"myType": "一般贸易",
-			"projects": "货物清单",
-			"shStatus": "0",
-			"glStatus": "1",
-			"cjfs": "CIF",
-			"ysfs": "航空运输",
-			"ckka": "北京机场"
 		}
 	]
 }
