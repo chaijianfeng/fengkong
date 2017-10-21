@@ -39,6 +39,47 @@ $(function() {
 		value : ""
 	}
 	];
+
+	// 联系方式详情
+	var links = [
+		{
+			name : "委托方",
+			value : "美国Kri公司"
+		}, {
+			name : "代理方",
+			value : "蚂蚁物流"
+		}, {
+			name : "委托方签约人",
+			value : ""
+		}, {
+			name : "代理方签约人",
+			value : ""
+		}, {
+			name : "委托方联系电话",
+			value : ""
+		}, {
+			name : "代理方联系电话",
+			value : ""
+		}, {
+			name : "委托方开户行",
+			value : ""
+		}, {
+			name : "代理方开户行",
+			value : ""
+		}, {
+			name : "委托方账号",
+			value : ""
+		}, {
+			name : "代理方账号",
+			value : ""
+		}, {
+			name : "委托方地址",
+			value : ""
+		}, {
+			name : "代理方地址",
+			value : ""
+		}
+	]
 	
 	// 附件信息
 	var files = [ {
@@ -69,7 +110,13 @@ $(function() {
 		id : "info",
 		elems : infos
 	});
-	
+
+	//联系方式添加
+	initUserInfo({
+		id : "link",
+		elems : links
+	});
+
 	// 附件
 	initDetailInfo({
 		id : "fujian",

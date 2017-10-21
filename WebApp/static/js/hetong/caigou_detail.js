@@ -24,7 +24,36 @@ $(function() {
 		value : "汇付"
 	}
 	];
-	
+
+	// 联系方式详情
+	var links = [
+		{
+			name : "买方名称",
+			value : "美国Kri公司"
+		}, {
+			name : "卖方名称",
+			value : "中国进出口贸易公司"
+		}, {
+			name : "买方签约人",
+			value : ""
+		}, {
+			name : "卖方签约人",
+			value : ""
+		}, {
+			name : "买方联系电话",
+			value : ""
+		}, {
+			name : "卖方联系电话",
+			value : ""
+		}, {
+			name : "买方地址",
+			value : ""
+		}, {
+			name : "卖方地址",
+			value : ""
+		}
+	]
+
 	// 附件信息
 	var files = [ {
 		name : "合同源文件",
@@ -39,7 +68,13 @@ $(function() {
 		id : "info",
 		elems : infos
 	});
-	
+
+	//联系方式添加
+	initUserInfo({
+		id : "link",
+		elems : links
+	});
+
 	// 附件
 	initDetailInfo({
 		id : "fujian",

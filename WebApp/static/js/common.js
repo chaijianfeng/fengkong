@@ -54,7 +54,20 @@ function initDetailInfo(settings){
 		}
 	}
 }
-
+// 详情  联系方式添加
+function initUserInfo(settings){
+	//console.log(settings);
+	if(settings){
+		var $row = $('<div class="row"></div>').appendTo($('#' + settings.id));
+		for(var i=0;i<settings.elems.length;i++){
+			$row.append('<div class="col-sm-6" style="margin-top:10px;border: 1px soild #000">'
+				+ '<label class="col-sm-6 text-right">'
+				+ settings.elems[i].name + ':</label>'
+				+ '<div class="col-sm-6">' + '<p>'
+				+ settings.elems[i].value + '</p>' + ' </div>' + '</div>');
+		}
+	}
+}
 //设置表单数据
 function setFormData(id,curr,rowData){
 	$.each($("#"+id+" :input",curr),function(i,e){
@@ -315,7 +328,6 @@ function formGenerator(obj){
 		return $container;
 	}
 }
-
 //根据类型获取input
 function getInputByType(column,sm,xs){
 	var required = column.required;
