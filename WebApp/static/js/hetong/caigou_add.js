@@ -7,14 +7,24 @@ $(".inputBtn").fileinput({
 
 $(function(){
 	/*dateTime:true,required:true*/
-	var obj = {
+
+	//获得基本信息
+	getInfo();
+
+	//获得联系方式
+	getLink();
+
+	//获得附件
+	// getFujian();
+	function getInfo(){
+		var config = {
 			container:'info',
 			columns:[
-				{col:"id",label:"合同编号",type:"text",required:true,},
-				{col:"name",label:"合同名称",type:"text",required:true,},
-				{col:"qdDate",label:"签约日期",type:"text",required:true,dateTime:true},
-				{col:"sxDate",label:"生效日期",type:"text",required:true,dateTime:true},
-				{col:"bz",label:"币制",type:"select",required:true,
+				{col:"id",label:"合同编号",type:"text",validate:{required:true}},
+				{col:"name",label:"合同名称",type:"text",validate:{required:true}},
+				{col:"qdDate",label:"签约日期",type:"text",validate:{required:true}},
+				{col:"sxDate",label:"生效日期",type:"text",validate:{required:true}},
+				{col:"bz",label:"币制",type:"select",validate:{required:true},
 					options:[
 						{
 							value:"人民币",text:"人民币"
@@ -24,8 +34,8 @@ $(function(){
 						}
 					]
 				},
-				{col:"totalMoney",label:"合同金额",type:"text",required:true},
-				{col:"bz",label:"结汇方式",type:"select",required:true,
+				{col:"totalMoney",label:"合同金额",type:"text",validate:{required:true}},
+				{col:"bz",label:"结汇方式",type:"select",validate:{required:true},
 					options:[
 						{
 							value:"汇付",text:"汇付"
@@ -38,90 +48,68 @@ $(function(){
 				
 			]
 		};
-	
-	formGenerator(obj);
-});
-
-/*
-生成表单
-*/
-function formGenerator(obj){
-	if(!obj || $.isEmptyObject(obj)){
-		return;
+		var $container = formGenerator(config);
+		registerValidate("addInfoForm",config);
 	}
-	//处理容器
-	var container = obj.container;
-	var $container = null;
-	var columns = [];
-	if(container){
-		$container = typeof container == "string" ?  $("#"+container) : container;
-		columns = obj.columns;
-		if(columns && columns.length>0){
-			for(var i=0, len= columns.length; i<len; i++){
-				var column = columns[i];
-				if(!column){
-					return;
-				}
-				//表单组容器
-				var $formGroup = $('<div class="form-group col-sm-4"></div>');
-				
-				//label
-				var spanEle = '';
-				if(column.required){
-					spanEle = '<span class="text-danger req">*&nbsp;</span>';
-				}
-				var label = '<label class="col-xs-5 control-label" style="padding-right:5px">'+spanEle+column.label+'&nbsp:</label>';
-				
-				//input
-				var $inputBox = $('<div class="col-xs-7" style="padding-left:5px"></div>');
-				var input = getInputByType(column); //调用获取input的函数
-				
-				//表单组容器添加label和input
-				$formGroup.append($(label)).append($inputBox.append($(input)));
-				
-				//给容器添加表单组
-				$container.append($formGroup);
-				
+
+	function getLink(){
+		var link = {
+			container:'link',
+			columns:[
+				{col:"id",label:"买方名称",type:"text",validate:{required:true}},
+				{col:"name",label:"卖方名称",type:"text",validate:{required:true}},
+				{col:"qdDate",label:"买方签约人",type:"text"},
+				{col:"sxDate",label:"卖方签约人",type:"text"},
+				{col:"bz",label:"买方联系电话",type:"text"},
+				{col:"totalMoney",label:"卖方联系电话",type:"text"},
+				{col:"bz",label:"买方地址",type:"text"},
+				{col:"totalMoney",label:"卖方地址",type:"text"},
+				{col:"bz",label:"买方开户行",type:"text"},
+				{col:"totalMoney",label:"卖方开户行",type:"text"},
+				{col:"bz",label:"买方账号",type:"text"},
+				{col:"totalMoney",label:"卖方账号",type:"text"},
+			]
+		};
+		var $container = formUser(link);
+		registerValidate("addInfoForm",link);
+	}
+	function getFujian(){
+			var fujian = {
+				container:'fujian',
+				columns:[
+					{fil:"files1",label:"合同源文件",type:"file",validate:{required:true}},
+					{fil:"files2",label:"其他",type:"file",validate:{}}
+				]
+			};
+			var $container = formFujian(fujian);
+			registerValidate("addInfoForm",fujian);
+	}
+	// getFujian();
+
+});
+// 创建联系方式
+function formUser(obj){
+	if(obj && !$.isEmptyObject(obj) && obj.container){
+		var $container = typeof obj.container == "string" ?  $("#"+obj.container) : obj.container;
+		//$container.addClass("tab-pane clearfix active");
+		if(obj.columns && obj.columns.length>0){
+			for(var i=0;i<obj.columns.length; i++){
+				if(obj.columns[i]) $container.append(getInputByType(obj.columns[i],6,6));
 			}
 		}
+		return $container;
 	}
 }
-
-//根据类型获取input
-function getInputByType(column){
-	var input = '';
-	
-	var type = column.type || 'text';
-	switch(type){
-		case 'text':
-			var dateTime = '';
-			if(column.dateTime){
-				dateTime = 'onclick\="WdatePicker()\;"';
+// 创建附件
+function formFujian(obj){
+	if(obj && !$.isEmptyObject(obj) && obj.container){
+		var $container = typeof obj.container == "string" ?  $("#"+obj.container) : obj.container;
+		//$container.addClass("tab-pane clearfix active");
+		if(obj.columns && obj.columns.length>0){
+			for(var i=0;i<obj.columns.length; i++){
+				if(obj.columns[i]) $container.append(getInputByType(obj.columns[i],12,2));
 			}
-			input = '<input '+dateTime+' type="'+column.type+'" name="'+column.col+'" class="form-control input-sm">';
-			break;
-		case 'select':
-			var options = column.options;
-			var input = '<select name="'+column.col+'" class="form-control input-sm">';
-			if(options && options.length>0){
-				for(var i=0, len=options.length; i<len; i++){
-					var option = options[i];
-					var selected = '';
-					if(option.selected){
-						selected = 'selected';
-					}
-					input += '<option value="'+option.value+'" '+selected+'>'+option.text+'</option>';
-				}
-			}
-			input += '</select>'; 
-			break;
-		case 'radio':
-			break;
-		case 'checkbox':
-			break;
-		default:
-			//不处理
+		}
+		return $container;
 	}
-	
-	return input;
 }

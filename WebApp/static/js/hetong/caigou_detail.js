@@ -51,6 +51,18 @@ $(function() {
 		}, {
 			name : "卖方地址",
 			value : ""
+		}, {
+			name : "买方开户行",
+			value : ""
+		}, {
+			name : "卖方开户行",
+			value : ""
+		}, {
+			name : "买方账号",
+			value : ""
+		}, {
+			name : "卖方账号",
+			value : ""
 		}
 	]
 

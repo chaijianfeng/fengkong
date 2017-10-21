@@ -353,6 +353,9 @@ function getInputByType(column,sm,xs){
 		case 'date':
 			input = '<input type="text" name="'+column.col+'" class="form-control input-sm" onclick="WdatePicker();"/>';
 			break;
+		case 'file':
+			input = '<input type="file" name="'+column.fil+'" class="file inputBtn"/>';
+			break;
 		default:
 			//不处理
 			break;
