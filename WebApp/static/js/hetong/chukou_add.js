@@ -121,7 +121,20 @@ $(function(){
 				{col:"js",label:"件数",type:"text" },
 				{col:"gqqssj",label:"工期起始时间",type:"date",validate:{dateLTInput:"gqjssj"} },
 				{col:"gqjssj",label:"工期结束时间",type:"date",validate:{dateGTInput:"gqqssj"}  },
-				{col:"gq",label:"工期（天）",type:"text" }
+				{col:"gq",label:"工期（天）",type:"text" },
+				{col:"shitui",label:"是否退税",type:"select",
+					options:[
+					{
+						value:"请选择",text:"请选择"
+					},
+					{
+						value:"是",text:"是",selected:true
+					},
+					{
+						value:"否",text:"否"
+					}
+					]
+				}
 				
 			]
 		};
