@@ -52,8 +52,8 @@
 	$(function(){
 		$(document).on('click','#index_login',function(){
 			var name = 	$('#index_loginName').val();
-			name = "admin";
-			name = $.trim(name);
+			//name = "admin";
+			//name = $.trim(name);
 			
 			var url = '../../data/';
 			sessionStorage.setItem("url", url+"menu_"+name+".json");
@@ -92,7 +92,7 @@
 			
 		});
 		
-		$('#index_login').trigger('click');
+		//$('#index_login').trigger('click');
 	});
 	
 	function keyDown(e){
