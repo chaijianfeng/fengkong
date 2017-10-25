@@ -3004,6 +3004,10 @@
         this.initBody();
     };
 
+    BootstrapTable.prototype.getPage = function(params){
+    	return {pageSize:this.options.pageSize,pageNumber:this.options.pageNumber};
+    } 
+    
     // BOOTSTRAP TABLE PLUGIN DEFINITION
     // =======================
 
@@ -3017,7 +3021,7 @@
         'checkAll', 'uncheckAll', 'checkInvert',
         'check', 'uncheck',
         'checkBy', 'uncheckBy',
-        'refresh',
+        'refresh','getPage',
         'resetView',
         'resetWidth',
         'destroy',

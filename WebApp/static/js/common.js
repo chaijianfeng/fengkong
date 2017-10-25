@@ -101,6 +101,15 @@ function formatterStatus(value,row,index){
 	return '<i title="'+title+'" class="fa '+className+'"></i>';
 }
 
+//格式化标题(超过8个字符后就截取8个字符，后面使用“...”取代)
+function formatterTableString(value,row,index){
+	var title = value;
+	if(value.length>8){
+		value = value.substring(0,7)+"...";
+	}
+	return '<span title="'+title+'">'+value+'</span>';
+}
+
 /*
  * 格式化标题为放大镜按钮
  */

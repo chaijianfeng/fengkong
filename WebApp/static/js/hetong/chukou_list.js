@@ -1,17 +1,30 @@
-$(function() {
+$(function(){
 	var $table = $('#table');
 	/*
 	 * 显示行号 { formatter : function(value,row,index){ return index+1; } }
 	 */
-	var columns = [ {
-		field : 'state',
-		align:'center',
-		checkbox : true
-	}, {
-		title : '序号',
-		align:'center',
-		formatter : function(value,row,index){ return index+1; }
-	},{
+	var columns = [ 
+		{
+			field : 'state',
+			align:'center',
+			checkbox : true
+		}, 
+		{
+			title : '序号',
+			align:'center',
+			formatter : function(value,row,index){ 
+				/*
+				var $pagination = $(".pagination:eq(0)");
+				var pageNumber = $pagination.find("li.active:eq(0)").find("a").text();
+				alert(pageNumber);
+				return (pageNumber-1)*10+index+1; 
+				*/
+				var page = $table.bootstrapTable("getPage");
+				var pageSize = page.pageSize,pageNumber = page.pageNumber;
+				return page.pageSize*(page.pageNumber-1)+index+1;
+			}
+		},
+		{
 		title : '合同编号',
 		align:'center',
 		field : 'id',
@@ -19,7 +32,8 @@ $(function() {
 	}, {
 		title : '合同名称',
 		align:'center',
-		field : 'name'
+		field : 'name',
+		formatter : formatterTableString
 	}, {
 		title : '签订日期',
 		align:'center',
@@ -27,11 +41,13 @@ $(function() {
 	}, {
 		title : '买方',
 		align:'center',
-		field : 'goufang'
+		field : 'goufang',
+		formatter : formatterTableString
 	}, {
 		title : '卖方',
 		align:'center',
-		field : 'maifang'
+		field : 'maifang',
+		formatter : formatterTableString
 	}, {
 		title : '出口国别',
 		align:'center',
@@ -58,7 +74,8 @@ $(function() {
 	}
 
 	];
-	/*var datas = [ {
+	/*
+	var datas = [ {
 		"id" : "HT1818991181111",
 		"name" : "办公用品出口合同",
 		"qdDate" : "2015-11-07",
@@ -86,10 +103,12 @@ $(function() {
 		"cjfs" : "CIF",
 		"ysfs" : "航空运输",
 		"ckka" : "北京机场"
-	} ];*/
+	} ];
+	*/
 	
 	
-	/*$table.bootstrapTable('destroy').bootstrapTable({
+	/*
+	$table.bootstrapTable('destroy').bootstrapTable({
 		classes : 'table table-hover', // 添加样式名称
 		striped : true, // 隔行变色
 		search : true, // 显示搜索工具条
@@ -109,25 +128,8 @@ $(function() {
 		sidePagination : "server",//分页从服务器加载
 		ajax : queryList, //请求后台函数
 		queryParams : getParams
-	});*/
-	
-	/*$table.bootstrapTable('destroy').bootstrapTable({
-		classes : 'table table-hover', // 添加样式名称
-		striped : true, // 隔行变色
-		toolbar : '#optionsBtn',
-		toolbarAlign : 'left',
-		//height : $('body').height(),
-		pageSize : 1,
-		columns : columns,
-		method: "get",
-		url : "../../../data/data1.json",
-		sidePagination : "server",
-		queryParams : getParams,
-		pagination : true
-		//search : true, // 显示搜索工具条
-		//searchAlign : 'left'
-		
-	});*/
+	});
+	*/
 
 	//表头查询
 	$(document).on("click","#thSearchBtn",function(){
@@ -169,7 +171,6 @@ $(function() {
 			//searchAlign : 'left'
 		});
 	}
-	
 	
 	// 查看详情
 	$(document).on("click", ".lookInfo", function() {
@@ -318,6 +319,15 @@ $(function() {
 		
 	});
 	
+	var config = { 
+			columns:[
+				{col:"id",label:"合同",validate:{required:true}},
+				{col:"name",label:"合同名称",validate:{required:true}}
+			]
+		};
+		
+	//验证高级查询
+	//registerValidate("advandSearch",config);
 	
 });
 //刷新数据
