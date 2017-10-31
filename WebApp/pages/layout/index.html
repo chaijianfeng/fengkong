@@ -29,6 +29,11 @@
 	href="../../static/plugins/layer-v3.1.0/theme/default/layer.css" />
 <script type="text/javascript"
 	src="../../static/plugins/layer-v3.1.0/layer.js"></script>
+	
+	<link rel="stylesheet"
+	href="../../static/plugins/ContextJS/css/context.standalone.css" />
+<script type="text/javascript"
+	src="../../static/plugins/ContextJS/js/context.js"></script>
 </head>
 <body>
 	<div id="fkBox">
@@ -41,7 +46,7 @@
 			<!-- <ul class="list-inline" style="width:1341px;height:56px;overflow-x:scroll;overflow-y: hidden;  -->
 			<ul class="list-inline">
 				<li class="active">
-					<a href="javascript:;" data-href="include/main_admin.html">首页</a>
+					<a id="sy" href="javascript:;" data-href="include/main_admin.html">首页</a>
 					<!-- <a href="javascript:;" data-href="system/module.html">模块管理</a> -->
 				</li>
 			</ul>
@@ -62,6 +67,18 @@
 			var viewH = document.documentElement.clientHeight;  
             var fkRight = document.getElementById("fkRight");  
             fkRight.style.height = (viewH - 98)+"px"; 
+            
+            /*
+            context.init({preventDoubleContext: false});
+            context.attach('#fkTabs ul li a',[
+        		{text : "刷新", action:function(e){
+        			e.preventDefault();
+        			
+        			console.log("刷新了");
+        			console.log(this);
+        		}}
+        	])
+        	*/
 		});
 	</script>
 </body>
