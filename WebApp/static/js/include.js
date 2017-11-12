@@ -3,7 +3,7 @@
  */
 function Includer(includeFiles){
 	var me = this;
-	var staticPath = "fengkong/static/";
+	var staticPath = "/fengkong/static/";
 	var includeFileListDictionary = [
 		"plugins/bootstrap-3.3.7/css/bootstrap.min.css",//0
 		"plugins/jquery-2.1.1/jquery-2.1.1.js",//1
@@ -21,6 +21,10 @@ function Includer(includeFiles){
 		"plugins/layer-v3.1.0/theme/default/layer.css",//11	 弹窗
 		"plugins/layer-v3.1.0/layer.js",//12
 		"plugins/My97DatePicker-4.8/WdatePicker.js",//13	日历
+		"plugins/bootstrap-fileinput-4.4.6/css/fileinput.css",
+		"plugins/bootstrap-fileinput-4.4.6/js/fileinput.js",
+		"plugins/bootstrap-fileinput-4.4.6/js/locales/zh.js"
+		
 	];
 	
 	this.includeFiles = includeFiles==null ? includeFileListDictionary : includeFiles;
@@ -60,20 +64,20 @@ function Includer(includeFiles){
 		var array = [];
 		for(var i=0;i<files.length;i++){
 			var item = files[i];
-			if(item.indexOf(".js")){
+			if(item.indexOf(".js") != -1){
 				/*
 				ele = document.createElement("script");
 				ele.setAttribute("type","text/javascript");
 				ele.setAttribute("src",staticPath+item);
 				 */
 				array.push('<script type="text/javascript" src="'+staticPath+item+'"></script>');
-			}else if(item.indexOf(".css")){
+			}else if(item.indexOf(".css") != -1){
 				/*
 				ele = document.createElement("link");
 				ele.setAttribute("rel","stylesheet");
 				ele.setAttribute("href",staticPath+item);
 				 */
-				array.push('<link type="text/css" rel="stylesheet" href="'+staticPath+item+'"/>');
+				array.push('<link type="text/css" rel="stylesheet" href="'+staticPath+item+'" />');
 			}
 		}
 		document.write(array.join(""));
