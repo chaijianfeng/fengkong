@@ -15,15 +15,14 @@ function Includer(includeFiles){
 		//"plugins/bootstrap-table-1.11.1/extensions/export/bootstrap-table-export.js",//表格导出
 		//plugins/tableExport.jquery.plugin/tableExport.js",
 		"plugins/bootstrap-table-1.11.1/locale/bootstrap-table-zh-CN.js",//7
-		"plugins/jquery.nicescroll-3.7.6/jquery.nicescroll.js",//8	美化滚动条
-		"js/common.js",//9	自定义公用js
-		"css/comm.css",//10	自定义公用css"
-		"plugins/layer-v3.1.0/theme/default/layer.css",//11	 弹窗
-		"plugins/layer-v3.1.0/layer.js",//12
-		"plugins/My97DatePicker-4.8/WdatePicker.js",//13	日历
-		"plugins/bootstrap-fileinput-4.4.6/css/fileinput.css",
-		"plugins/bootstrap-fileinput-4.4.6/js/fileinput.js",
-		"plugins/bootstrap-fileinput-4.4.6/js/locales/zh.js"
+		"plugins/layer-v3.1.0/theme/default/layer.css",//8	 弹窗
+		"plugins/layer-v3.1.0/layer.js",//9
+		"plugins/My97DatePicker-4.8/WdatePicker.js",//10	日历
+		"plugins/bootstrap-fileinput-4.4.6/css/fileinput.css", //11 文件上传
+		"plugins/bootstrap-fileinput-4.4.6/js/fileinput.js", //12
+		"plugins/bootstrap-fileinput-4.4.6/js/locales/zh.js", //13
+		"js/common.js",//14	自定义公用js
+		"css/comm.css",//15	自定义公用css"
 		
 	];
 	
