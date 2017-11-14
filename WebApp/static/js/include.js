@@ -26,21 +26,22 @@ function Includer(includeFiles){
 		
 	];
 	
-	this.includeFiles = includeFiles===null ? includeFileListDictionary : includeFiles;
+	this.includeFiles = includeFiles==null ? includeFileListDictionary : includeFiles;
+	//this.includeFiles = includeFiles==null ? includeFileListDictionary : this.includeFilter(includeFiles);
 	
 	//获取数组的子数组，包含模式         周小建
-	this.includeFilter = function(array,include){
-		if(array===null) array = includeFileListDictionary;
-		if(include===null) return array;
+	this.includeFilter = function(include,array){
+		if(array==null) array = includeFileListDictionary;
+		if(include==null) return array;
 		var a = [];
 		for(var i=0;i<include.length;i++) a.push(array[include[i]]);
 		return a;
 	};
 
 	// 获取数组的子数组，排除模式         周小建
-	this.excludeFilter = function(array,exclude){
-		if(array===null) array = includeFileListDictionary;
-		if(exclude===null) return array;
+	this.excludeFilter = function(exclude,array){
+		if(array==null) array = includeFileListDictionary;
+		if(exclude==null) return array;
 		var a = [];
 		for(var i=0;i<array.length;i++){
 			var item = array[i];
@@ -58,7 +59,7 @@ function Includer(includeFiles){
 	
 	//导入文件处理器
 	this.includeFileHandler = function(files){
-		if(files===null) files = this.includeFiles;//如果参数为空，则取本类同名属性。
+		if(files==null) files = this.includeFiles;//如果参数为空，则取本类同名属性。
 		//else this.includeFiles = includeFiles;//如果参数非空，则将参数赋给本类同名属性。
 		var array = [];
 		for(var i=0;i<files.length;i++){

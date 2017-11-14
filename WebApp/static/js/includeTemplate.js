@@ -1,4 +1,4 @@
-document.write(array.join("fengkong/static/js/include.js"));
+//document.write('<script type="text/javascript" src="../../static/js/include.js"></script>');
 //includeFileHandler(includeFileListDictionary);
 var includer = new Includer();
 includer.includeFileHandler();
